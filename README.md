@@ -42,6 +42,14 @@ macOS apps are free to download (7-day trial); a license bought here keeps them 
 - Keys are generated locally (`CBL-…`) and also registered in **LicenseGate** when configured;
   our DB stays the source of truth
 
+**Phase 4 — invoices**
+- Invoices page (`/account/invoices`) + per-license invoice link on the Licenses page
+
+**Phase 5 (web) — license validation API**
+- `POST /api/licenses/validate` (also `GET ?key=&bundleId=` for testing) — the macOS apps
+  check a key here; **our DB is authoritative**. Returns
+  `{ valid, status, validUntil, appSlug, reason }` and binds a key to its app via bundle id.
+
 ### Activating payments (Paddle)
 
 Checkout stays in a safe **"coming soon"** state until:
@@ -53,13 +61,13 @@ Checkout stays in a safe **"coming soon"** state until:
 
 Until then the cart and pricing pages work for browsing; only the final "Pay" button is disabled.
 
-## What's next (later phases)
+## What's next
 
-4. **Invoices** — list + link Paddle-hosted invoices on the Licenses page.
-5. **License validation API + macOS apps** — `POST /api/licenses/validate` for the apps to
-   call (wrapping LicenseGate), plus the Swift side: 7-day trial from install date, a
-   *License* section in Settings (validity + date, or a key field + buy link), a background
-   validity check that disables the app when expired/blocked, and Sparkle for updates.
+- **macOS app integration** — the drop-in Swift license kit (`CrazyBeeLicense`, separate
+  package) wires the 7-day trial, the Settings "License" section, the background validity
+  check (against `/api/licenses/validate`), and Sparkle updates.
+- **Port the marketing site** into this Next.js app.
+- Connect the real Paddle / LicenseGate / Brevo accounts.
 
 ## Setup
 

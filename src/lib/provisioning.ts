@@ -39,6 +39,7 @@ export async function provisionItems(
 ): Promise<IssuedLicense[]> {
   const now = new Date();
   const issued: IssuedLicense[] = [];
+  const subscriptionIds: string[] = [];
 
   for (const item of items) {
     const validUntil = addInterval(now, item.interval);
@@ -134,6 +135,7 @@ export async function provisionItems(
     }
 
     issued.push({ appSlug: item.appSlug, licenseKey, validUntil });
+    subscriptionIds.push(subscriptionId);
   }
 
   // ── invoice (one per transaction) ──
@@ -148,6 +150,8 @@ export async function provisionItems(
     if (!existingInv) {
       await db.insert(invoices).values({
         userId,
+        // link to the subscription when the purchase was a single app
+        subscriptionId: subscriptionIds.length === 1 ? subscriptionIds[0] : null,
         paddleTransactionId: ref.transactionId,
         number: ref.invoiceNumber ?? null,
         url: ref.invoiceUrl ?? null,

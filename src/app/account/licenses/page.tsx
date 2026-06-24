@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { getUserLicenses } from "@/lib/licenses";
+import { getUserInvoices } from "@/lib/invoices";
 import { getApp, appName, PLAN_LABELS } from "@/lib/catalog";
 import { Hex } from "@/components/ui/Hex";
 
@@ -22,6 +23,13 @@ export default async function LicensesPage({
 }) {
   const session = await auth();
   const list = session?.user ? await getUserLicenses(session.user.id) : [];
+  const invoiceList = session?.user ? await getUserInvoices(session.user.id) : [];
+  const invoiceUrlBySub = new Map<string, string>();
+  for (const inv of invoiceList) {
+    if (inv.subscriptionId && inv.url && !invoiceUrlBySub.has(inv.subscriptionId)) {
+      invoiceUrlBySub.set(inv.subscriptionId, inv.url);
+    }
+  }
   const { purchase } = await searchParams;
 
   return (
@@ -66,6 +74,9 @@ export default async function LicensesPage({
               l.subStatus === "blocked" ||
               l.subStatus === "past_due";
             const badgeClass = blocked ? "blocked" : l.status;
+            const invUrl = l.subscriptionId
+              ? invoiceUrlBySub.get(l.subscriptionId)
+              : undefined;
             return (
               <div className="license-row" key={l.id}>
                 <span className="app-icon">
@@ -82,9 +93,20 @@ export default async function LicensesPage({
                   </div>
                   <div className="license-actions mt-s">
                     <code className="license-key">{l.licenseKey}</code>
-                    <Link className="btn btn-ghost btn-sm" href={`/account/invoices/${l.id}`}>
-                      Invoice
-                    </Link>
+                    {invUrl ? (
+                      <a
+                        className="btn btn-ghost btn-sm"
+                        href={invUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Invoice ↗
+                      </a>
+                    ) : (
+                      <Link className="btn btn-ghost btn-sm" href="/account/invoices">
+                        Invoices
+                      </Link>
+                    )}
                   </div>
                 </div>
                 <span className={`badge badge-${badgeClass}`}>

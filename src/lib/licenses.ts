@@ -1,5 +1,14 @@
 import { desc, eq } from "drizzle-orm";
-import { db, licenses, subscriptions } from "@/lib/db";
+import { db, licenses, subscriptions, type License } from "@/lib/db";
+
+export async function getLicenseByKey(key: string): Promise<License | undefined> {
+  const rows = await db
+    .select()
+    .from(licenses)
+    .where(eq(licenses.licenseKey, key))
+    .limit(1);
+  return rows[0];
+}
 
 export interface UserLicense {
   id: string;
@@ -7,6 +16,7 @@ export interface UserLicense {
   licenseKey: string;
   status: "active" | "expired" | "blocked" | "revoked";
   validUntil: Date | null;
+  subscriptionId: string | null;
   plan: "month" | "quarter" | "year" | "lifetime" | null;
   subStatus: "active" | "trialing" | "past_due" | "canceled" | "blocked" | null;
 }
@@ -19,6 +29,7 @@ export async function getUserLicenses(userId: string): Promise<UserLicense[]> {
       licenseKey: licenses.licenseKey,
       status: licenses.status,
       validUntil: licenses.validUntil,
+      subscriptionId: licenses.subscriptionId,
       plan: subscriptions.plan,
       subStatus: subscriptions.status,
     })

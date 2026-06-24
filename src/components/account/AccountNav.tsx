@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const ITEMS: [string, string][] = [
   ["/account", "Overview"],
   ["/account/licenses", "Licenses"],
+  ["/account/invoices", "Invoices"],
 ];
 
 export function AccountNav() {

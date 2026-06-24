@@ -113,6 +113,10 @@ export function getApp(slug: string): CatalogApp | undefined {
   return CATALOG.find((a) => a.slug === slug);
 }
 
+export function getAppByBundleId(bundleId: string): CatalogApp | undefined {
+  return CATALOG.find((a) => a.bundleId === bundleId);
+}
+
 export function appName(slug: string): string {
   return getApp(slug)?.name ?? slug;
 }
