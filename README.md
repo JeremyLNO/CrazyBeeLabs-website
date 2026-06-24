@@ -70,14 +70,30 @@ npm run db:push          # or: npm run db:generate && npm run db:migrate
 npm run dev              # http://localhost:3000
 ```
 
-### Deploy to Vercel
+### Deploy to Vercel (already wired)
 
-1. Push this folder to a Git repo and import it in Vercel.
-2. Add a Neon Postgres integration (or set `DATABASE_URL` manually).
-3. Set env vars from `.env.example` (at minimum `DATABASE_URL`, `AUTH_SECRET`,
-   `NEXT_PUBLIC_SITE_URL`). `AUTH_URL` is auto-detected on Vercel.
-4. Run the migration once against the production DB (`npm run db:push` locally pointed at
-   the prod `DATABASE_URL`, or via a CI step).
+The repo is connected to Vercel + Neon, so **every push to `main` auto-deploys** to
+production (pull requests get preview deployments). To finish first-time setup:
+
+1. **Env vars** (Vercel → Settings → Environment Variables):
+   - `DATABASE_URL` — set automatically by the Neon integration (just verify it's there).
+   - `AUTH_SECRET` — `openssl rand -base64 32`.
+   - `NEXT_PUBLIC_SITE_URL` — your production URL.
+
+   (`AUTH_URL` isn't needed — `trustHost` is enabled in `auth.config.ts`.)
+2. **Create the tables** — no Node needed: paste `drizzle/0000_init.sql` into the
+   **Neon SQL editor** and run it once.
+3. **Redeploy** (Vercel → Deployments → ⋯ → Redeploy) so it picks up the new env vars.
+
+### Continuous deployment
+
+- **Vercel** builds + deploys on every push to `main` automatically — nothing to run.
+- **GitHub Actions CI** (`.github/workflows/ci.yml`) compiles + type-checks on every
+  push/PR, so build errors surface on GitHub too.
+- **Schema changes to Neon** stay deliberate (never auto-applied to a live DB): paste
+  updated SQL in the Neon editor, or run the **"DB push to Neon"** Action manually
+  (needs a `DATABASE_URL` repo secret).
+- `./scripts/ship.sh "message"` = commit everything + push (→ triggers the deploy).
 
 ## Environment variables
 

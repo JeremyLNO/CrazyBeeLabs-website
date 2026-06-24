@@ -1,0 +1,27 @@
+name: DB push to Neon
+
+# Manual ("Run workflow" button) schema sync to Neon — a no-Node-needed way to
+# apply schema changes. For the FIRST setup, prefer running drizzle/0000_init.sql
+# in the Neon SQL editor. Use this for later, additive schema changes.
+#
+# Requires a repository secret DATABASE_URL = your Neon connection string
+# (Settings → Secrets and variables → Actions → New repository secret).
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  db-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm install
+      - name: Sync Drizzle schema to Neon
+        run: npm run db:push
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}

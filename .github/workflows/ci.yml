@@ -1,0 +1,30 @@
+name: CI
+
+# Runs on every push to main and on pull requests. Compiles + type-checks the
+# whole app so build errors show up on GitHub (and before Vercel deploys).
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install dependencies
+        run: npm install
+      - name: Build (type-check + compile)
+        run: npm run build
+        env:
+          # Dummy values — the build doesn't connect to anything, these just
+          # satisfy module init so the compile succeeds.
+          DATABASE_URL: postgresql://ci:ci@localhost:5432/ci
+          AUTH_SECRET: ci-dummy-secret-only-for-build
+          NEXT_PUBLIC_SITE_URL: https://example.com

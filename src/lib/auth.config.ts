@@ -6,6 +6,8 @@ import type { NextAuthConfig } from "next-auth";
  * needs Node APIs — is added only in auth.ts.
  */
 export const authConfig = {
+  // Vercel sets a dynamic host; trust it so Auth.js doesn't reject the callback URL.
+  trustHost: true,
   pages: { signIn: "/login" },
   session: { strategy: "jwt" },
   providers: [],
