@@ -50,6 +50,11 @@ macOS apps are free to download (7-day trial); a license bought here keeps them 
   check a key here; **our DB is authoritative**. Returns
   `{ valid, status, validUntil, appSlug, reason }` and binds a key to its app via bundle id.
 
+**Admin dashboard** — `/admin`, restricted to `ADMIN_EMAILS` (defaults to jeremy@lno.company)
+- Sales overview: revenue (all-time / 30 days), orders, active licenses, paying customers,
+  breakdown by app & plan
+- All **orders** and all **licenses** across every customer
+
 ### Activating payments (Paddle)
 
 Checkout stays in a safe **"coming soon"** state until:

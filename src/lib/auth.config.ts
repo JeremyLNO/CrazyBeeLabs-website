@@ -14,8 +14,9 @@ export const authConfig = {
   callbacks: {
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
-      const onAccount = nextUrl.pathname.startsWith("/account");
-      if (onAccount && !isLoggedIn) return false;
+      const path = nextUrl.pathname;
+      const guarded = path.startsWith("/account") || path.startsWith("/admin");
+      if (guarded && !isLoggedIn) return false;
       return true;
     },
     jwt({ token, user }) {

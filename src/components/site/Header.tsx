@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { auth } from "@/lib/auth";
 import { CartButton } from "@/components/cart/CartButton";
+import { isAdminEmail } from "@/lib/admin-auth";
 
 export async function Header() {
   const session = await auth();
   const user = session?.user;
+  const admin = isAdminEmail(user?.email);
 
   return (
     <header className="site-header">
@@ -18,6 +20,7 @@ export async function Header() {
         <nav className="header-nav" aria-label="Primary">
           <Link href="/pricing">Pricing</Link>
           {user && <Link href="/account/licenses">Licenses</Link>}
+          {admin && <Link href="/admin">Admin</Link>}
         </nav>
 
         <div className="header-actions">
