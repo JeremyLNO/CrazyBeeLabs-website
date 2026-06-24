@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
-export function LoginForm() {
+export function LoginForm({ callbackUrl }: { callbackUrl?: string }) {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,7 +21,7 @@ export function LoginForm() {
       setError("Incorrect email or password.");
       return;
     }
-    router.push("/account");
+    router.push(callbackUrl || "/account");
     router.refresh();
   }
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { auth } from "@/lib/auth";
+import { CartButton } from "@/components/cart/CartButton";
 
 export async function Header() {
   const session = await auth();
@@ -15,11 +16,12 @@ export async function Header() {
         </Link>
 
         <nav className="header-nav" aria-label="Primary">
-          <Link href="/#apps">Apps</Link>
+          <Link href="/pricing">Pricing</Link>
           {user && <Link href="/account/licenses">Licenses</Link>}
         </nav>
 
         <div className="header-actions">
+          <CartButton />
           {user ? (
             <>
               <span className="header-user">{user.email}</span>

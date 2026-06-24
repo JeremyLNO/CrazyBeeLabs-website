@@ -15,8 +15,9 @@ macOS apps are free to download (7-day trial); a license bought here keeps them 
 - Third-party tools (wired in later phases): **Paddle** (payments), **LicenseGate**
   (license keys), **Brevo** (email), **Sparkle** (macOS app updates)
 
-## What's built (Phase 1 — foundations + accounts)
+## What's built
 
+**Phase 1 — foundations + accounts**
 - Email/password **sign-up**, **login**, **logout**, JWT session
 - Protected **/account** area (middleware + per-page guard)
 - **Account overview** and **Licenses** page (empty state until purchases exist)
@@ -25,9 +26,23 @@ macOS apps are free to download (7-day trial); a license bought here keeps them 
 - Branded UI following the Crazy Bee Labs charter (black + honey)
 - Product **catalogue** in code: the 6 paid macOS apps × 4 plans (`src/lib/catalog.ts`)
 
+**Phase 2 — pricing + cart + checkout**
+- **Pricing** overview (`/pricing`) and **per-app plan page** (`/apps/[slug]`) with the 4 plans
+- **Cart** (`/cart`): client state in localStorage, one plan per app, header cart badge
+- **Paddle checkout** wired (`@paddle/paddle-js` overlay) — passes the cart line items,
+  the customer email and `customData { userId, items }` so the webhook can provision
+- Checkout requires login (`callbackUrl` back to `/cart`)
+
+### Activating payments (Paddle)
+
+Checkout stays in a safe **"coming soon"** state until two things are set:
+1. `NEXT_PUBLIC_PADDLE_CLIENT_TOKEN` (+ `NEXT_PUBLIC_PADDLE_ENV`) in env.
+2. A Paddle **price id** (`pri_…`) for each plan in `src/lib/catalog.ts` (`paddlePriceId`).
+
+Until then the cart and pricing pages work for browsing; only the final "Pay" button is disabled.
+
 ## What's next (later phases)
 
-2. **Pricing + cart + Paddle checkout** — per-app pricing (4 plans), Paddle.js overlay.
 3. **Webhooks** — `POST /api/webhooks/paddle` (signature-verified): payment success →
    create/extend a LicenseGate license + store subscription + send the Brevo email;
    payment failure / cancellation → **block** the license.

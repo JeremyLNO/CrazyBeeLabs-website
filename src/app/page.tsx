@@ -62,8 +62,8 @@ export default function HomePage() {
                       {app.plans[0].priceLabel}
                     </b>
                   </span>
-                  <Link className="btn btn-accent btn-sm" href="/signup">
-                    Get a license
+                  <Link className="btn btn-accent btn-sm" href={`/apps/${app.slug}`}>
+                    View plans
                   </Link>
                 </div>
               </div>
