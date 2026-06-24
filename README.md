@@ -33,19 +33,28 @@ macOS apps are free to download (7-day trial); a license bought here keeps them 
   the customer email and `customData { userId, items }` so the webhook can provision
 - Checkout requires login (`callbackUrl` back to `/cart`)
 
+**Phase 3 — provisioning webhook**
+- `POST /api/webhooks/paddle` — **signature-verified** Paddle webhook
+- Payment success → creates/extends the **subscription + license** (validity from the plan:
+  month/quarter/year, or perpetual for lifetime), records the **invoice**, and emails the
+  key(s) via Brevo
+- Non-payment / cancellation / pause → **blocks** the license
+- Keys are generated locally (`CBL-…`) and also registered in **LicenseGate** when configured;
+  our DB stays the source of truth
+
 ### Activating payments (Paddle)
 
-Checkout stays in a safe **"coming soon"** state until two things are set:
+Checkout stays in a safe **"coming soon"** state until:
 1. `NEXT_PUBLIC_PADDLE_CLIENT_TOKEN` (+ `NEXT_PUBLIC_PADDLE_ENV`) in env.
 2. A Paddle **price id** (`pri_…`) for each plan in `src/lib/catalog.ts` (`paddlePriceId`).
+3. In Paddle → **Notifications**, add a destination to
+   `https://<your-domain>/api/webhooks/paddle`, copy its secret into `PADDLE_WEBHOOK_SECRET`,
+   and (optionally) set `PADDLE_API_KEY` so invoice links are fetched.
 
 Until then the cart and pricing pages work for browsing; only the final "Pay" button is disabled.
 
 ## What's next (later phases)
 
-3. **Webhooks** — `POST /api/webhooks/paddle` (signature-verified): payment success →
-   create/extend a LicenseGate license + store subscription + send the Brevo email;
-   payment failure / cancellation → **block** the license.
 4. **Invoices** — list + link Paddle-hosted invoices on the Licenses page.
 5. **License validation API + macOS apps** — `POST /api/licenses/validate` for the apps to
    call (wrapping LicenseGate), plus the Swift side: 7-day trial from install date, a

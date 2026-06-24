@@ -15,9 +15,14 @@ function fmtDate(d: Date | null): string {
   });
 }
 
-export default async function LicensesPage() {
+export default async function LicensesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ purchase?: string }>;
+}) {
   const session = await auth();
   const list = session?.user ? await getUserLicenses(session.user.id) : [];
+  const { purchase } = await searchParams;
 
   return (
     <>
@@ -28,6 +33,13 @@ export default async function LicensesPage() {
         <h1>Your licenses</h1>
         <p className="lead">Each plan you&apos;ve purchased, its key, and its invoice.</p>
       </div>
+
+      {purchase === "success" && (
+        <div className="alert alert-success">
+          Payment received — thank you! Your license appears below within a few
+          seconds (we&apos;re finalising it). A copy is also on its way by email.
+        </div>
+      )}
 
       {list.length === 0 ? (
         <div className="empty">

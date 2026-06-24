@@ -1,4 +1,5 @@
 import { isBrevoConfigured, siteUrl } from "@/lib/env";
+import { appName } from "@/lib/catalog";
 
 interface OutgoingEmail {
   to: string;
@@ -79,6 +80,38 @@ export function sendPasswordResetEmail(to: string, token: string, name?: string)
        <p>Click below to choose a new password.</p>
        <p style="margin:24px 0">${button(url, "Choose a new password")}</p>
        <p style="color:#5F636B;font-size:13px">If you didn't request this, you can ignore this email.</p>`,
+    ),
+  });
+}
+
+export function sendLicenseEmail(
+  to: string,
+  name: string | undefined,
+  issued: { appSlug: string; licenseKey: string; validUntil: Date | null }[],
+) {
+  const rows = issued
+    .map(
+      (i) =>
+        `<tr>
+          <td style="padding:10px 12px 10px 0;font-weight:600">${appName(i.appSlug)}</td>
+          <td style="padding:10px 12px;font-family:ui-monospace,Menlo,monospace">${i.licenseKey}</td>
+          <td style="padding:10px 0;color:#5F636B;white-space:nowrap">${
+            i.validUntil
+              ? "until " + i.validUntil.toLocaleDateString("en-GB")
+              : "lifetime"
+          }</td>
+        </tr>`,
+    )
+    .join("");
+  return sendEmail({
+    to,
+    toName: name,
+    subject: `Your Crazy Bee Labs license${issued.length > 1 ? "s" : ""}`,
+    html: branded(
+      `<h1 style="font-size:22px">Thanks for your purchase 🐝</h1>
+       <p>Paste the key into the app's <b>Settings → License</b> to unlock it.</p>
+       <table style="width:100%;border-collapse:collapse;margin:18px 0">${rows}</table>
+       <p style="margin:24px 0">${button(`${siteUrl}/account/licenses`, "View my licenses")}</p>`,
     ),
   });
 }

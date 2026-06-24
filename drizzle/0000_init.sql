@@ -45,7 +45,7 @@ CREATE TABLE "subscriptions" (
 );
 CREATE INDEX "subscriptions_user_idx" ON "subscriptions" ("user_id");
 CREATE INDEX "subscriptions_app_idx" ON "subscriptions" ("app_slug");
-CREATE UNIQUE INDEX "subscriptions_paddle_sub_unique" ON "subscriptions" ("paddle_subscription_id");
+CREATE INDEX "subscriptions_paddle_sub_idx" ON "subscriptions" ("paddle_subscription_id");
 
 CREATE TABLE "licenses" (
   "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,

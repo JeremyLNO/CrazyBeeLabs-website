@@ -104,7 +104,8 @@ export const subscriptions = pgTable(
   (t) => [
     index("subscriptions_user_idx").on(t.userId),
     index("subscriptions_app_idx").on(t.appSlug),
-    uniqueIndex("subscriptions_paddle_sub_unique").on(t.paddleSubscriptionId),
+    // not unique: one Paddle subscription can cover several apps (multi-item cart)
+    index("subscriptions_paddle_sub_idx").on(t.paddleSubscriptionId),
   ],
 );
 
