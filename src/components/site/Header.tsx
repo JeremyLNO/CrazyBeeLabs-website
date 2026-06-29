@@ -19,7 +19,6 @@ export async function Header() {
 
         <nav className="header-nav" aria-label="Primary">
           <Link href="/apps">Our apps</Link>
-          <Link href="/pricing">Pricing</Link>
           {user && <Link href="/account/licenses">Licenses</Link>}
           {admin && <Link href="/admin">Admin</Link>}
         </nav>

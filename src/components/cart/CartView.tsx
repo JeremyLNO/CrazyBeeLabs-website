@@ -20,8 +20,8 @@ export function CartView({
         <h3>Your cart is empty</h3>
         <p className="muted mt-s">Pick a plan for any macOS app to get started.</p>
         <div className="mt-m">
-          <Link className="btn btn-primary" href="/pricing">
-            Browse plans
+          <Link className="btn btn-primary" href="/apps">
+            Browse apps
           </Link>
         </div>
       </div>

@@ -10,6 +10,7 @@ import {
   type Device,
   type ShowcaseApp,
 } from "@/lib/showcase";
+import { getApp } from "@/lib/catalog";
 
 const CATS: (Category | "all")[] = ["all", "work-smarter", "personal", "games"];
 const DEVS: (Device | "all")[] = ["all", "mac", "iphone", "web"];
@@ -63,7 +64,23 @@ export function AppsExplorer() {
   );
 }
 
+/** Price/availability line shown on each card. */
+function priceMeta(app: ShowcaseApp): { price: string; note: string } {
+  if (app.device === "mac") {
+    const from = getApp(app.slug)?.plans[0]?.priceLabel;
+    return {
+      price: from ? `From ${from}` : "Licensed here",
+      note: "Free download · 7-day trial",
+    };
+  }
+  if (app.device === "iphone") {
+    return { price: "On the App Store", note: "Free download" };
+  }
+  return { price: "Free", note: "Play in your browser" };
+}
+
 function AppCard({ app }: { app: ShowcaseApp }) {
+  const meta = priceMeta(app);
   return (
     <div className="card">
       <div className="app-tile">
@@ -84,6 +101,12 @@ function AppCard({ app }: { app: ShowcaseApp }) {
           </div>
         </div>
       </div>
+
+      <div className="card-price">
+        <span className="card-price-main">{meta.price}</span>
+        <span className="card-price-note">{meta.note}</span>
+      </div>
+
       <div className="row-between mt-m">
         <span className="device-pill">{DEVICE_LABELS[app.device]}</span>
         {app.external ? (

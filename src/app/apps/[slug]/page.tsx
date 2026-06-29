@@ -14,7 +14,7 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const app = getApp(slug);
-  return { title: app ? `${app.name} — Pricing` : "Pricing" };
+  return { title: app ? app.name : "App" };
 }
 
 export default async function AppPricingPage({
@@ -30,7 +30,7 @@ export default async function AppPricingPage({
     <section className="section">
       <div className="wrap">
         <div className="breadcrumb">
-          <Link href="/pricing">Pricing</Link>
+          <Link href="/apps">Our apps</Link>
           <span aria-hidden="true">›</span>
           <span>{app.name}</span>
         </div>
@@ -46,10 +46,18 @@ export default async function AppPricingPage({
           </div>
         </div>
 
-        <p className="muted mt-s">
-          Free to download · 7-day trial · then choose a plan:
-        </p>
+        <div className="trial-banner mt-m">
+          <span className="trial-badge">Free</span>
+          <p>
+            <b>Download {app.name} for free</b> and use it for{" "}
+            <b>7 days</b> — no account, no card. Love it? Keep it with one of the
+            plans below.
+          </p>
+        </div>
 
+        <h2 className="mt-l" style={{ marginBottom: 4 }}>
+          Choose a plan
+        </h2>
         <div className="plan-grid mt-m">
           {app.plans.map((plan) => (
             <div
