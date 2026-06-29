@@ -262,3 +262,22 @@ main { flex: 1 0 auto; width: 100%; }
 .admin-table tbody tr:hover { background: var(--color-warm); }
 .admin-table a { text-decoration: underline; text-underline-offset: 2px; }
 .mono-sm { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; }
+
+/* ---------- home rotating hero ---------- */
+.home-hero-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 6.2vw, 56px); line-height: 1.1; letter-spacing: -0.02em; max-width: 18ch; }
+.rotator { display: inline-flex; vertical-align: bottom; overflow: hidden; height: 1.12em; }
+.rotator-track { display: flex; flex-direction: column; transition: transform 620ms cubic-bezier(0.16, 1, 0.3, 1); }
+.rotator-word { height: 1.12em; line-height: 1.12; display: inline-flex; align-items: center; white-space: nowrap; background: var(--color-honey); color: var(--color-black); padding: 0 0.22em; border-radius: var(--radius-md); }
+@media (prefers-reduced-motion: reduce) { .rotator-track { transition: none; } }
+
+/* ---------- apps explorer (filters) ---------- */
+.filters { display: flex; flex-direction: column; gap: 10px; }
+.filter-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { padding: 7px 14px; border-radius: var(--radius-pill); border: 1px solid var(--color-border); background: var(--color-white); font-weight: 600; font-size: 14px; color: var(--color-text-secondary); transition: background var(--transition), color var(--transition), border-color var(--transition); }
+.chip:hover { border-color: var(--color-black); color: var(--color-black); }
+.chip.active { background: var(--color-black); color: #fff; border-color: var(--color-black); }
+.device-pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 11px; border-radius: var(--radius-pill); background: var(--color-warm); border: 1px solid var(--color-border); font-size: 12px; font-weight: 600; color: var(--color-black); }
+
+/* game glyph tile (dark + honey), matching the real app icons */
+.app-icon.glyph-tile { background: linear-gradient(150deg, #242424 0%, #080808 78%); color: var(--color-honey); display: grid; place-items: center; }
+.app-icon.glyph-tile svg { width: 26px; height: 26px; }
