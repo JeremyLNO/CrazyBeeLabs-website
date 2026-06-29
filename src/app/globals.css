@@ -264,7 +264,7 @@ main { flex: 1 0 auto; width: 100%; }
 .mono-sm { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; }
 
 /* ---------- home rotating hero ---------- */
-.home-hero-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(34px, 6.2vw, 56px); line-height: 1.1; letter-spacing: -0.02em; max-width: 18ch; }
+.home-hero-title { font-family: var(--font-display); font-weight: 700; font-size: clamp(20px, 5.6vw, 56px); line-height: 1.1; letter-spacing: -0.02em; white-space: nowrap; }
 .rotator { display: inline-flex; vertical-align: bottom; overflow: hidden; height: 1.12em; }
 .rotator-track { display: flex; flex-direction: column; transition: transform 620ms cubic-bezier(0.16, 1, 0.3, 1); }
 .rotator-word { height: 1.12em; line-height: 1.12; display: inline-flex; align-items: center; white-space: nowrap; background: var(--color-honey); color: var(--color-black); padding: 0 0.22em; border-radius: var(--radius-md); }
