@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const WORDS = ["simple", "beautiful", "useful", "smart", "fast", "efficient"];
+const WORDS = ["simple", "beautiful", "useful", "smart", "fast", "efficient", "unique", "original"];
 
 export function RotatingWord() {
   const rotRef = useRef<HTMLSpanElement>(null);
