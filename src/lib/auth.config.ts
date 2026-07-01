@@ -1,4 +1,5 @@
 import type { NextAuthConfig } from "next-auth";
+import { isAdminEmail } from "@/lib/admin-auth";
 
 /**
  * Edge-safe Auth.js config (no DB / bcrypt imports). Used by middleware and
@@ -20,11 +21,19 @@ export const authConfig = {
       return true;
     },
     jwt({ token, user }) {
-      if (user?.id) token.id = user.id;
+      if (user?.id) {
+        token.id = user.id;
+        token.name = user.name ?? null;
+        token.isAdmin = isAdminEmail(user.email);
+      }
       return token;
     },
     session({ session, token }) {
-      if (session.user && token.id) session.user.id = token.id as string;
+      if (session.user) {
+        if (token.id) session.user.id = token.id as string;
+        session.user.name = (token.name as string | null) ?? null;
+        session.user.isAdmin = Boolean(token.isAdmin);
+      }
       return session;
     },
   },

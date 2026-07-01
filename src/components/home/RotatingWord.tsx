@@ -1,10 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-
-const WORDS = ["simple", "beautiful", "useful", "smart", "fast", "efficient", "unique", "original"];
+import { useT } from "@/lib/i18n/LanguageProvider";
 
 export function RotatingWord() {
+  const { tArray } = useT();
+  const fromDict = tArray("words");
+  const WORDS = fromDict.length ? fromDict : ["simple"];
+  const key = WORDS.join("|"); // changes when the locale changes
+
   const rotRef = useRef<HTMLSpanElement>(null);
   const trackRef = useRef<HTMLSpanElement>(null);
   const [i, setI] = useState(0);
@@ -12,6 +16,12 @@ export function RotatingWord() {
 
   // append a clone of the first word so the loop is seamless
   const items = [...WORDS, WORDS[0]];
+
+  // reset to the first word whenever the word list (locale) changes
+  useEffect(() => {
+    setNoTransition(true);
+    setI(0);
+  }, [key]);
 
   // size the slot to the widest word so the line never reflows
   useEffect(() => {
@@ -29,12 +39,12 @@ export function RotatingWord() {
     if (document.fonts?.ready) document.fonts.ready.then(measure);
     window.addEventListener("resize", measure);
     return () => window.removeEventListener("resize", measure);
-  }, []);
+  }, [key]);
 
   useEffect(() => {
     const t = setInterval(() => setI((v) => v + 1), 2300);
     return () => clearInterval(t);
-  }, []);
+  }, [key]);
 
   // when we land on the clone, snap back to 0 without an animation
   useEffect(() => {
@@ -49,7 +59,7 @@ export function RotatingWord() {
       const r = requestAnimationFrame(() => setNoTransition(false));
       return () => cancelAnimationFrame(r);
     }
-  }, [i, noTransition]);
+  }, [i, noTransition, WORDS.length]);
 
   return (
     <span className="rotator" ref={rotRef} aria-label={WORDS.join(", ")}>

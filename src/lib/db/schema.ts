@@ -5,6 +5,7 @@ import {
   text,
   timestamp,
   integer,
+  date,
   index,
   uniqueIndex,
 } from "drizzle-orm/pg-core";
@@ -42,6 +43,7 @@ export const users = pgTable(
     email: text("email").notNull(),
     passwordHash: text("password_hash").notNull(),
     name: text("name"),
+    birthDate: date("birth_date"),
     emailVerifiedAt: timestamp("email_verified_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true })
       .defaultNow()

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCart } from "@/components/cart/CartProvider";
 import { getApp, getPlan, PLAN_LABELS } from "@/lib/catalog";
 import { CheckoutButton } from "@/components/checkout/CheckoutButton";
+import { useT } from "@/lib/i18n/LanguageProvider";
 
 export function CartView({
   user,
@@ -11,17 +12,18 @@ export function CartView({
   user: { id: string; email: string } | null;
 }) {
   const { items, remove, clear, ready } = useCart();
+  const { t } = useT();
 
   if (!ready) return <div className="muted">Loading…</div>;
 
   if (items.length === 0) {
     return (
       <div className="empty">
-        <h3>Your cart is empty</h3>
-        <p className="muted mt-s">Pick a plan for any macOS app to get started.</p>
+        <h3>{t("cart.emptyTitle")}</h3>
+        <p className="muted mt-s">{t("cart.emptyBody")}</p>
         <div className="mt-m">
           <Link className="btn btn-primary" href="/apps">
-            Browse apps
+            {t("cart.browse")}
           </Link>
         </div>
       </div>

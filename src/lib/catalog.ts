@@ -33,6 +33,10 @@ export interface CatalogApp {
   bundleId: string;
   /** Icon served from /public/apps/<slug>.png */
   icon: string;
+  /** Direct download of the notarized build. Absent/null until the file is published. */
+  downloadUrl?: string | null;
+  /** Screenshot image URLs shown on the detail page (horizontal scroller). */
+  screenshots?: string[];
   plans: CatalogPlan[];
 }
 
@@ -106,6 +110,33 @@ export const CATALOG: CatalogApp[] = [
     bundleId: "company.lno.weather",
     icon: "/apps/sunshine.png",
     plans: plans("€1.99 / mo", "€4.99 / 3 mo", "€14.99 / yr", "€29.99"),
+  },
+  {
+    slug: "never-miss-a-meeting",
+    name: "Never Miss a Meeting",
+    tagline: "Playful nudges so you're never late again.",
+    platform: "mac",
+    bundleId: "company.lno.nevermissameeting",
+    icon: "/apps/never-miss-a-meeting.png",
+    plans: plans("€1.99 / mo", "€4.99 / 3 mo", "€14.99 / yr", "€29.99"),
+  },
+  {
+    slug: "opti-worktime",
+    name: "Opti Worktime",
+    tagline: "Focus timer in your notch. Grow a garden.",
+    platform: "mac",
+    bundleId: "company.lno.optiworktime",
+    icon: "/apps/opti-worktime.png",
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+  },
+  {
+    slug: "spacespilot",
+    name: "SpacesPilot",
+    tagline: "Snap windows into place, instantly.",
+    platform: "mac",
+    bundleId: "company.lno.spacespilot",
+    icon: "/apps/spacespilot.png",
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
   },
 ];
 

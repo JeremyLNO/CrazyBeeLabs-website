@@ -6,12 +6,14 @@ interface OutgoingEmail {
   toName?: string;
   subject: string;
   html: string;
+  replyTo?: { email: string; name?: string };
+  attachments?: { name: string; content: string }[]; // content = base64
 }
 
 /**
  * Sends a transactional email through Brevo. If BREVO_API_KEY is not set the
- * call is a no-op (logged), so sign-up / reset flows still work end-to-end
- * before the integration is live.
+ * call is a no-op (logged), so sign-up / reset / support flows still work
+ * end-to-end before the integration is live.
  */
 export async function sendEmail(email: OutgoingEmail): Promise<{ sent: boolean }> {
   if (!isBrevoConfigured()) {
@@ -31,8 +33,10 @@ export async function sendEmail(email: OutgoingEmail): Promise<{ sent: boolean }
         name: process.env.BREVO_SENDER_NAME || "Crazy Bee Labs",
       },
       to: [{ email: email.to, name: email.toName }],
+      ...(email.replyTo ? { replyTo: email.replyTo } : {}),
       subject: email.subject,
       htmlContent: email.html,
+      ...(email.attachments?.length ? { attachment: email.attachments } : {}),
     }),
   });
   if (!res.ok) {
@@ -40,6 +44,55 @@ export async function sendEmail(email: OutgoingEmail): Promise<{ sent: boolean }
     return { sent: false };
   }
   return { sent: true };
+}
+
+export interface SupportSubmission {
+  kind: "support" | "idea";
+  appLabel: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone?: string;
+  message: string;
+  attachment?: { name: string; content: string };
+}
+
+/** Routes a Support & ideas submission to support@crazybeelabs.com. */
+export function sendSupportEmail(s: SupportSubmission) {
+  const label = s.kind === "idea" ? "💡 Idea" : "🛟 Support";
+  const rows: [string, string][] = [
+    ["Type", s.kind === "idea" ? "Idea" : "Support"],
+    ["App", s.appLabel],
+    ["Name", `${s.firstName} ${s.lastName}`.trim()],
+    ["Email", s.email],
+    ["Phone", s.phone || "—"],
+  ];
+  const table = rows
+    .map(
+      ([k, v]) =>
+        `<tr><td style="padding:6px 14px 6px 0;color:#5F636B">${k}</td><td style="padding:6px 0;font-weight:600">${escapeHtml(v)}</td></tr>`,
+    )
+    .join("");
+  return sendEmail({
+    to: process.env.SUPPORT_INBOX || "support@crazybeelabs.com",
+    subject: `[${s.kind === "idea" ? "Idea" : "Support"}] ${s.appLabel} — ${s.firstName} ${s.lastName}`.trim(),
+    replyTo: { email: s.email, name: `${s.firstName} ${s.lastName}`.trim() || undefined },
+    attachments: s.attachment ? [s.attachment] : undefined,
+    html: branded(
+      `<h1 style="font-size:20px">${label}</h1>
+       <table style="border-collapse:collapse;margin:8px 0 18px">${table}</table>
+       <div style="white-space:pre-wrap;background:#F7F4EE;border:1px solid #E6E2DA;border-radius:12px;padding:16px">${escapeHtml(s.message)}</div>
+       ${s.attachment ? `<p style="color:#5F636B;font-size:13px;margin-top:14px">📎 Attachment: ${escapeHtml(s.attachment.name)}</p>` : ""}`,
+    ),
+  });
+}
+
+function escapeHtml(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 function branded(inner: string): string {

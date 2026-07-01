@@ -1,12 +1,19 @@
-import Link from "next/link";
-import { auth } from "@/lib/auth";
-import { CartButton } from "@/components/cart/CartButton";
-import { isAdminEmail } from "@/lib/admin-auth";
+"use client";
 
-export async function Header() {
-  const session = await auth();
+import Link from "next/link";
+import { useSession } from "next-auth/react";
+import { CartButton } from "@/components/cart/CartButton";
+import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
+import { useAuthModal } from "@/components/auth/AuthModalProvider";
+import { useT } from "@/lib/i18n/LanguageProvider";
+import { CATEGORY_ORDER, showcaseByCategory } from "@/lib/showcase";
+
+export function Header() {
+  const { t } = useT();
+  const { data: session } = useSession();
+  const { openAuth } = useAuthModal();
   const user = session?.user;
-  const admin = isAdminEmail(user?.email);
+  const firstName = user?.name?.split(" ")[0] || null;
 
   return (
     <header className="site-header">
@@ -18,28 +25,70 @@ export async function Header() {
         </Link>
 
         <nav className="header-nav" aria-label="Primary">
-          <Link href="/apps">Our apps</Link>
-          {user && <Link href="/account/licenses">Licenses</Link>}
-          {admin && <Link href="/admin">Admin</Link>}
+          <div className="has-mega">
+            <Link href="/apps" className="mega-trigger">
+              {t("nav.ourApps")}
+              <span className="mega-caret" aria-hidden="true">▾</span>
+            </Link>
+            <div className="mega" role="menu">
+              <div className="mega-inner">
+                {CATEGORY_ORDER.map((cat) => {
+                  const apps = showcaseByCategory(cat);
+                  return (
+                    <div className="mega-col" key={cat}>
+                      <div className="mega-col-title">{t(`categories.${cat}`)}</div>
+                      {apps.length ? (
+                        <ul>
+                          {apps.map((a) => (
+                            <li key={a.slug}>
+                              {a.external ? (
+                                <a href={a.href} target="_blank" rel="noopener noreferrer">
+                                  {a.name}
+                                </a>
+                              ) : (
+                                <Link href={a.href}>{a.name}</Link>
+                              )}
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="mega-empty">{t("categories.comingSoon")}</p>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+
+          <Link href="/support">{t("nav.support")}</Link>
+          {user && <Link href="/account/licenses">{t("nav.licenses")}</Link>}
+          {user?.isAdmin && <Link href="/admin">{t("nav.admin")}</Link>}
         </nav>
 
         <div className="header-actions">
+          <LanguageSwitcher />
           <CartButton />
           {user ? (
-            <>
-              <span className="header-user">{user.email}</span>
-              <Link href="/account" className="btn btn-secondary btn-sm">
-                Account
-              </Link>
-            </>
+            <Link href="/account" className="btn btn-primary btn-sm">
+              {firstName ? t("nav.greeting", { name: firstName }) : t("nav.account")}
+            </Link>
           ) : (
             <>
-              <Link href="/login" className="btn btn-ghost btn-sm">
-                Log in
-              </Link>
-              <Link href="/signup" className="btn btn-primary btn-sm">
-                Create account
-              </Link>
+              <button
+                type="button"
+                className="btn btn-ghost btn-sm"
+                onClick={() => openAuth()}
+              >
+                {t("nav.login")}
+              </button>
+              <button
+                type="button"
+                className="btn btn-primary btn-sm"
+                onClick={() => openAuth()}
+              >
+                {t("nav.createAccount")}
+              </button>
             </>
           )}
         </div>

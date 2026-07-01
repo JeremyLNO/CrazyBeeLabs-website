@@ -20,6 +20,7 @@ export async function createUser(input: {
   email: string;
   password: string;
   name?: string;
+  birthDate?: string;
 }): Promise<User> {
   const passwordHash = await hashPassword(input.password);
   const rows = await db
@@ -28,6 +29,7 @@ export async function createUser(input: {
       email: input.email.toLowerCase(),
       passwordHash,
       name: input.name?.trim() || null,
+      birthDate: input.birthDate?.trim() || null,
     })
     .returning();
   return rows[0];
