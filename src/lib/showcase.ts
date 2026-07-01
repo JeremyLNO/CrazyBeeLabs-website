@@ -46,6 +46,7 @@ export const SHOWCASE: ShowcaseApp[] = [
 
   // ── Personal ──
   { slug: "sunshine", name: "Sunshine", tagline: "Weather you'll actually want to look at.", category: "personal", device: "mac", icon: "/apps/sunshine.png", href: "/apps/sunshine" },
+  { slug: "deskmate", name: "Deskmate", tagline: "A desktop companion you can talk to.", category: "personal", device: "mac", icon: "/apps/deskmate.png", href: "/apps/deskmate" },
   { slug: "cycles", name: "Cycles", tagline: "Your cycle, calmly tracked.", category: "personal", device: "iphone", icon: "/apps/cycles.png", href: "/apps/cycles", appStoreUrl: APP_STORE },
   { slug: "menu-island", name: "MenuIsland", tagline: "Launch your apps from the Dynamic Island.", category: "personal", device: "iphone", icon: "/apps/menu-island.png", href: "/apps/menu-island", appStoreUrl: APP_STORE },
   { slug: "dualcam-oxo", name: "DualCam OxO", tagline: "Film with two lenses at once.", category: "personal", device: "iphone", icon: "/apps/dualcam-oxo.png", href: "/apps/dualcam-oxo", appStoreUrl: APP_STORE },

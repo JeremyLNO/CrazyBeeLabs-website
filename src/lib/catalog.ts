@@ -138,6 +138,15 @@ export const CATALOG: CatalogApp[] = [
     icon: "/apps/spacespilot.png",
     plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
   },
+  {
+    slug: "deskmate",
+    name: "Deskmate",
+    tagline: "A desktop companion you can talk to.",
+    platform: "mac",
+    bundleId: "company.lno.deskmate",
+    icon: "/apps/deskmate.png",
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+  },
 ];
 
 export function getApp(slug: string): CatalogApp | undefined {
