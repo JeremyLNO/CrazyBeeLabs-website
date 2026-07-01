@@ -78,6 +78,7 @@ export function AppDetail({ app }: { app: DetailApp }) {
             <>
               <p>{t("detail.trialLead", { app: app.name, days: t("detail.days7") })}</p>
               <DownloadButton
+                appSlug={app.slug}
                 appName={app.name}
                 downloadUrl={app.downloadUrl}
                 label={t("detail.downloadApp", { app: app.name })}

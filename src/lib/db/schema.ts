@@ -167,6 +167,29 @@ export const invoices = pgTable(
   (t) => [index("invoices_user_idx").on(t.userId)],
 );
 
+/* ───────────────────────── downloads ─────────────────────────
+   One row per app download by a signed-in user. Feeds marketing
+   automations (e.g. OneSignal) — "who downloaded what, and when". */
+export const downloads = pgTable(
+  "downloads",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    appSlug: text("app_slug").notNull(),
+    platform: text("platform"), // "mac" | "ios"
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [
+    index("downloads_user_idx").on(t.userId),
+    index("downloads_app_idx").on(t.appSlug),
+    index("downloads_created_idx").on(t.createdAt),
+  ],
+);
+
 /* ───────────────────── inferred types ───────────────────── */
 export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
@@ -174,3 +197,4 @@ export type Subscription = typeof subscriptions.$inferSelect;
 export type License = typeof licenses.$inferSelect;
 export type Invoice = typeof invoices.$inferSelect;
 export type EmailToken = typeof emailTokens.$inferSelect;
+export type Download = typeof downloads.$inferSelect;

@@ -5,13 +5,17 @@ import { useAuthModal } from "@/components/auth/AuthModalProvider";
 import { useT } from "@/lib/i18n/LanguageProvider";
 
 export function DownloadButton({
+  appSlug,
   appName,
   downloadUrl,
+  platform = "mac",
   label,
   className = "btn btn-accent btn-sm",
 }: {
+  appSlug: string;
   appName: string;
   downloadUrl?: string | null;
+  platform?: string;
   label?: string;
   className?: string;
 }) {
@@ -20,6 +24,15 @@ export function DownloadButton({
   const [pending, setPending] = useState(false);
 
   function start() {
+    // Log the download (date + app) for the now-authenticated user.
+    // Fire-and-forget: never block the actual download on this.
+    fetch("/api/downloads", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ appSlug, platform }),
+      keepalive: true,
+    }).catch(() => {});
+
     if (downloadUrl) {
       const a = document.createElement("a");
       a.href = downloadUrl;

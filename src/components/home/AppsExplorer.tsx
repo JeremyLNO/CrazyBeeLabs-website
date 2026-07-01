@@ -105,7 +105,7 @@ function AppCard({ app }: { app: ShowcaseApp }) {
             {t("apps.openApp")}
           </Link>
           {isMac ? (
-            <DownloadButton appName={app.name} downloadUrl={catalog?.downloadUrl} />
+            <DownloadButton appSlug={app.slug} appName={app.name} downloadUrl={catalog?.downloadUrl} />
           ) : (
             <a
               className="btn btn-accent btn-sm"
