@@ -9,13 +9,19 @@ const ALLOWED = ["application/pdf", "image/jpeg", "image/jpg", "image/png"];
 
 type Kind = "support" | "idea";
 
-export function SupportForm() {
+export function SupportForm({
+  initialEmail = "",
+  initialFirstName = "",
+}: {
+  initialEmail?: string;
+  initialFirstName?: string;
+}) {
   const { t } = useT();
   const [kind, setKind] = useState<Kind>("support");
   const [appLabel, setAppLabel] = useState("");
-  const [firstName, setFirstName] = useState("");
+  const [firstName, setFirstName] = useState(initialFirstName);
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(initialEmail);
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [file, setFile] = useState<File | null>(null);

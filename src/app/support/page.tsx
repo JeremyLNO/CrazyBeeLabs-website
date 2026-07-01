@@ -1,3 +1,4 @@
+import { auth } from "@/lib/auth";
 import { SupportContent } from "@/components/support/SupportContent";
 
 export const metadata = {
@@ -5,6 +6,12 @@ export const metadata = {
   description: "Get help with a Crazy Bee Labs app or send us an idea.",
 };
 
-export default function SupportPage() {
-  return <SupportContent />;
+export default async function SupportPage() {
+  const session = await auth();
+  return (
+    <SupportContent
+      initialEmail={session?.user?.email ?? ""}
+      initialFirstName={session?.user?.name ?? ""}
+    />
+  );
 }
