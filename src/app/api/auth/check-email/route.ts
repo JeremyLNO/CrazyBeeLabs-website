@@ -18,6 +18,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Enter a valid email." }, { status: 400 });
   }
 
-  const user = await getUserByEmail(parsed.data.email);
-  return NextResponse.json({ exists: Boolean(user) });
+  try {
+    const user = await getUserByEmail(parsed.data.email);
+    return NextResponse.json({ exists: Boolean(user) });
+  } catch (e) {
+    console.error("[check-email] lookup failed", e);
+    return NextResponse.json(
+      { error: "Service temporarily unavailable. Please try again." },
+      { status: 503 },
+    );
+  }
 }

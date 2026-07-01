@@ -151,6 +151,7 @@ const en = {
     create: "Create account & continue",
     creating: "Creating…",
     changeEmail: "Use a different email",
+    error: "Something went wrong. Please try again.",
     downloadTitle: "Almost there — one detail",
     downloadLead: "Leave your email to start the download of {app}.",
   },

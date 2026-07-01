@@ -47,7 +47,7 @@ export function AuthFlow({
       });
       const data = (await res.json().catch(() => ({}))) as { exists?: boolean; error?: string };
       if (!res.ok) {
-        setError(data.error || t("support.errorGeneric"));
+        setError(data.error || t("auth.error"));
         return;
       }
       setStep(data.exists ? "login" : "register");
@@ -88,14 +88,14 @@ export function AuthFlow({
     });
     const data = (await res.json().catch(() => ({}))) as { error?: string };
     if (!res.ok) {
-      setError(data.error || t("support.errorGeneric"));
+      setError(data.error || t("auth.error"));
       setLoading(false);
       return;
     }
     const si = await signIn("credentials", { email, password, redirect: false });
     setLoading(false);
     if (!si || si.error) {
-      setError(t("support.errorGeneric"));
+      setError(t("auth.error"));
       return;
     }
     await finish(firstName.trim() || null);
