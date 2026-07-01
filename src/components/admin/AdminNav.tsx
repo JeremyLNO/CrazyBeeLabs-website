@@ -8,6 +8,7 @@ const ITEMS: [string, string][] = [
   ["/admin/orders", "Orders"],
   ["/admin/licenses", "Licenses"],
   ["/admin/downloads", "Downloads"],
+  ["/admin/database", "Database"],
 ];
 
 export function AdminNav() {
