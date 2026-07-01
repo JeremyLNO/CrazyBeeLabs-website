@@ -81,6 +81,8 @@ const de: Dict = {
     freeBadge: "Kostenlos",
     trialLead: "Lade {app} kostenlos herunter und nutze sie {days} Tage lang — ohne Karte. Gefällt sie dir? Behalte sie mit einem der Tarife unten.",
     days7: "7",
+    about: "Über die App",
+    features: "Funktionen",
     screenshots: "Screenshots",
     screenshotsSoon: "Screenshots folgen in Kürze.",
     downloadApp: "{app} herunterladen",

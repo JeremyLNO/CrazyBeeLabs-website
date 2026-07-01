@@ -4,6 +4,7 @@ import Link from "next/link";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { DownloadButton } from "@/components/apps/DownloadButton";
 import { useT } from "@/lib/i18n/LanguageProvider";
+import { getAppContent } from "@/lib/appContent";
 import type { PlanInterval } from "@/lib/catalog";
 
 export interface DetailPlan {
@@ -36,6 +37,7 @@ export function AppDetail({ app }: { app: DetailApp }) {
   const { t } = useT();
   const shots = app.screenshots.length ? app.screenshots : [];
   const isIos = app.kind === "ios";
+  const content = getAppContent(app.slug);
 
   return (
     <section className="section">
@@ -85,6 +87,14 @@ export function AppDetail({ app }: { app: DetailApp }) {
           )}
         </div>
 
+        {/* About */}
+        {content?.description && (
+          <>
+            <h2 className="mt-l">{t("detail.about")}</h2>
+            <p className="lead mt-m app-about">{content.description}</p>
+          </>
+        )}
+
         {/* Screenshots */}
         <h2 className="mt-l">{t("detail.screenshots")}</h2>
         <div className="shots mt-m">
@@ -105,6 +115,18 @@ export function AppDetail({ app }: { app: DetailApp }) {
             </>
           )}
         </div>
+
+        {/* Features */}
+        {content?.features?.length ? (
+          <>
+            <h2 className="mt-l">{t("detail.features")}</h2>
+            <ul className="feature-list mt-m">
+              {content.features.map((f, i) => (
+                <li key={i}>{f}</li>
+              ))}
+            </ul>
+          </>
+        ) : null}
 
         {/* Plans (macOS apps only) */}
         {!isIos && (

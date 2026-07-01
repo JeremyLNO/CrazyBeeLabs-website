@@ -83,6 +83,8 @@ const en = {
     freeBadge: "Free",
     trialLead: "Download {app} for free and use it for {days} days — no card. Love it? Keep it with one of the plans below.",
     days7: "7",
+    about: "About",
+    features: "Features",
     screenshots: "Screenshots",
     screenshotsSoon: "Screenshots coming soon.",
     downloadApp: "Download {app}",
