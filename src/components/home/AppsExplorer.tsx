@@ -68,11 +68,8 @@ function AppCard({ app }: { app: ShowcaseApp }) {
   const { t } = useT();
   const isMac = app.device === "mac";
   const catalog = isMac ? getApp(app.slug) : undefined;
-  const priceMain = isMac
-    ? catalog?.plans[0]
-      ? `${t("apps.from")} ${catalog.plans[0].priceLabel}`
-      : t("apps.free")
-    : t("apps.onAppStore");
+  // Prices are shown on each app's detail page, not on the cards.
+  const priceMain = isMac ? null : t("apps.onAppStore");
   const priceNote = isMac ? t("apps.freeTrialNote") : t("apps.appStoreNote");
 
   const Tile = (
@@ -97,7 +94,7 @@ function AppCard({ app }: { app: ShowcaseApp }) {
       </Link>
 
       <div className="card-price">
-        <span className="card-price-main">{priceMain}</span>
+        {priceMain && <span className="card-price-main">{priceMain}</span>}
         <span className="card-price-note">{priceNote}</span>
       </div>
 
