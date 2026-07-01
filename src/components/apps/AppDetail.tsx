@@ -13,11 +13,14 @@ export interface DetailPlan {
 }
 
 export interface DetailApp {
+  kind: "mac" | "ios";
   slug: string;
   name: string;
   tagline: string;
   icon: string;
   downloadUrl?: string | null;
+  /** iPhone apps: the App Store URL the "Download" button links to. */
+  appStoreUrl?: string;
   screenshots: string[];
   plans: DetailPlan[];
 }
@@ -32,6 +35,7 @@ const PLAN_KEY: Record<PlanInterval, string> = {
 export function AppDetail({ app }: { app: DetailApp }) {
   const { t } = useT();
   const shots = app.screenshots.length ? app.screenshots : [];
+  const isIos = app.kind === "ios";
 
   return (
     <section className="section">
@@ -53,16 +57,32 @@ export function AppDetail({ app }: { app: DetailApp }) {
           </div>
         </div>
 
-        {/* Free trial banner + download */}
+        {/* Banner + download (App Store link for iPhone, gated trial for macOS) */}
         <div className="trial-banner mt-m">
           <span className="trial-badge">{t("detail.freeBadge")}</span>
-          <p>{t("detail.trialLead", { app: app.name, days: t("detail.days7") })}</p>
-          <DownloadButton
-            appName={app.name}
-            downloadUrl={app.downloadUrl}
-            label={t("detail.downloadApp", { app: app.name })}
-            className="btn btn-primary"
-          />
+          {isIos ? (
+            <>
+              <p>{t("detail.availableAppStore")}</p>
+              <a
+                className="btn btn-primary"
+                href={app.appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("detail.downloadAppStore", { app: app.name })}
+              </a>
+            </>
+          ) : (
+            <>
+              <p>{t("detail.trialLead", { app: app.name, days: t("detail.days7") })}</p>
+              <DownloadButton
+                appName={app.name}
+                downloadUrl={app.downloadUrl}
+                label={t("detail.downloadApp", { app: app.name })}
+                className="btn btn-primary"
+              />
+            </>
+          )}
         </div>
 
         {/* Screenshots */}
@@ -86,34 +106,38 @@ export function AppDetail({ app }: { app: DetailApp }) {
           )}
         </div>
 
-        {/* Plans */}
-        <h2 className="mt-l" style={{ marginBottom: 4 }}>
-          {t("detail.choosePlan")}
-        </h2>
-        <div className="plan-grid mt-m">
-          {app.plans.map((plan) => (
-            <div
-              className={`plan-card${plan.recommended ? " recommended" : ""}`}
-              key={plan.interval}
-            >
-              {plan.recommended && <span className="plan-flag">{t("detail.bestValue")}</span>}
-              <div className="plan-name">{t(PLAN_KEY[plan.interval])}</div>
-              <div className="plan-price">{plan.priceLabel}</div>
-              <div className="plan-note muted">
-                {plan.recommended
-                  ? t("detail.bestValue")
-                  : plan.interval === "lifetime"
-                    ? t("detail.payOnce")
-                    : " "}
-              </div>
-              <div className="mt-m">
-                <AddToCartButton appSlug={app.slug} interval={plan.interval} />
-              </div>
+        {/* Plans (macOS apps only) */}
+        {!isIos && (
+          <>
+            <h2 className="mt-l" style={{ marginBottom: 4 }}>
+              {t("detail.choosePlan")}
+            </h2>
+            <div className="plan-grid mt-m">
+              {app.plans.map((plan) => (
+                <div
+                  className={`plan-card${plan.recommended ? " recommended" : ""}`}
+                  key={plan.interval}
+                >
+                  {plan.recommended && <span className="plan-flag">{t("detail.bestValue")}</span>}
+                  <div className="plan-name">{t(PLAN_KEY[plan.interval])}</div>
+                  <div className="plan-price">{plan.priceLabel}</div>
+                  <div className="plan-note muted">
+                    {plan.recommended
+                      ? t("detail.bestValue")
+                      : plan.interval === "lifetime"
+                        ? t("detail.payOnce")
+                        : " "}
+                  </div>
+                  <div className="mt-m">
+                    <AddToCartButton appSlug={app.slug} interval={plan.interval} />
+                  </div>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
 
-        <p className="form-note mt-l">{t("detail.checkoutNote")}</p>
+            <p className="form-note mt-l">{t("detail.checkoutNote")}</p>
+          </>
+        )}
       </div>
     </section>
   );

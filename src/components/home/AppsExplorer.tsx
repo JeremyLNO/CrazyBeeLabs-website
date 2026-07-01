@@ -92,13 +92,9 @@ function AppCard({ app }: { app: ShowcaseApp }) {
 
   return (
     <div className="card app-card">
-      {isMac ? (
-        <Link href={app.href} className="app-card-tile-link" aria-label={app.name}>
-          {Tile}
-        </Link>
-      ) : (
-        Tile
-      )}
+      <Link href={app.href} className="app-card-tile-link" aria-label={app.name}>
+        {Tile}
+      </Link>
 
       <div className="card-price">
         <span className="card-price-main">{priceMain}</span>
@@ -107,23 +103,23 @@ function AppCard({ app }: { app: ShowcaseApp }) {
 
       <div className="row-between mt-m">
         <span className="device-pill">{t(`devices.${app.device}`)}</span>
-        {isMac ? (
-          <div className="app-card-actions">
-            <Link className="link-btn" href={app.href}>
-              {t("apps.openApp")}
-            </Link>
+        <div className="app-card-actions">
+          <Link className="link-btn" href={app.href}>
+            {t("apps.openApp")}
+          </Link>
+          {isMac ? (
             <DownloadButton appName={app.name} downloadUrl={catalog?.downloadUrl} />
-          </div>
-        ) : (
-          <a
-            className="btn btn-accent btn-sm"
-            href={app.href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {t("apps.appStore")}
-          </a>
-        )}
+          ) : (
+            <a
+              className="btn btn-accent btn-sm"
+              href={app.appStoreUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t("apps.download")}
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );

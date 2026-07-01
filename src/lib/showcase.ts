@@ -15,10 +15,14 @@ export interface ShowcaseApp {
   category: Category;
   device: Device;
   icon: string; // /apps/<slug>.png
-  /** Detail page for mac apps; App Store URL for iPhone apps. */
+  /** On-site detail page (all apps have one now). */
   href: string;
-  /** true when href points off-site (App Store). */
+  /** true when href points off-site. */
   external?: boolean;
+  /** iPhone apps: the App Store URL used only by the "Download" button. */
+  appStoreUrl?: string;
+  /** Screenshot image URLs for the detail page (optional; placeholders if empty). */
+  screenshots?: string[];
 }
 
 /** Display order of the categories in the mega-menu and filters. */
@@ -38,12 +42,12 @@ export const SHOWCASE: ShowcaseApp[] = [
   { slug: "opti-worktime", name: "Opti Worktime", tagline: "Focus timer in your notch. Grow a garden.", category: "work-smarter", device: "mac", icon: "/apps/opti-worktime.png", href: "/apps/opti-worktime" },
   { slug: "spacespilot", name: "SpacesPilot", tagline: "Snap windows into place, instantly.", category: "work-smarter", device: "mac", icon: "/apps/spacespilot.png", href: "/apps/spacespilot" },
   // ── Work smarter (iPhone) ──
-  { slug: "qualiscan", name: "QualiScan", tagline: "A pocket scanner that reads your docs.", category: "work-smarter", device: "iphone", icon: "/apps/qualiscan.png", href: APP_STORE, external: true },
+  { slug: "qualiscan", name: "QualiScan", tagline: "A pocket scanner that reads your docs.", category: "work-smarter", device: "iphone", icon: "/apps/qualiscan.png", href: "/apps/qualiscan", appStoreUrl: APP_STORE },
 
   // ── Personal ──
   { slug: "sunshine", name: "Sunshine", tagline: "Weather you'll actually want to look at.", category: "personal", device: "mac", icon: "/apps/sunshine.png", href: "/apps/sunshine" },
-  { slug: "cycles", name: "Cycles", tagline: "Your cycle, calmly tracked.", category: "personal", device: "iphone", icon: "/apps/cycles.png", href: APP_STORE, external: true },
-  { slug: "menu-island", name: "MenuIsland", tagline: "Launch your apps from the Dynamic Island.", category: "personal", device: "iphone", icon: "/apps/menu-island.png", href: APP_STORE, external: true },
+  { slug: "cycles", name: "Cycles", tagline: "Your cycle, calmly tracked.", category: "personal", device: "iphone", icon: "/apps/cycles.png", href: "/apps/cycles", appStoreUrl: APP_STORE },
+  { slug: "menu-island", name: "MenuIsland", tagline: "Launch your apps from the Dynamic Island.", category: "personal", device: "iphone", icon: "/apps/menu-island.png", href: "/apps/menu-island", appStoreUrl: APP_STORE },
 
   // ── Games ── (coming back soon)
 ];
@@ -51,3 +55,10 @@ export const SHOWCASE: ShowcaseApp[] = [
 export function showcaseByCategory(cat: Category): ShowcaseApp[] {
   return SHOWCASE.filter((a) => a.category === cat);
 }
+
+export function getShowcaseApp(slug: string): ShowcaseApp | undefined {
+  return SHOWCASE.find((a) => a.slug === slug);
+}
+
+/** iPhone apps that have an on-site detail page. */
+export const IPHONE_APPS = SHOWCASE.filter((a) => a.device === "iphone");
