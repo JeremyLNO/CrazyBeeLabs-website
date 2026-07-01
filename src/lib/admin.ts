@@ -10,7 +10,7 @@ import {
   or,
   sql,
 } from "drizzle-orm";
-import { db, invoices, licenses, subscriptions, users } from "@/lib/db";
+import { db, downloads, invoices, licenses, subscriptions, users } from "@/lib/db";
 
 export async function getSalesSummary() {
   const now = new Date();
@@ -112,4 +112,35 @@ export async function getAllLicensesAdmin() {
     .leftJoin(users, eq(licenses.userId, users.id))
     .leftJoin(subscriptions, eq(licenses.subscriptionId, subscriptions.id))
     .orderBy(desc(licenses.createdAt));
+}
+
+export interface DownloadRow {
+  id: string;
+  createdAt: Date;
+  appSlug: string;
+  platform: string | null;
+  email: string | null;
+  name: string | null;
+}
+
+/** Recent downloads for the admin view. Returns [] if the table isn't migrated yet. */
+export async function getDownloads(limit = 200): Promise<DownloadRow[]> {
+  try {
+    return await db
+      .select({
+        id: downloads.id,
+        createdAt: downloads.createdAt,
+        appSlug: downloads.appSlug,
+        platform: downloads.platform,
+        email: users.email,
+        name: users.name,
+      })
+      .from(downloads)
+      .leftJoin(users, eq(downloads.userId, users.id))
+      .orderBy(desc(downloads.createdAt))
+      .limit(limit);
+  } catch (e) {
+    console.error("[admin] getDownloads failed (table not migrated?)", e);
+    return [];
+  }
 }
