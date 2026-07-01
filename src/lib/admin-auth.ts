@@ -1,16 +1,10 @@
 /**
- * Admin gate. Admins are listed in ADMIN_EMAILS (comma-separated). Defaults to
- * jeremy@lno.company so the dashboard works out of the box; override via env.
+ * Admin gate. The admin dashboard (/admin) is restricted to a single account:
+ * jeremy@lno.company — hard-coded so it can't be widened by env misconfig.
  */
-export function adminEmails(): string[] {
-  const raw = process.env.ADMIN_EMAILS?.trim();
-  return (raw && raw.length ? raw : "jeremy@lno.company")
-    .split(",")
-    .map((s) => s.trim().toLowerCase())
-    .filter(Boolean);
-}
+export const ADMIN_EMAIL = "jeremy@lno.company";
 
 export function isAdminEmail(email?: string | null): boolean {
   if (!email) return false;
-  return adminEmails().includes(email.toLowerCase());
+  return email.trim().toLowerCase() === ADMIN_EMAIL;
 }
