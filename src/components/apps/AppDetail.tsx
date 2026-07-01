@@ -4,7 +4,8 @@ import Link from "next/link";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { DownloadButton } from "@/components/apps/DownloadButton";
 import { useT } from "@/lib/i18n/LanguageProvider";
-import { getAppContent } from "@/lib/appContent";
+import { getAppCopy, getAppFaq } from "@/lib/content";
+import { FaqList } from "@/components/faq/FaqList";
 import type { PlanInterval } from "@/lib/catalog";
 
 export interface DetailPlan {
@@ -34,10 +35,11 @@ const PLAN_KEY: Record<PlanInterval, string> = {
 };
 
 export function AppDetail({ app }: { app: DetailApp }) {
-  const { t } = useT();
+  const { t, lang } = useT();
   const shots = app.screenshots.length ? app.screenshots : [];
   const isIos = app.kind === "ios";
-  const content = getAppContent(app.slug);
+  const copy = getAppCopy(lang, app.slug);
+  const faq = getAppFaq(lang, app.slug);
 
   return (
     <section className="section">
@@ -55,7 +57,7 @@ export function AppDetail({ app }: { app: DetailApp }) {
           </span>
           <div>
             <h1>{app.name}</h1>
-            <p className="lead">{app.tagline}</p>
+            <p className="lead">{copy?.tagline ?? app.tagline}</p>
           </div>
         </div>
 
@@ -89,10 +91,10 @@ export function AppDetail({ app }: { app: DetailApp }) {
         </div>
 
         {/* About */}
-        {content?.description && (
+        {copy?.description && (
           <>
             <h2 className="mt-l">{t("detail.about")}</h2>
-            <p className="lead mt-m app-about">{content.description}</p>
+            <p className="lead mt-m app-about">{copy.description}</p>
           </>
         )}
 
@@ -118,11 +120,11 @@ export function AppDetail({ app }: { app: DetailApp }) {
         </div>
 
         {/* Features */}
-        {content?.features?.length ? (
+        {copy?.features?.length ? (
           <>
             <h2 className="mt-l">{t("detail.features")}</h2>
             <ul className="feature-list mt-m">
-              {content.features.map((f, i) => (
+              {copy.features.map((f, i) => (
                 <li key={i}>{f}</li>
               ))}
             </ul>
@@ -161,6 +163,16 @@ export function AppDetail({ app }: { app: DetailApp }) {
             <p className="form-note mt-l">{t("detail.checkoutNote")}</p>
           </>
         )}
+
+        {/* FAQ */}
+        {faq.length ? (
+          <>
+            <h2 className="mt-l">{t("detail.faq")}</h2>
+            <div className="mt-m">
+              <FaqList items={faq} />
+            </div>
+          </>
+        ) : null}
       </div>
     </section>
   );

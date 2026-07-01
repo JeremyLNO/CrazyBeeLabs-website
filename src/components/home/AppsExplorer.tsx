@@ -10,6 +10,7 @@ import {
   type ShowcaseApp,
 } from "@/lib/showcase";
 import { getApp } from "@/lib/catalog";
+import { getAppCopy } from "@/lib/content";
 import { useT } from "@/lib/i18n/LanguageProvider";
 import { DownloadButton } from "@/components/apps/DownloadButton";
 
@@ -65,9 +66,10 @@ export function AppsExplorer() {
 }
 
 function AppCard({ app }: { app: ShowcaseApp }) {
-  const { t } = useT();
+  const { t, lang } = useT();
   const isMac = app.device === "mac";
   const catalog = isMac ? getApp(app.slug) : undefined;
+  const tagline = getAppCopy(lang, app.slug)?.tagline ?? app.tagline;
   // Prices are shown on each app's detail page, not on the cards.
   const priceMain = isMac ? null : t("apps.onAppStore");
   const priceNote = isMac ? t("apps.freeTrialNote") : t("apps.appStoreNote");
@@ -81,7 +83,7 @@ function AppCard({ app }: { app: ShowcaseApp }) {
       <div>
         <div style={{ fontFamily: "var(--font-display)", fontWeight: 700 }}>{app.name}</div>
         <div className="muted" style={{ fontSize: 13 }}>
-          {app.tagline}
+          {tagline}
         </div>
       </div>
     </div>

@@ -10,21 +10,27 @@ type Step = "email" | "login" | "register";
 export function AuthFlow({
   onSuccess,
   intro,
+  initialEmail = "",
+  initialFirstName = "",
 }: {
   /** Called after a successful login or signup. */
   onSuccess?: (firstName: string | null) => void;
   /** Optional lead paragraph shown on the first (email) step. */
   intro?: string;
+  /** Prefill the email (e.g. carried over from the newsletter). */
+  initialEmail?: string;
+  /** Prefill the first name on the register step. */
+  initialFirstName?: string;
 }) {
   const { t } = useT();
   const router = useRouter();
   const { update } = useSession();
 
   const [step, setStep] = useState<Step>("email");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(initialEmail);
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
-  const [firstName, setFirstName] = useState("");
+  const [firstName, setFirstName] = useState(initialFirstName);
   const [birthDate, setBirthDate] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);

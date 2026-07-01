@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Hex } from "@/components/ui/Hex";
 import { RotatingWord } from "@/components/home/RotatingWord";
+import { NewsletterSignup } from "@/components/home/NewsletterSignup";
 import { useT } from "@/lib/i18n/LanguageProvider";
 
 export function HomeContent() {
@@ -83,6 +84,9 @@ export function HomeContent() {
           </div>
         </div>
       </section>
+
+      {/* Newsletter */}
+      <NewsletterSignup />
 
       {/* CTA band */}
       <section className="section section-dark">

@@ -9,6 +9,10 @@ interface RequireOpts {
   afterAuth?: () => void;
   /** Lead text shown on the modal's first step. */
   intro?: string;
+  /** Prefill the email (e.g. carried from the newsletter form). */
+  email?: string;
+  /** Prefill the first name on the register step. */
+  firstName?: string;
 }
 
 interface AuthModalValue {
@@ -24,11 +28,13 @@ export function AuthModalProvider({ children }: { children: React.ReactNode }) {
   const { status } = useSession();
   const [open, setOpen] = useState(false);
   const [intro, setIntro] = useState<string | undefined>(undefined);
+  const [prefill, setPrefill] = useState<{ email?: string; firstName?: string }>({});
   const afterRef = useRef<(() => void) | undefined>(undefined);
 
   const openAuth = useCallback((opts?: RequireOpts) => {
     afterRef.current = opts?.afterAuth;
     setIntro(opts?.intro);
+    setPrefill({ email: opts?.email, firstName: opts?.firstName });
     setOpen(true);
   }, []);
 
@@ -72,7 +78,12 @@ export function AuthModalProvider({ children }: { children: React.ReactNode }) {
             <button className="modal-close" onClick={close} aria-label="Close">
               ✕
             </button>
-            <AuthFlow intro={intro} onSuccess={onSuccess} />
+            <AuthFlow
+              intro={intro}
+              initialEmail={prefill.email}
+              initialFirstName={prefill.firstName}
+              onSuccess={onSuccess}
+            />
           </div>
         </div>
       )}

@@ -190,6 +190,22 @@ export const downloads = pgTable(
   ],
 );
 
+/* ─────────────────── newsletter subscribers ───────────────────
+   Home-page opt-in (email + first name). Feeds marketing (OneSignal). */
+export const newsletterSubscribers = pgTable(
+  "newsletter_subscribers",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    email: text("email").notNull(),
+    firstName: text("first_name"),
+    source: text("source"),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [uniqueIndex("newsletter_email_unique").on(t.email)],
+);
+
 /* ───────────────────── inferred types ───────────────────── */
 export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
@@ -198,3 +214,4 @@ export type License = typeof licenses.$inferSelect;
 export type Invoice = typeof invoices.$inferSelect;
 export type EmailToken = typeof emailTokens.$inferSelect;
 export type Download = typeof downloads.$inferSelect;
+export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
