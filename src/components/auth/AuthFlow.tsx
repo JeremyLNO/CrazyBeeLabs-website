@@ -31,6 +31,7 @@ export function AuthFlow({
   const [password, setPassword] = useState("");
   const [confirm, setConfirm] = useState("");
   const [firstName, setFirstName] = useState(initialFirstName);
+  const [lastName, setLastName] = useState("");
   const [birthDate, setBirthDate] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -90,7 +91,7 @@ export function AuthFlow({
     const res = await fetch("/api/signup", {
       method: "POST",
       headers: { "content-type": "application/json" },
-      body: JSON.stringify({ name: firstName, email, password, birthDate }),
+      body: JSON.stringify({ name: firstName, lastName, email, password, birthDate }),
     });
     const data = (await res.json().catch(() => ({}))) as { error?: string };
     if (!res.ok) {
@@ -180,16 +181,29 @@ export function AuthFlow({
               {t("auth.changeEmail")}
             </button>
           </div>
-          <div className="field">
-            <label htmlFor="af-fn">{t("auth.firstNameLabel")}</label>
-            <input
-              id="af-fn"
-              className="input"
-              type="text"
-              autoComplete="given-name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-            />
+          <div className="field-row">
+            <div className="field">
+              <label htmlFor="af-fn">{t("auth.firstNameLabel")}</label>
+              <input
+                id="af-fn"
+                className="input"
+                type="text"
+                autoComplete="given-name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </div>
+            <div className="field">
+              <label htmlFor="af-ln">{t("auth.lastNameLabel")}</label>
+              <input
+                id="af-ln"
+                className="input"
+                type="text"
+                autoComplete="family-name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
           </div>
           <div className="field">
             <label htmlFor="af-pass2">{t("auth.passwordLabel")}</label>

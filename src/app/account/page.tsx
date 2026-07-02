@@ -1,6 +1,6 @@
 import { auth } from "@/lib/auth";
 import { getUserById } from "@/lib/users";
-import { SignOutButton } from "@/components/auth/SignOutButton";
+import { AccountOverview } from "@/components/account/AccountOverview";
 
 export const metadata = { title: "Account" };
 
@@ -10,38 +10,12 @@ export default async function AccountPage() {
   if (!user) return null;
 
   return (
-    <>
-      <div className="page-head">
-        <span className="kicker">Account</span>
-        <h1>Your account</h1>
-      </div>
-
-      <div className="card stack">
-        <div>
-          <div className="muted" style={{ fontSize: 13 }}>
-            Name
-          </div>
-          <div>{user.name || "—"}</div>
-        </div>
-        <hr style={{ border: "none", borderTop: "1px solid var(--color-border)" }} />
-        <div className="row-between">
-          <div>
-            <div className="muted" style={{ fontSize: 13 }}>
-              Email
-            </div>
-            <div>{user.email}</div>
-          </div>
-          {user.emailVerifiedAt ? (
-            <span className="badge badge-active">Verified</span>
-          ) : (
-            <span className="badge badge-past_due">Unverified</span>
-          )}
-        </div>
-      </div>
-
-      <div className="mt-m">
-        <SignOutButton />
-      </div>
-    </>
+    <AccountOverview
+      email={user.email}
+      verified={Boolean(user.emailVerifiedAt)}
+      name={user.name ?? ""}
+      lastName={user.lastName ?? ""}
+      birthDate={user.birthDate ?? ""}
+    />
   );
 }

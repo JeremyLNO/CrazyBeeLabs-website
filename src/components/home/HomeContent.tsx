@@ -9,6 +9,7 @@ import {
 } from "@/lib/showcase";
 import { getAppCopy } from "@/lib/content";
 import { NewsletterSignup } from "@/components/home/NewsletterSignup";
+import { RotatingWord } from "@/components/home/RotatingWord";
 
 /** Per-app accent gradient [from, to] — from the design handoff (1a Clean Bento). */
 const GRAD: Record<string, [string, string]> = {
@@ -62,26 +63,14 @@ export function HomeContent() {
   const work = showcaseByCategory("work-smarter");
   const personal = showcaseByCategory("personal");
 
-  // Split the hero title around ⟨highlighted⟩ word.
-  const raw = t("home2.title");
-  const m = raw.match(/^(.*)⟨(.*)⟩(.*)$/);
-
   return (
     <div className="home2">
       {/* Hero */}
       <section className="home2-wrap home2-hero">
         <div className="home2-reveal">
           <span className="home2-eyebrow">{t("home.kicker")}</span>
-          <h1 className="home2-h1">
-            {m ? (
-              <>
-                {m[1]}
-                <span className="home2-hl">{m[2]}</span>
-                {m[3]}
-              </>
-            ) : (
-              raw
-            )}
+          <h1 className="home2-h1 home2-h1-rotate">
+            {t("home.titleBefore")} <RotatingWord /> {t("home.titleAfter")}
           </h1>
           <p className="home2-sub">{t("home2.lead")}</p>
           <div className="home2-cta-row">

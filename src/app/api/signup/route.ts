@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const { email, password, name, birthDate } = parsed.data;
+  const { email, password, name, lastName, birthDate } = parsed.data;
 
   const existing = await getUserByEmail(email);
   if (existing) {
@@ -36,6 +36,7 @@ export async function POST(req: Request) {
     email,
     password,
     name: name || undefined,
+    lastName: lastName || undefined,
     birthDate: birthDate || undefined,
   });
 

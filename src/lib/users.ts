@@ -20,6 +20,7 @@ export async function createUser(input: {
   email: string;
   password: string;
   name?: string;
+  lastName?: string;
   birthDate?: string;
 }): Promise<User> {
   const passwordHash = await hashPassword(input.password);
@@ -29,8 +30,26 @@ export async function createUser(input: {
       email: input.email.toLowerCase(),
       passwordHash,
       name: input.name?.trim() || null,
+      lastName: input.lastName?.trim() || null,
       birthDate: input.birthDate?.trim() || null,
     })
+    .returning();
+  return rows[0];
+}
+
+export async function updateUserProfile(
+  userId: string,
+  input: { name?: string; lastName?: string; birthDate?: string },
+): Promise<User> {
+  const rows = await db
+    .update(users)
+    .set({
+      name: input.name?.trim() || null,
+      lastName: input.lastName?.trim() || null,
+      birthDate: input.birthDate?.trim() || null,
+      updatedAt: new Date(),
+    })
+    .where(eq(users.id, userId))
     .returning();
   return rows[0];
 }

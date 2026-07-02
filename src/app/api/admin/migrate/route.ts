@@ -29,6 +29,7 @@ const STATEMENTS: string[] = [
      "source" text,
      "created_at" timestamptz DEFAULT now() NOT NULL)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS "newsletter_email_unique" ON "newsletter_subscribers" ("email")`,
+  `ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "last_name" text`,
 ];
 
 export async function POST() {
