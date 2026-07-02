@@ -415,6 +415,8 @@ main { flex: 1 0 auto; width: 100%; }
 .studio-sections { display: flex; flex-direction: column; gap: 28px; }
 .studio-section h2 { font-size: 22px; margin-bottom: 6px; }
 .studio-section p { line-height: 1.7; }
+.text-link { color: var(--color-black); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--color-honey); text-decoration-thickness: 2px; }
+.text-link:hover { color: var(--color-amber); }
 
 /* ============ Homepage redesign — 1a "Clean Bento" ============ */
 @keyframes home2Reveal { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }

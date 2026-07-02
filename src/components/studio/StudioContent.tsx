@@ -5,6 +5,21 @@ import { useT } from "@/lib/i18n/LanguageProvider";
 import { getContent } from "@/lib/content";
 import { Hex } from "@/components/ui/Hex";
 
+/** Renders a paragraph, turning a ⟨…⟩-marked phrase into a link to /support. */
+function renderWithLink(p: string) {
+  const m = p.match(/^(.*)⟨(.*)⟩(.*)$/);
+  if (!m) return p;
+  return (
+    <>
+      {m[1]}
+      <Link className="text-link" href="/support">
+        {m[2]}
+      </Link>
+      {m[3]}
+    </>
+  );
+}
+
 export function StudioContent() {
   const { t, lang } = useT();
   const s = getContent(lang).studio;
@@ -22,15 +37,12 @@ export function StudioContent() {
           {s.sections.map((sec, i) => (
             <div className="studio-section" key={i}>
               <h2>{sec.h}</h2>
-              <p className="muted">{sec.p}</p>
+              <p className="muted">{renderWithLink(sec.p)}</p>
             </div>
           ))}
         </div>
         <div className="mt-l home-cta">
-          <Link className="btn btn-primary" href="/support">
-            {t("nav.support")}
-          </Link>
-          <Link className="btn btn-secondary" href="/apps">
+          <Link className="btn btn-primary" href="/apps">
             {t("home.browseApps")}
           </Link>
         </div>
