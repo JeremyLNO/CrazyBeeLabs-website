@@ -26,8 +26,11 @@ export function StudioContent() {
             </div>
           ))}
         </div>
-        <div className="mt-l">
-          <Link className="btn btn-primary" href="/apps">
+        <div className="mt-l home-cta">
+          <Link className="btn btn-primary" href="/support">
+            {t("nav.support")}
+          </Link>
+          <Link className="btn btn-secondary" href="/apps">
             {t("home.browseApps")}
           </Link>
         </div>
