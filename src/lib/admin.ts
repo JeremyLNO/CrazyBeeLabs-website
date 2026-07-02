@@ -7,16 +7,39 @@ import {
   gt,
   gte,
   isNull,
+  lt,
   or,
   sql,
+  type SQL,
 } from "drizzle-orm";
-import { db, downloads, invoices, licenses, subscriptions, users } from "@/lib/db";
+import type { AnyPgColumn } from "drizzle-orm/pg-core";
+import {
+  db,
+  downloads,
+  invoices,
+  licenses,
+  newsletterSubscribers,
+  subscriptions,
+  users,
+} from "@/lib/db";
+import { CATALOG } from "@/lib/catalog";
+import { periodRange, type Period } from "@/lib/adminPeriod";
 
-export async function getSalesSummary() {
+const TRUE = sql`true`;
+
+/** AND-combine start/end bounds on a timestamp column; `TRUE` if unbounded (all time). */
+function rangeWhere(col: AnyPgColumn, start?: Date, end?: Date) {
+  const conds: SQL[] = [];
+  if (start) conds.push(gte(col, start));
+  if (end) conds.push(lt(col, end));
+  return conds.length ? and(...conds)! : TRUE;
+}
+
+export async function getSalesSummary(period: Period = "all") {
   const now = new Date();
-  const since = new Date(now.getTime() - 30 * 86_400_000);
+  const { start, end } = periodRange(period, now);
 
-  const revenue = await db
+  const revenueAll = await db
     .select({
       currency: invoices.currency,
       totalCents: sql<number>`coalesce(sum(${invoices.amountCents}), 0)`,
@@ -25,14 +48,22 @@ export async function getSalesSummary() {
     .from(invoices)
     .groupBy(invoices.currency);
 
-  const revenue30 = await db
+  const invoiceWhere = rangeWhere(invoices.createdAt, start, end);
+  const revenuePeriod = await db
     .select({
       currency: invoices.currency,
       totalCents: sql<number>`coalesce(sum(${invoices.amountCents}), 0)`,
     })
     .from(invoices)
-    .where(gte(invoices.createdAt, since))
+    .where(invoiceWhere)
     .groupBy(invoices.currency);
+
+  const ordersPeriodCount =
+    (await db.select({ n: count() }).from(invoices).where(invoiceWhere))[0]?.n ?? 0;
+
+  const userWhere = rangeWhere(users.createdAt, start, end);
+  const newAccounts =
+    (await db.select({ n: count() }).from(users).where(userWhere))[0]?.n ?? 0;
 
   const activeWhere = and(
     eq(licenses.status, "active"),
@@ -51,8 +82,11 @@ export async function getSalesSummary() {
   const totalCustomers = (await db.select({ n: count() }).from(users))[0]?.n ?? 0;
 
   return {
-    revenue,
-    revenue30,
+    period,
+    revenueAll,
+    revenuePeriod,
+    ordersPeriodCount,
+    newAccounts,
     activeLicenses,
     payingCustomers,
     ordersCount,
@@ -143,4 +177,122 @@ export async function getDownloads(limit = 200): Promise<DownloadRow[]> {
     console.error("[admin] getDownloads failed (table not migrated?)", e);
     return [];
   }
+}
+
+/* ───────────────────── accounts & newsletter ───────────────────── */
+
+export interface AccountRow {
+  id: string;
+  email: string;
+  name: string | null;
+  createdAt: Date;
+  emailVerifiedAt: Date | null;
+  activeLicenses: number;
+}
+
+/** Registered accounts, each with its count of currently-active licenses. */
+export async function getAccountsAdmin(limit = 500): Promise<AccountRow[]> {
+  const allUsers = await db
+    .select({
+      id: users.id,
+      email: users.email,
+      name: users.name,
+      createdAt: users.createdAt,
+      emailVerifiedAt: users.emailVerifiedAt,
+    })
+    .from(users)
+    .orderBy(desc(users.createdAt))
+    .limit(limit);
+
+  const licenseCounts = await db
+    .select({ userId: licenses.userId, n: count() })
+    .from(licenses)
+    .where(eq(licenses.status, "active"))
+    .groupBy(licenses.userId);
+  const counts = new Map(licenseCounts.map((l) => [l.userId, l.n]));
+
+  return allUsers.map((u) => ({ ...u, activeLicenses: counts.get(u.id) ?? 0 }));
+}
+
+export interface SubscriberRow {
+  id: string;
+  email: string;
+  firstName: string | null;
+  source: string | null;
+  createdAt: Date;
+  hasAccount: boolean;
+}
+
+/** Newsletter subscribers, flagged with whether they've also created an account. Returns [] if the table isn't migrated yet. */
+export async function getNewsletterSubscribers(limit = 500): Promise<SubscriberRow[]> {
+  try {
+    const rows = await db
+      .select({
+        id: newsletterSubscribers.id,
+        email: newsletterSubscribers.email,
+        firstName: newsletterSubscribers.firstName,
+        source: newsletterSubscribers.source,
+        createdAt: newsletterSubscribers.createdAt,
+        accountId: users.id,
+      })
+      .from(newsletterSubscribers)
+      .leftJoin(users, eq(users.email, newsletterSubscribers.email))
+      .orderBy(desc(newsletterSubscribers.createdAt))
+      .limit(limit);
+    return rows.map((r) => ({ ...r, hasAccount: Boolean(r.accountId) }));
+  } catch (e) {
+    console.error("[admin] getNewsletterSubscribers failed (table not migrated?)", e);
+    return [];
+  }
+}
+
+/* ───────────────────────── per-app stats ───────────────────────── */
+
+export interface AppStat {
+  appSlug: string;
+  downloaders: number;
+  licensesTotal: number;
+  byPlan: { plan: string; n: number }[];
+  byStatus: { status: string; n: number }[];
+}
+
+/** Downloaders, license count and license mix (plan / status) for every licensed macOS app. */
+export async function getAppStats(): Promise<AppStat[]> {
+  let dlRows: { appSlug: string; n: number }[] = [];
+  try {
+    dlRows = await db
+      .select({ appSlug: downloads.appSlug, n: countDistinct(downloads.userId) })
+      .from(downloads)
+      .groupBy(downloads.appSlug);
+  } catch (e) {
+    console.error("[admin] downloads aggregate failed (table not migrated?)", e);
+  }
+
+  const licTotalRows = await db
+    .select({ appSlug: licenses.appSlug, n: count() })
+    .from(licenses)
+    .groupBy(licenses.appSlug);
+
+  const byStatusRows = await db
+    .select({ appSlug: licenses.appSlug, status: licenses.status, n: count() })
+    .from(licenses)
+    .groupBy(licenses.appSlug, licenses.status);
+
+  const byPlanRows = await db
+    .select({ appSlug: licenses.appSlug, plan: subscriptions.plan, n: count() })
+    .from(licenses)
+    .leftJoin(subscriptions, eq(licenses.subscriptionId, subscriptions.id))
+    .groupBy(licenses.appSlug, subscriptions.plan);
+
+  return CATALOG.map((app) => ({
+    appSlug: app.slug,
+    downloaders: dlRows.find((r) => r.appSlug === app.slug)?.n ?? 0,
+    licensesTotal: licTotalRows.find((r) => r.appSlug === app.slug)?.n ?? 0,
+    byStatus: byStatusRows
+      .filter((r) => r.appSlug === app.slug)
+      .map((r) => ({ status: r.status, n: r.n })),
+    byPlan: byPlanRows
+      .filter((r) => r.appSlug === app.slug && r.plan)
+      .map((r) => ({ plan: r.plan as string, n: r.n })),
+  }));
 }

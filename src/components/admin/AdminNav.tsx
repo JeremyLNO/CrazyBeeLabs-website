@@ -7,6 +7,8 @@ const ITEMS: [string, string][] = [
   ["/admin", "Overview"],
   ["/admin/orders", "Orders"],
   ["/admin/licenses", "Licenses"],
+  ["/admin/subscribers", "Subscribers"],
+  ["/admin/apps", "Apps"],
   ["/admin/downloads", "Downloads"],
   ["/admin/database", "Database"],
 ];

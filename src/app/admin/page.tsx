@@ -3,22 +3,31 @@ import { getSalesSummary, getSubscriptionBreakdown, getOrders } from "@/lib/admi
 import { appName, PLAN_LABELS } from "@/lib/catalog";
 import { formatMoney, formatDate } from "@/lib/format";
 import { Hex } from "@/components/ui/Hex";
+import { PERIODS, isPeriod, type Period } from "@/lib/adminPeriod";
 
 export const metadata = { title: "Admin · Sales" };
 
-export default async function AdminDashboard() {
+export default async function AdminDashboard({
+  searchParams,
+}: {
+  searchParams: Promise<{ period?: string }>;
+}) {
+  const { period: rawPeriod } = await searchParams;
+  const period: Period = isPeriod(rawPeriod) ? rawPeriod : "all";
+
   const [summary, breakdown, recent] = await Promise.all([
-    getSalesSummary(),
+    getSalesSummary(period),
     getSubscriptionBreakdown(),
     getOrders(8),
   ]);
 
-  const allTime = summary.revenue.length
-    ? summary.revenue
+  const allTime = summary.revenueAll.length
+    ? summary.revenueAll
     : [{ currency: "EUR", totalCents: 0, orders: 0 }];
-  const last30 = summary.revenue30.length
-    ? summary.revenue30
+  const periodRevenue = summary.revenuePeriod.length
+    ? summary.revenuePeriod
     : [{ currency: "EUR", totalCents: 0 }];
+  const periodLabel = PERIODS.find((p) => p.key === period)?.label ?? "All time";
 
   return (
     <>
@@ -29,7 +38,19 @@ export default async function AdminDashboard() {
         <h1>Sales dashboard</h1>
       </div>
 
-      <div className="kpi-grid">
+      <div className="filter-row mt-s">
+        {PERIODS.map((p) => (
+          <Link
+            key={p.key}
+            href={p.key === "all" ? "/admin" : `/admin?period=${p.key}`}
+            className={`chip${period === p.key ? " active" : ""}`}
+          >
+            {p.label}
+          </Link>
+        ))}
+      </div>
+
+      <div className="kpi-grid mt-m">
         <div className="kpi">
           <div className="kpi-label">Revenue · all time</div>
           <div className="kpi-value">
@@ -37,14 +58,18 @@ export default async function AdminDashboard() {
           </div>
         </div>
         <div className="kpi">
-          <div className="kpi-label">Revenue · 30 days</div>
+          <div className="kpi-label">Revenue · {periodLabel}</div>
           <div className="kpi-value">
-            {last30.map((r) => formatMoney(r.totalCents, r.currency)).join(" · ")}
+            {periodRevenue.map((r) => formatMoney(r.totalCents, r.currency)).join(" · ")}
           </div>
         </div>
         <div className="kpi">
-          <div className="kpi-label">Orders</div>
-          <div className="kpi-value">{summary.ordersCount}</div>
+          <div className="kpi-label">Orders · {periodLabel}</div>
+          <div className="kpi-value">{summary.ordersPeriodCount}</div>
+        </div>
+        <div className="kpi">
+          <div className="kpi-label">New accounts · {periodLabel}</div>
+          <div className="kpi-value">{summary.newAccounts}</div>
         </div>
         <div className="kpi">
           <div className="kpi-label">Active licenses</div>
@@ -55,7 +80,7 @@ export default async function AdminDashboard() {
           <div className="kpi-value">{summary.payingCustomers}</div>
         </div>
         <div className="kpi">
-          <div className="kpi-label">Accounts</div>
+          <div className="kpi-label">Accounts · all time</div>
           <div className="kpi-value">{summary.totalCustomers}</div>
         </div>
       </div>
