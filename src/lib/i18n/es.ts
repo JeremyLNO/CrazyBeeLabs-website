@@ -196,6 +196,22 @@ const es: Dict = {
   studioPage: {
     kicker: "El Estudio",
   },
+  home2: {
+    title: "Apps pequeñas que se ⟨ganan⟩ su lugar.",
+    lead: "Herramientas ágiles para Mac e iPhone, hechas con el rigor de una colmena y la energía de un laboratorio. Pruébalas gratis y quédate con las que se ganen un sitio en tu escritorio.",
+    statAppsN: "14",
+    statApps: "apps y subiendo",
+    statTrialN: "7 días",
+    statTrial: "de prueba gratis",
+    statTrackersN: "0",
+    statTrackers: "rastreadores",
+    spotlightTitle: "En el foco",
+    spotlightSub: "Tres de los que estamos orgullosos",
+    collectionTitle: "La colección completa",
+    featShotbox: "Captura, etiqueta y encuentra al instante cualquier captura. Nunca más rebusques en un escritorio desordenado.",
+    featSpacespilot: "Salta entre Spaces, apps y ventanas con una sola tecla. Tu Mac en piloto automático.",
+    featMenuisland: "Convierte tu barra de menús en una dynamic island: reproducción, temporizadores y estado de un vistazo.",
+  },
   cart: {
     emptyTitle: "Tu carrito está vacío",
     emptyBody: "Elige un plan para cualquier app de macOS para empezar.",

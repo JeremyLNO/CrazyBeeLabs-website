@@ -196,6 +196,22 @@ const de: Dict = {
   studioPage: {
     kicker: "Das Studio",
   },
+  home2: {
+    title: "Kleine Apps, die sich ihren Platz ⟨verdienen⟩.",
+    lead: "Scharfe Mac- und iPhone-Tools, gebaut mit der Sorgfalt eines Bienenstocks und der Energie eines Labors. Teste sie kostenlos und behalte, was sich seinen Platz auf deinem Schreibtisch verdient.",
+    statAppsN: "14",
+    statApps: "Apps und mehr",
+    statTrialN: "7 Tage",
+    statTrial: "gratis testen",
+    statTrackersN: "0",
+    statTrackers: "Tracker",
+    spotlightTitle: "Im Rampenlicht",
+    spotlightSub: "Drei, auf die wir stolz sind",
+    collectionTitle: "Die ganze Sammlung",
+    featShotbox: "Erfasse, verschlagworte und finde jeden Screenshot sofort. Nie wieder einen chaotischen Schreibtisch durchsuchen.",
+    featSpacespilot: "Wechsle mit einem Tastendruck zwischen Spaces, Apps und Fenstern. Dein Mac im Autopilot.",
+    featMenuisland: "Verwandle deine Menüleiste in eine Dynamic Island: läuft gerade, Timer und Status auf einen Blick.",
+  },
   cart: {
     emptyTitle: "Dein Warenkorb ist leer",
     emptyBody: "Wähle einen Tarif für eine macOS-App, um loszulegen.",

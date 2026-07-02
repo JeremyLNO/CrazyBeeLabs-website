@@ -198,6 +198,22 @@ const en = {
   studioPage: {
     kicker: "The Studio",
   },
+  home2: {
+    title: "Small apps that ⟨earn⟩ their place.",
+    lead: "Sharp Mac & iPhone tools, made with the rigor of a hive and the energy of a lab. Try them free, keep what earns a spot on your desk.",
+    statAppsN: "14",
+    statApps: "apps & counting",
+    statTrialN: "7-day",
+    statTrial: "free trial",
+    statTrackersN: "0",
+    statTrackers: "trackers",
+    spotlightTitle: "In the spotlight",
+    spotlightSub: "Three we are proud of",
+    collectionTitle: "The full collection",
+    featShotbox: "Capture, auto-tag and instantly find any screenshot. Never dig through a messy Desktop again.",
+    featSpacespilot: "Jump between Spaces, apps and windows with a single keystroke. Your Mac, on autopilot.",
+    featMenuisland: "Turn your menu bar into a dynamic island: now playing, timers and glanceable status.",
+  },
   cart: {
     emptyTitle: "Your cart is empty",
     emptyBody: "Pick a plan for any macOS app to get started.",

@@ -196,6 +196,22 @@ const fr: Dict = {
   studioPage: {
     kicker: "Le Studio",
   },
+  home2: {
+    title: "Des petites apps qui ⟨méritent⟩ leur place.",
+    lead: "Des outils Mac et iPhone efficaces, conçus avec la rigueur d'une ruche et l'énergie d'un labo. Essayez-les gratuitement, gardez ceux qui méritent leur place sur votre bureau.",
+    statAppsN: "14",
+    statApps: "apps et plus",
+    statTrialN: "7 jours",
+    statTrial: "d'essai gratuit",
+    statTrackersN: "0",
+    statTrackers: "traceur",
+    spotlightTitle: "À la une",
+    spotlightSub: "Trois dont nous sommes fiers",
+    collectionTitle: "La collection complète",
+    featShotbox: "Capturez, taguez et retrouvez n'importe quelle capture en un instant. Fini de fouiller un bureau en désordre.",
+    featSpacespilot: "Passez d'un espace, d'une app ou d'une fenêtre à l'autre d'une seule touche. Votre Mac en pilote automatique.",
+    featMenuisland: "Transformez votre barre de menus en dynamic island : lecture en cours, minuteurs et statut d'un coup d'œil.",
+  },
   cart: {
     emptyTitle: "Votre panier est vide",
     emptyBody: "Choisissez une formule pour une app macOS pour commencer.",
