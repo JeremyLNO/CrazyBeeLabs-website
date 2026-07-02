@@ -83,10 +83,10 @@ main { flex: 1 0 auto; width: 100%; }
 }
 .btn:active { transform: translateY(1px); }
 .btn[disabled], .btn[aria-disabled="true"] { opacity: 0.55; pointer-events: none; }
-.btn-primary { background: var(--color-black); color: #fff; }
-.btn-primary:hover { background: var(--color-honey); color: var(--color-black); }
-.btn-accent { background: var(--color-honey); color: var(--color-black); }
-.btn-accent:hover { background: var(--color-amber); }
+.btn-primary { background: linear-gradient(135deg, #FFCE4B, #F5A623); color: #241a00; }
+.btn-primary:hover { color: #241a00; box-shadow: 0 8px 20px rgba(245, 166, 35, 0.35); }
+.btn-accent { background: linear-gradient(135deg, #FFCE4B, #F5A623); color: #241a00; }
+.btn-accent:hover { color: #241a00; box-shadow: 0 8px 20px rgba(245, 166, 35, 0.35); }
 .btn-secondary { background: transparent; color: var(--color-black); border-color: var(--color-black); }
 .btn-secondary:hover { background: var(--color-black); color: #fff; }
 .btn-ghost { background: transparent; color: var(--color-text-secondary); padding: 10px 12px; }

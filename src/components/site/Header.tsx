@@ -61,6 +61,7 @@ export function Header() {
             </div>
           </div>
 
+          <Link href="/studio">{t("footer.studio")}</Link>
           <Link href="/support">{t("nav.support")}</Link>
           {user && <Link href="/account/licenses">{t("nav.licenses")}</Link>}
           {user?.isAdmin && <Link href="/admin">{t("nav.admin")}</Link>}

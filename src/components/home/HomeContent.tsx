@@ -96,9 +96,6 @@ export function HomeContent() {
             <span>
               <b>{t("home2.statTrialN")}</b> {t("home2.statTrial")}
             </span>
-            <span>
-              <b>{t("home2.statTrackersN")}</b> {t("home2.statTrackers")}
-            </span>
           </div>
         </div>
 
