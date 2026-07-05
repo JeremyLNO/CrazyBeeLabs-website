@@ -498,3 +498,18 @@ main { flex: 1 0 auto; width: 100%; }
 }
 textarea.input { resize: vertical; min-height: 120px; font-family: inherit; }
 select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%235F636B' d='M6 8 0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 16px center; padding-right: 40px; }
+
+/* ---------- admin analytics trend ---------- */
+.trend-list { display: flex; flex-direction: column; gap: 8px; }
+.trend-row { display: grid; grid-template-columns: 48px 1fr 200px; align-items: center; gap: 12px; font-size: 13px; }
+.trend-date { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+.trend-bars { position: relative; height: 16px; background: var(--color-warm); border-radius: 4px; overflow: hidden; }
+.trend-bar { position: absolute; top: 0; left: 0; height: 8px; border-radius: 4px; }
+.trend-bar-visits { top: 0; background: var(--color-black); opacity: 0.8; }
+.trend-bar-downloads { top: 8px; background: var(--color-honey); }
+.trend-nums { white-space: nowrap; }
+.trend-legend { display: flex; gap: 18px; font-size: 13px; color: var(--color-text-secondary); }
+.trend-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.trend-swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; }
+.trend-swatch-visits { background: var(--color-black); opacity: 0.8; }
+.trend-swatch-downloads { background: var(--color-honey); }

@@ -30,6 +30,12 @@ const STATEMENTS: string[] = [
      "created_at" timestamptz DEFAULT now() NOT NULL)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS "newsletter_email_unique" ON "newsletter_subscribers" ("email")`,
   `ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "last_name" text`,
+  `CREATE TABLE IF NOT EXISTS "page_views" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "path" text NOT NULL,
+     "created_at" timestamptz DEFAULT now() NOT NULL)`,
+  `CREATE INDEX IF NOT EXISTS "page_views_created_idx" ON "page_views" ("created_at")`,
+  `CREATE INDEX IF NOT EXISTS "page_views_path_idx" ON "page_views" ("path")`,
 ];
 
 export async function POST() {

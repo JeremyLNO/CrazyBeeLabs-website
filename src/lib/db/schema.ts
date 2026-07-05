@@ -207,6 +207,24 @@ export const newsletterSubscribers = pgTable(
   (t) => [uniqueIndex("newsletter_email_unique").on(t.email)],
 );
 
+/* ───────────────────────── page views ─────────────────────────
+   First-party, anonymous pageview counter (no cookies, no IP stored).
+   Feeds the admin analytics funnel: visits → downloads → orders. */
+export const pageViews = pgTable(
+  "page_views",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    path: text("path").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [
+    index("page_views_created_idx").on(t.createdAt),
+    index("page_views_path_idx").on(t.path),
+  ],
+);
+
 /* ───────────────────── inferred types ───────────────────── */
 export type User = typeof users.$inferSelect;
 export type NewUser = typeof users.$inferInsert;
@@ -216,3 +234,4 @@ export type Invoice = typeof invoices.$inferSelect;
 export type EmailToken = typeof emailTokens.$inferSelect;
 export type Download = typeof downloads.$inferSelect;
 export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
+export type PageView = typeof pageViews.$inferSelect;

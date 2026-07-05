@@ -19,6 +19,7 @@ import {
   invoices,
   licenses,
   newsletterSubscribers,
+  pageViews,
   subscriptions,
   users,
 } from "@/lib/db";
@@ -295,4 +296,95 @@ export async function getAppStats(): Promise<AppStat[]> {
       .filter((r) => r.appSlug === app.slug && r.plan)
       .map((r) => ({ plan: r.plan as string, n: r.n })),
   }));
+}
+
+/* ───────────────────────── analytics funnel ───────────────────────── */
+/* First-party only (page_views): no third-party trackers, no cookies, no IP. */
+
+export interface FunnelSummary {
+  period: Period;
+  visits: number;
+  downloads: number;
+  orders: number;
+}
+
+/** Visits → downloads → orders for a period. Visits is 0 if page_views isn't migrated yet. */
+export async function getFunnelSummary(period: Period = "all"): Promise<FunnelSummary> {
+  const { start, end } = periodRange(period);
+
+  let visits = 0;
+  try {
+    visits =
+      (
+        await db
+          .select({ n: count() })
+          .from(pageViews)
+          .where(rangeWhere(pageViews.createdAt, start, end))
+      )[0]?.n ?? 0;
+  } catch (e) {
+    console.error("[admin] page_views aggregate failed (table not migrated?)", e);
+  }
+
+  const downloadsCount =
+    (
+      await db
+        .select({ n: count() })
+        .from(downloads)
+        .where(rangeWhere(downloads.createdAt, start, end))
+    )[0]?.n ?? 0;
+
+  const ordersCount =
+    (
+      await db
+        .select({ n: count() })
+        .from(invoices)
+        .where(rangeWhere(invoices.createdAt, start, end))
+    )[0]?.n ?? 0;
+
+  return { period, visits, downloads: downloadsCount, orders: ordersCount };
+}
+
+export interface DailyTrendRow {
+  day: string;
+  visits: number;
+  downloads: number;
+}
+
+/** Visits + downloads per day for the last N days (UTC), zero-filled. */
+export async function getDailyTrend(days = 14): Promise<DailyTrendRow[]> {
+  const since = new Date(Date.now() - days * 86_400_000);
+  const dayCol = <T extends AnyPgColumn>(col: T) =>
+    sql<string>`to_char(date_trunc('day', ${col}), 'YYYY-MM-DD')`;
+
+  let visitRows: { day: string; n: number }[] = [];
+  try {
+    visitRows = await db
+      .select({ day: dayCol(pageViews.createdAt), n: count() })
+      .from(pageViews)
+      .where(gte(pageViews.createdAt, since))
+      .groupBy(sql`1`);
+  } catch (e) {
+    console.error("[admin] page_views daily trend failed (table not migrated?)", e);
+  }
+
+  const downloadRows = await db
+    .select({ day: dayCol(downloads.createdAt), n: count() })
+    .from(downloads)
+    .where(gte(downloads.createdAt, since))
+    .groupBy(sql`1`);
+
+  const visitsByDay = new Map(visitRows.map((r) => [r.day, r.n]));
+  const downloadsByDay = new Map(downloadRows.map((r) => [r.day, r.n]));
+
+  const out: DailyTrendRow[] = [];
+  for (let i = days - 1; i >= 0; i--) {
+    const d = new Date(Date.now() - i * 86_400_000);
+    const day = d.toISOString().slice(0, 10);
+    out.push({
+      day,
+      visits: visitsByDay.get(day) ?? 0,
+      downloads: downloadsByDay.get(day) ?? 0,
+    });
+  }
+  return out;
 }

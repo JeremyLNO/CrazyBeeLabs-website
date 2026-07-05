@@ -5,6 +5,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Providers } from "@/components/site/Providers";
 import { AmbientBackground } from "@/components/site/AmbientBackground";
+import { PageViewTracker } from "@/components/site/PageViewTracker";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} ${grotesk.variable}`}>
       <body>
         <Providers>
+          <PageViewTracker />
           <AmbientBackground />
           <Header />
           <main>{children}</main>
