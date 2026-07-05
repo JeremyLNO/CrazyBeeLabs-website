@@ -3,6 +3,8 @@
 import { useT } from "@/lib/i18n/LanguageProvider";
 import { SignOutButton } from "@/components/auth/SignOutButton";
 import { ProfileForm } from "@/components/account/ProfileForm";
+import { MyDownloads, type MyDownloadRow } from "@/components/account/MyDownloads";
+import { DangerZone } from "@/components/account/DangerZone";
 
 export function AccountOverview({
   email,
@@ -10,12 +12,14 @@ export function AccountOverview({
   name,
   lastName,
   birthDate,
+  downloads,
 }: {
   email: string;
   verified: boolean;
   name: string;
   lastName: string;
   birthDate: string;
+  downloads: MyDownloadRow[];
 }) {
   const { t } = useT();
   return (
@@ -46,6 +50,18 @@ export function AccountOverview({
           initialBirthDate={birthDate}
         />
       </div>
+
+      <MyDownloads rows={downloads} />
+
+      <div className="card mt-m">
+        <h3>{t("account.exportTitle")}</h3>
+        <p className="muted mt-s">{t("account.exportHint")}</p>
+        <a className="btn btn-secondary btn-sm mt-s" href="/api/account/export">
+          {t("account.exportButton")}
+        </a>
+      </div>
+
+      <DangerZone />
 
       <div className="mt-m">
         <SignOutButton />
