@@ -34,6 +34,12 @@ const PLAN_KEY: Record<PlanInterval, string> = {
   lifetime: "detail.planLifetime",
 };
 
+/** First numeric value in a price label like "€2.99 / mo" or "€49.99". */
+function priceNumber(label: string): number | null {
+  const m = label.match(/[\d.]+/);
+  return m ? Number(m[0]) : null;
+}
+
 export function AppDetail({ app }: { app: DetailApp }) {
   const { t, lang } = useT();
   const shots = app.screenshots.length ? app.screenshots : [];
@@ -41,8 +47,40 @@ export function AppDetail({ app }: { app: DetailApp }) {
   const copy = getAppCopy(lang, app.slug);
   const faq = getAppFaq(lang, app.slug);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: app.name,
+    applicationCategory: "UtilitiesApplication",
+    operatingSystem: isIos ? "iOS" : "macOS",
+    description: copy?.description ?? app.tagline,
+    image: `https://www.crazybeelabs.com${app.icon}`,
+    url: `https://www.crazybeelabs.com/apps/${app.slug}`,
+    ...(!isIos && app.plans.length
+      ? {
+          offers: app.plans
+            .map((p) => {
+              const price = priceNumber(p.priceLabel);
+              return price === null
+                ? null
+                : {
+                    "@type": "Offer",
+                    price,
+                    priceCurrency: "EUR",
+                    availability: "https://schema.org/InStock",
+                  };
+            })
+            .filter(Boolean),
+        }
+      : {}),
+  };
+
   return (
     <section className="section">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="wrap">
         <div className="breadcrumb">
           <Link href="/apps">{t("detail.back")}</Link>

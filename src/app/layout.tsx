@@ -19,6 +19,7 @@ const grotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.crazybeelabs.com"),
   title: { default: "Crazy Bee Labs", template: "%s — Crazy Bee Labs" },
   description:
     "Account, licenses and downloads for Crazy Bee Labs macOS apps.",
