@@ -109,7 +109,7 @@ main { flex: 1 0 auto; width: 100%; }
 .site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .brand { display: flex; align-items: center; gap: 10px; }
 .brand img { height: 34px; width: auto; }
-.brand b { font-family: var(--font-display); font-weight: 700; font-size: 18px; }
+.brand img.brand-wordmark { height: 26px; width: auto; }
 .header-nav { display: flex; align-items: center; gap: 6px; }
 .header-nav a { padding: 8px 12px; border-radius: var(--radius-sm); font-weight: 500; font-size: 15px; color: var(--color-text-secondary); transition: color var(--transition), background var(--transition); }
 .header-nav a:hover { color: var(--color-black); background: rgba(8, 8, 8, 0.04); }
@@ -117,7 +117,6 @@ main { flex: 1 0 auto; width: 100%; }
 .header-user { font-size: 14px; color: var(--color-text-secondary); max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 @media (max-width: 640px) {
   .header-nav { display: none; }
-  .brand b { display: none; }
   .header-user { display: none; }
 }
 

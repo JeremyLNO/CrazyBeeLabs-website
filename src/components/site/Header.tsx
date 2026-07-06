@@ -20,8 +20,7 @@ export function Header() {
       <div className="wrap">
         <Link href="/" className="brand" aria-label="Crazy Bee Labs — home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/logo.png" alt="Crazy Bee Labs" />
-          <b>Crazy Bee Labs</b>
+          <img src="/logo-wordmark.png" alt="Crazy Bee Labs" className="brand-wordmark" />
         </Link>
 
         <nav className="header-nav" aria-label="Primary">
