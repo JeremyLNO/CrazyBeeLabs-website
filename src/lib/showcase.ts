@@ -50,6 +50,7 @@ export const SHOWCASE: ShowcaseApp[] = [
   { slug: "cycles", name: "Cycles", tagline: "Your cycle, calmly tracked.", category: "personal", device: "iphone", icon: "/apps/cycles.png", href: "/apps/cycles", appStoreUrl: APP_STORE },
   { slug: "menu-island", name: "MenuIsland", tagline: "Launch your apps from the Dynamic Island.", category: "personal", device: "iphone", icon: "/apps/menu-island.png", href: "/apps/menu-island", appStoreUrl: APP_STORE },
   { slug: "dualcam-oxo", name: "DualCam OxO", tagline: "Film with two lenses at once.", category: "personal", device: "iphone", icon: "/apps/dualcam-oxo.png", href: "/apps/dualcam-oxo", appStoreUrl: APP_STORE },
+  { slug: "wallspaces", name: "WallSpaces", tagline: "A different wallpaper for every Space.", category: "personal", device: "mac", icon: "/apps/wallspaces.png", href: "/apps/wallspaces" },
 
   // ── Games ── (coming back soon)
 ];

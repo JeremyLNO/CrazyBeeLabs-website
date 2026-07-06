@@ -147,6 +147,15 @@ export const CATALOG: CatalogApp[] = [
     icon: "/apps/deskmate.png",
     plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
   },
+  {
+    slug: "wallspaces",
+    name: "WallSpaces",
+    tagline: "A different wallpaper for every Space.",
+    platform: "mac",
+    bundleId: "company.lno.wallspaces",
+    icon: "/apps/wallspaces.png",
+    plans: plans("€1.99 / mo", "€4.99 / 3 mo", "€14.99 / yr", "€29.99"),
+  },
 ];
 
 export function getApp(slug: string): CatalogApp | undefined {
