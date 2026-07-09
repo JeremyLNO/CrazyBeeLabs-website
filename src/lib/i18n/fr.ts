@@ -171,6 +171,7 @@ const fr: Dict = {
     terms: "Conditions",
     refund: "Remboursements",
     notice: "Mentions légales",
+    appsPrivacy: "Confidentialité (Apps)",
   },
   newsletter: {
     title: "Restez informé",

@@ -11,6 +11,7 @@ const TITLES: Record<string, string> = {
   terms: "Terms of Service",
   refund: "Refund Policy",
   notice: "Legal Notice",
+  apps: "Privacy Policy & Terms — Apps",
 };
 
 export async function generateMetadata({

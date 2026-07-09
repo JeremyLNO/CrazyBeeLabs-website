@@ -34,6 +34,7 @@ export function Footer() {
             <Link href="/legal/terms">{t("footer.terms")}</Link>
             <Link href="/legal/refund">{t("footer.refund")}</Link>
             <Link href="/legal/notice">{t("footer.notice")}</Link>
+            <Link href="/legal/apps">{t("footer.appsPrivacy")}</Link>
           </nav>
         </div>
         <div className="footer-bottom">

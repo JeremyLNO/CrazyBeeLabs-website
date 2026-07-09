@@ -171,6 +171,7 @@ const pt: Dict = {
     terms: "Termos",
     refund: "Reembolsos",
     notice: "Aviso legal",
+    appsPrivacy: "Privacidade (Apps)",
   },
   newsletter: {
     title: "Fique a par",

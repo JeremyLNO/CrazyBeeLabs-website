@@ -36,7 +36,7 @@ export interface SiteContent {
   legal: Record<LegalSlug, LegalDoc>;
 }
 
-export const LEGAL_DOCS = ["privacy", "terms", "refund", "notice"] as const;
+export const LEGAL_DOCS = ["privacy", "terms", "refund", "notice", "apps"] as const;
 export type LegalSlug = (typeof LEGAL_DOCS)[number];
 
 const CONTENT: Record<Locale, SiteContent> = {

@@ -173,6 +173,7 @@ const en = {
     terms: "Terms",
     refund: "Refunds",
     notice: "Legal notice",
+    appsPrivacy: "Privacy (Apps)",
   },
   newsletter: {
     title: "Stay in the loop",

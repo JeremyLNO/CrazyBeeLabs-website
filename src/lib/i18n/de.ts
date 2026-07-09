@@ -171,6 +171,7 @@ const de: Dict = {
     terms: "AGB",
     refund: "Rückerstattungen",
     notice: "Impressum",
+    appsPrivacy: "Datenschutz (Apps)",
   },
   newsletter: {
     title: "Bleib auf dem Laufenden",
