@@ -1,10 +1,12 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useT } from "@/lib/i18n/LanguageProvider";
 import {
   showcaseByCategory,
   getShowcaseApp,
+  SHOWCASE,
   type ShowcaseApp,
 } from "@/lib/showcase";
 import { getAppCopy } from "@/lib/content";
@@ -19,11 +21,21 @@ const HERO_POS: [number, number][] = [
   [40, 292], [214, 288], [360, 300],
 ];
 
-const FEATURED = [
-  { slug: "shotbox", descKey: "home2.featShotbox" },
-  { slug: "spacespilot", descKey: "home2.featSpacespilot" },
-  { slug: "menu-island", descKey: "home2.featMenuisland" },
-];
+// Rendered on the server and on first client paint, before the effect below
+// swaps in a random trio — keeps SSR and the client's first render identical
+// (no hydration mismatch), then the real "random on every load" kicks in.
+const DEFAULT_FEATURED = ["shotbox", "spacespilot", "menu-island"]
+  .map((slug) => getShowcaseApp(slug))
+  .filter((a): a is ShowcaseApp => !!a);
+
+function pickRandomFeatured(count: number): ShowcaseApp[] {
+  const pool = [...SHOWCASE];
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  return pool.slice(0, count);
+}
 
 function AppIcon({ app, size }: { app: ShowcaseApp; size: number }) {
   return (
@@ -41,6 +53,11 @@ export function HomeContent() {
   const { t, lang } = useT();
   const work = showcaseByCategory("work-smarter");
   const personal = showcaseByCategory("personal");
+  const [featured, setFeatured] = useState<ShowcaseApp[]>(DEFAULT_FEATURED);
+
+  useEffect(() => {
+    setFeatured(pickRandomFeatured(3));
+  }, []);
 
   return (
     <div className="home2">
@@ -94,12 +111,11 @@ export function HomeContent() {
           <span className="home2-head-sub">{t("home2.spotlightSub")}</span>
         </div>
         <div className="home2-featured-grid">
-          {FEATURED.map((f, i) => {
-            const app = getShowcaseApp(f.slug);
-            if (!app) return null;
+          {featured.map((app, i) => {
+            const desc = getAppCopy(lang as never, app.slug)?.description ?? app.tagline;
             return (
               <Link
-                key={f.slug}
+                key={app.slug}
                 href={app.href}
                 className="home2-fcard home2-reveal"
                 style={{ animationDelay: `${i * 90}ms` }}
@@ -115,7 +131,7 @@ export function HomeContent() {
                 </div>
                 {/* Mock app-window preview */}
                 <div className="home2-mock">
-                  <div className="home2-mock-bar" style={{ background: grad(f.slug) }}>
+                  <div className="home2-mock-bar" style={{ background: grad(app.slug) }}>
                     <span />
                     <span />
                     <span />
@@ -124,10 +140,10 @@ export function HomeContent() {
                     <div className="home2-bar" style={{ width: "70%", opacity: 0.9 }} />
                     <div className="home2-bar" style={{ width: "90%" }} />
                     <div className="home2-bar" style={{ width: "55%" }} />
-                    <div className="home2-mock-btn" style={{ background: grad(f.slug) }} />
+                    <div className="home2-mock-btn" style={{ background: grad(app.slug) }} />
                   </div>
                 </div>
-                <p className="home2-fcard-desc">{t(f.descKey)}</p>
+                <p className="home2-fcard-desc">{desc}</p>
               </Link>
             );
           })}
