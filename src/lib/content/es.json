@@ -105,7 +105,7 @@
     },
     "opti-worktime": {
       "tagline": "Temporizador de concentración en tu notch. Cultiva un jardín.",
-      "description": "Opti Worktime es un temporizador de concentración que vive en tu notch, al estilo de la Dynamic Island. Cada sesión concentrada hace crecer un pequeño jardín — mantén el rumbo y florece, abandónalo y se marchita. Los preajustes, las estadísticas y las rachas te mantienen honesto.",
+      "description": "TopDeck es un temporizador de concentración que vive en tu notch, al estilo de la Dynamic Island. Cada sesión concentrada hace crecer un pequeño jardín — mantén el rumbo y florece, abandónalo y se marchita. Los preajustes, las estadísticas y las rachas te mantienen honesto.",
       "features": [
         "Temporizador Pomodoro anclado en el notch",
         "Un jardín que crece a medida que te concentras",
@@ -419,8 +419,8 @@
     ],
     "opti-worktime": [
       {
-        "q": "¿Qué es Opti Worktime?",
-        "a": "Opti Worktime es un temporizador de concentración Pomodoro para macOS que vive justo en tu notch, con un estilo similar a la Dynamic Island, para mantenerte centrado en la tarea."
+        "q": "¿Qué es TopDeck?",
+        "a": "TopDeck es un temporizador de concentración Pomodoro para macOS que vive justo en tu notch, con un estilo similar a la Dynamic Island, para mantenerte centrado en la tarea."
       },
       {
         "q": "¿Qué es eso del jardín que crece?",
@@ -428,7 +428,7 @@
       },
       {
         "q": "¿Registra mis estadísticas de concentración?",
-        "a": "Sí, Opti Worktime guarda estadísticas, rachas y un mapa de calor para que veas tus hábitos de concentración a lo largo del tiempo."
+        "a": "Sí, TopDeck guarda estadísticas, rachas y un mapa de calor para que veas tus hábitos de concentración a lo largo del tiempo."
       },
       {
         "q": "¿Se pausa automáticamente?",
@@ -805,7 +805,7 @@
       "sections": [
         {
           "h": "Ámbito de aplicación",
-          "p": "Esta página constituye la Política de privacidad y las Condiciones de uso de todas las aplicaciones de Crazy Bee Labs: Shotbox, Macnap Blocker, Energy Manager, FastRename, SpaceOnMyDisk, Sunshine, Never Miss a Meeting, Opti Worktime, SpacesPilot, Deskmate y WallSpaces (macOS), así como QualiScan, Cycles, MenuIsland y DualCam OxO (iPhone). Una sola página cubre toda la familia de aplicaciones para que se mantenga actualizada a medida que se lanzan nuevas apps. El responsable del tratamiento de datos es Crazy Bee Labs, contactable en data@crazybeelabs.com."
+          "p": "Esta página constituye la Política de privacidad y las Condiciones de uso de todas las aplicaciones de Crazy Bee Labs: Shotbox, Macnap Blocker, Energy Manager, FastRename, SpaceOnMyDisk, Sunshine, Never Miss a Meeting, TopDeck, SpacesPilot, Deskmate y WallSpaces (macOS), así como QualiScan, Cycles, MenuIsland y DualCam OxO (iPhone). Una sola página cubre toda la familia de aplicaciones para que se mantenga actualizada a medida que se lanzan nuevas apps. El responsable del tratamiento de datos es Crazy Bee Labs, contactable en data@crazybeelabs.com."
         },
         {
           "h": "Privacidad desde el diseño",

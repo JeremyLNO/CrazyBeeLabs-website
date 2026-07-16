@@ -39,7 +39,7 @@ export const SHOWCASE: ShowcaseApp[] = [
   { slug: "fastrename", name: "FastRename", tagline: "Rename hundreds of files in seconds.", category: "work-smarter", device: "mac", icon: "/apps/fastrename.png", href: "/apps/fastrename" },
   { slug: "spaceonmydisk", name: "SpaceOnMyDisk", tagline: "Find what's eating your disk.", category: "work-smarter", device: "mac", icon: "/apps/spaceonmydisk.png", href: "/apps/spaceonmydisk" },
   { slug: "never-miss-a-meeting", name: "Never Miss a Meeting", tagline: "Playful nudges so you're never late again.", category: "work-smarter", device: "mac", icon: "/apps/never-miss-a-meeting.png", href: "/apps/never-miss-a-meeting" },
-  { slug: "opti-worktime", name: "Opti Worktime", tagline: "Focus timer in your notch. Grow a garden.", category: "work-smarter", device: "mac", icon: "/apps/opti-worktime.png", href: "/apps/opti-worktime" },
+  { slug: "opti-worktime", name: "TopDeck", tagline: "Focus timer in your notch. Grow a garden.", category: "work-smarter", device: "mac", icon: "/apps/opti-worktime.png", href: "/apps/opti-worktime" },
   { slug: "spacespilot", name: "SpacesPilot", tagline: "Snap windows into place, instantly.", category: "work-smarter", device: "mac", icon: "/apps/spacespilot.png", href: "/apps/spacespilot" },
   // ── Work smarter (iPhone) ──
   { slug: "qualiscan", name: "QualiScan", tagline: "A pocket scanner that reads your docs.", category: "work-smarter", device: "iphone", icon: "/apps/qualiscan.png", href: "/apps/qualiscan", appStoreUrl: APP_STORE },

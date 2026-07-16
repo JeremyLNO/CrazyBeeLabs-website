@@ -122,7 +122,7 @@ export const CATALOG: CatalogApp[] = [
   },
   {
     slug: "opti-worktime",
-    name: "Opti Worktime",
+    name: "TopDeck",
     tagline: "Focus timer in your notch. Grow a garden.",
     platform: "mac",
     bundleId: "company.lno.optiworktime",
