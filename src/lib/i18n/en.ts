@@ -90,6 +90,7 @@ const en = {
     downloadApp: "Download {app}",
     downloadAppStore: "Download {app} on the App Store",
     availableAppStore: "An iPhone app — free to download on the App Store.",
+    comingSoonLead: "{app} is coming soon to the App Store.",
     choosePlan: "Choose a plan",
     checkoutNote: "Prices shown are indicative; the exact amount and your local taxes are confirmed at checkout. iOS apps are sold separately on the App Store.",
     planMonthly: "Monthly",

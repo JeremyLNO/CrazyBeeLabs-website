@@ -88,6 +88,7 @@ const pt: Dict = {
     downloadApp: "Descarregar {app}",
     downloadAppStore: "Transferir {app} na App Store",
     availableAppStore: "Uma app para iPhone — transferência grátis na App Store.",
+    comingSoonLead: "{app} chega em breve à App Store.",
     choosePlan: "Escolha um plano",
     checkoutNote: "Os preços apresentados são indicativos; o valor exato e os seus impostos locais são confirmados no pagamento. As apps de iOS são vendidas separadamente na App Store.",
     planMonthly: "Mensal",

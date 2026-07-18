@@ -23,6 +23,8 @@ export interface DetailApp {
   downloadUrl?: string | null;
   /** iPhone apps: the App Store URL the "Download" button links to. */
   appStoreUrl?: string;
+  /** True while there's no live App Store listing yet. */
+  comingSoon?: boolean;
   screenshots: string[];
   plans: DetailPlan[];
 }
@@ -101,9 +103,14 @@ export function AppDetail({ app }: { app: DetailApp }) {
 
         {/* Banner + download (App Store link for iPhone, gated trial for macOS) */}
         <div className="trial-banner mt-m">
-          <span className="trial-badge">{t("detail.freeBadge")}</span>
-          {isIos ? (
+          {isIos && app.comingSoon ? (
             <>
+              <span className="trial-badge">{t("categories.comingSoon")}</span>
+              <p>{t("detail.comingSoonLead", { app: app.name })}</p>
+            </>
+          ) : isIos ? (
+            <>
+              <span className="trial-badge">{t("detail.freeBadge")}</span>
               <p>{t("detail.availableAppStore")}</p>
               <a
                 className="btn btn-primary"
@@ -116,6 +123,7 @@ export function AppDetail({ app }: { app: DetailApp }) {
             </>
           ) : (
             <>
+              <span className="trial-badge">{t("detail.freeBadge")}</span>
               <p>{t("detail.trialLead", { app: app.name, days: t("detail.days7") })}</p>
               <DownloadButton
                 appSlug={app.slug}

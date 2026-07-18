@@ -72,7 +72,11 @@ function AppCard({ app }: { app: ShowcaseApp }) {
   const tagline = getAppCopy(lang, app.slug)?.tagline ?? app.tagline;
   // Prices are shown on each app's detail page, not on the cards.
   const priceMain = isMac ? null : t("apps.onAppStore");
-  const priceNote = isMac ? t("apps.freeTrialNote") : t("apps.appStoreNote");
+  const priceNote = app.comingSoon
+    ? t("categories.comingSoon")
+    : isMac
+      ? t("apps.freeTrialNote")
+      : t("apps.appStoreNote");
 
   const Tile = (
     <div className="app-tile">
@@ -106,7 +110,11 @@ function AppCard({ app }: { app: ShowcaseApp }) {
           <Link className="link-btn" href={app.href}>
             {t("apps.openApp")}
           </Link>
-          {isMac ? (
+          {app.comingSoon ? (
+            <span className="btn btn-accent btn-sm" aria-disabled="true" style={{ opacity: 0.5, pointerEvents: "none" }}>
+              {t("categories.comingSoon")}
+            </span>
+          ) : isMac ? (
             <DownloadButton appSlug={app.slug} appName={app.name} downloadUrl={catalog?.downloadUrl} />
           ) : (
             <a

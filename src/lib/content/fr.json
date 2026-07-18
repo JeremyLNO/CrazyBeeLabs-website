@@ -240,6 +240,17 @@
         "Suivi du stock pour ne jamais tomber à court",
         "Verrouillage Face ID / Touch ID, cinq langues"
       ]
+    },
+    "record-seconds": {
+      "tagline": "Transformez quelques secondes par jour en film.",
+      "description": "Record Seconds transforme quelques secondes filmées chaque jour en un film que vous aurez vraiment envie de revoir. Capturez un clip en un geste, ajoutez-le à un projet, et laissez les transitions et cartons de titre faire de votre année quelque chose qui mérite d'être gardé.",
+      "features": [
+        "Capture quotidienne d'un clip en un geste",
+        "Projets qui compilent vos clips automatiquement",
+        "Transitions et cartons de titre, sans compétences de montage",
+        "Recadrez et réorganisez vos clips avant l'export",
+        "Exportez et partagez votre film terminé"
+      ]
     }
   },
   "globalFaq": [
@@ -855,7 +866,7 @@
       "sections": [
         {
           "h": "Champ d'application",
-          "p": "Cette page constitue la politique de confidentialité et les conditions d'utilisation de toutes les applications Crazy Bee Labs : Shotbox, Macnap Blocker, Energy Manager, FastRename, SpaceOnMyDisk, Sunshine, Never Miss a Meeting, TopDeck, SpacesPilot, Deskmate et WallSpaces (macOS), ainsi que QualiScan, Cycles, MenuIsland, DualCam OxO, Respire et Pillo (iPhone). Une seule page couvre l'ensemble de la famille afin de rester à jour à mesure que de nouvelles applications sont publiées. Le responsable du traitement des données est Crazy Bee Labs, joignable à data@crazybeelabs.com."
+          "p": "Cette page constitue la politique de confidentialité et les conditions d'utilisation de toutes les applications Crazy Bee Labs : Shotbox, Macnap Blocker, Energy Manager, FastRename, SpaceOnMyDisk, Sunshine, Never Miss a Meeting, TopDeck, SpacesPilot, Deskmate et WallSpaces (macOS), ainsi que QualiScan, Cycles, MenuIsland, DualCam OxO, Respire, Pillo et Record Seconds (iPhone). Une seule page couvre l'ensemble de la famille afin de rester à jour à mesure que de nouvelles applications sont publiées. Le responsable du traitement des données est Crazy Bee Labs, joignable à data@crazybeelabs.com."
         },
         {
           "h": "Confidentialité par conception",

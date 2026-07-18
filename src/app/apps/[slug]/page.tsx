@@ -57,6 +57,7 @@ export default async function AppDetailPage({
       tagline: ios.tagline,
       icon: ios.icon,
       appStoreUrl: ios.appStoreUrl,
+      comingSoon: ios.comingSoon,
       screenshots: ios.screenshots ?? [],
       plans: [],
     };
