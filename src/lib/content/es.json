@@ -25,6 +25,28 @@
       }
     ]
   },
+  "commitment": {
+    "title": "Nuestro compromiso",
+    "lead": "Creemos que la salud no debería tener precio — y en especial la salud de las mujeres.",
+    "sections": [
+      {
+        "h": "La salud no es una función premium",
+        "p": "El acceso a herramientas básicas de salud — seguir tu cuerpo, entender tu ciclo, mantenerte informada — no debería depender de tu capacidad de pago. Esto es especialmente cierto en la salud de las mujeres, un ámbito demasiado a menudo tratado como una oportunidad de suscripción en lugar de una necesidad básica."
+      },
+      {
+        "h": "Gratis, no freemium",
+        "p": "Cuando creamos una app de salud, su experiencia básica es gratuita — no una versión recortada pensada para empujarte hacia una suscripción. Preferimos construir algo realmente útil para todos que algo rentable para unos pocos."
+      },
+      {
+        "h": "Cómo lo sostenemos",
+        "p": "Crazy Bee Labs se sostiene gracias a nuestras apps de productividad y utilidades — las herramientas que te ayudan a hacer cosas en tu Mac y tu iPhone. Las apps de salud no están para generar ingresos; el resto de nuestro catálogo se encarga de eso."
+      },
+      {
+        "h": "Un compromiso, no un eslogan",
+        "p": "Si alguna vez consideráramos bloquear algo esencial detrás de un pago en una app de salud, preferiríamos no publicarla. ¿Preguntas o comentarios? Contáctanos a través de nuestra página ⟨Soporte e ideas⟩."
+      }
+    ]
+  },
   "appCopy": {
     "shotbox": {
       "tagline": "Capturas de pantalla, por fin organizadas.",

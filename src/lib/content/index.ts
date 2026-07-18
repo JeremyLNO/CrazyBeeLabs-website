@@ -30,6 +30,7 @@ export interface AppCopy {
 }
 export interface SiteContent {
   studio: StudioContent;
+  commitment: StudioContent;
   appCopy: Record<string, AppCopy>;
   globalFaq: QA[];
   appFaq: Record<string, QA[]>;

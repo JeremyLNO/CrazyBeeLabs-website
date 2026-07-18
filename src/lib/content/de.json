@@ -25,6 +25,28 @@
       }
     ]
   },
+  "commitment": {
+    "title": "Unser Versprechen",
+    "lead": "Wir glauben, dass Gesundheit nicht käuflich sein sollte — besonders die Gesundheit von Frauen.",
+    "sections": [
+      {
+        "h": "Gesundheit ist kein Premium-Feature",
+        "p": "Der Zugang zu grundlegenden Gesundheits-Tools — den eigenen Körper verstehen, den Zyklus verfolgen, informiert bleiben — sollte nicht von der Zahlungsfähigkeit abhängen. Das gilt besonders für die Gesundheit von Frauen, ein Bereich, der zu oft als Abo-Geschäft statt als Grundbedürfnis behandelt wird."
+      },
+      {
+        "h": "Kostenlos, nicht Freemium",
+        "p": "Wenn wir eine Gesundheits-App bauen, ist ihr Kernfunktionsumfang kostenlos — keine abgespeckte Testversion, die zum Abo drängen soll. Wir bauen lieber etwas wirklich Nützliches für alle als etwas Profitables für wenige."
+      },
+      {
+        "h": "Wie wir das finanzieren",
+        "p": "Crazy Bee Labs finanziert sich über unsere Produktivitäts- und Dienstprogramm-Apps — die Werkzeuge, die dir auf Mac und iPhone bei der Arbeit helfen. Gesundheits-Apps sind nicht dazu da, Geld zu verdienen; der Rest unseres Angebots übernimmt das."
+      },
+      {
+        "h": "Ein Versprechen, kein Slogan",
+        "p": "Sollten wir je in Erwägung ziehen, in einer Gesundheits-App etwas Wesentliches hinter eine Bezahlschranke zu stellen, würden wir sie lieber gar nicht veröffentlichen. Fragen oder Feedback? Erreiche uns über unsere Seite ⟨Support & Ideen⟩."
+      }
+    ]
+  },
   "appCopy": {
     "shotbox": {
       "tagline": "Screenshots, endlich organisiert.",
