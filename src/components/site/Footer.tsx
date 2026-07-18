@@ -20,7 +20,6 @@ export function Footer() {
           <nav className="footer-col" aria-label={t("nav.ourApps")}>
             <Link href="/apps">{t("nav.ourApps")}</Link>
             <Link href="/studio">{t("footer.studio")}</Link>
-            <Link href="/commitment">{t("footer.commitment")}</Link>
             <Link href="/faq">{t("footer.faq")}</Link>
             <Link href="/support">{t("footer.support")}</Link>
           </nav>
