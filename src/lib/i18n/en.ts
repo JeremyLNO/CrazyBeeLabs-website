@@ -216,6 +216,7 @@ const en = {
   },
   commitmentPage: {
     kicker: "Our commitment",
+    healthAppsTitle: "Our health apps",
   },
   home2: {
     title: "Small apps that ⟨earn⟩ their place.",

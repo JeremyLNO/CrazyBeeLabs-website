@@ -214,6 +214,7 @@ const pt: Dict = {
   },
   commitmentPage: {
     kicker: "O nosso compromisso",
+    healthAppsTitle: "As nossas apps de saúde",
   },
   home2: {
     title: "Apps pequenas que ⟨merecem⟩ o seu lugar.",

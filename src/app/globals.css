@@ -476,6 +476,9 @@ main { flex: 1 0 auto; width: 100%; }
 .home2-ccard-name { font-weight: 600; font-size: 16px; }
 .home2-ccard-tag { font-size: 13px; line-height: 1.4; color: #7b7b82; overflow: hidden; text-overflow: ellipsis; }
 
+.commitment-apps { display: flex; flex-wrap: wrap; gap: 16px; }
+.commitment-apps .home2-ccard { flex: 0 1 300px; }
+
 .home2-steps { margin: 56px 0; padding: 44px; background: #17171A; color: #fff; border-radius: 24px; }
 .home2-steps h2 { font-size: clamp(24px, 3.4vw, 30px); font-weight: 700; margin: 10px 0 30px; color: #fff; }
 .home2-steps-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #FFCE4B; }

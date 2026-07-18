@@ -214,6 +214,7 @@ const de: Dict = {
   },
   commitmentPage: {
     kicker: "Unser Versprechen",
+    healthAppsTitle: "Unsere Gesundheits-Apps",
   },
   home2: {
     title: "Kleine Apps, die sich ihren Platz ⟨verdienen⟩.",
