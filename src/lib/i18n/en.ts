@@ -93,6 +93,7 @@ const en = {
     comingSoonLead: "{app} is coming soon to the App Store.",
     choosePlan: "Choose a plan",
     checkoutNote: "Prices shown are indicative; the exact amount and your local taxes are confirmed at checkout. iOS apps are sold separately on the App Store.",
+    checkoutNoteLicensed: "Prices shown are indicative; the exact amount and your local taxes are confirmed at checkout.",
     planMonthly: "Monthly",
     planQuarterly: "Quarterly",
     planAnnual: "Annual",

@@ -91,6 +91,7 @@ const fr: Dict = {
     comingSoonLead: "{app} arrive bientôt sur l'App Store.",
     choosePlan: "Choisir une formule",
     checkoutNote: "Les prix affichés sont indicatifs ; le montant exact et vos taxes locales sont confirmés au paiement. Les apps iOS sont vendues séparément sur l'App Store.",
+    checkoutNoteLicensed: "Les prix affichés sont indicatifs ; le montant exact et vos taxes locales sont confirmés au paiement.",
     planMonthly: "Mensuelle",
     planQuarterly: "Trimestrielle",
     planAnnual: "Annuelle",

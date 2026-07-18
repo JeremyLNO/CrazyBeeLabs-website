@@ -206,7 +206,9 @@ export function AppDetail({ app }: { app: DetailApp }) {
               ))}
             </div>
 
-            <p className="form-note mt-l">{t("detail.checkoutNote")}</p>
+            <p className="form-note mt-l">
+              {t(isIos ? "detail.checkoutNoteLicensed" : "detail.checkoutNote")}
+            </p>
           </>
         )}
 
