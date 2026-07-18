@@ -175,7 +175,6 @@ const es: Dict = {
   },
   footer: {
     tagline: "Herramientas inteligentes, experimentos locos, apps útiles.",
-    support: "Soporte",
     account: "Cuenta",
     login: "Iniciar sesión",
     studio: "El Estudio",

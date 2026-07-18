@@ -177,7 +177,6 @@ const en = {
   },
   footer: {
     tagline: "Smart tools, mad experiments, useful apps.",
-    support: "Support",
     account: "Account",
     login: "Log in",
     studio: "The Studio",
