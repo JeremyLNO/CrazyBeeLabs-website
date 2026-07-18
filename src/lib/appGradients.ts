@@ -15,6 +15,8 @@ export const APP_GRADIENTS: Record<string, [string, string]> = {
   "menu-island": ["#C4B5FD", "#8B5CF6"],
   "dualcam-oxo": ["#93C5FD", "#2563EB"],
   wallspaces: ["#F0ABFC", "#C026D3"],
+  respire: ["#99F6E4", "#0D9488"],
+  pillo: ["#A5B4FC", "#5B52D9"],
 };
 
 export function appGradientCss(slug: string): string {

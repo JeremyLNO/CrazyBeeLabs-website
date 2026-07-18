@@ -219,7 +219,7 @@ const fr: Dict = {
   home2: {
     title: "Des petites apps qui ⟨méritent⟩ leur place.",
     lead: "Des outils Mac et iPhone efficaces, conçus avec la rigueur d'une ruche et l'énergie d'un labo. Essayez-les gratuitement, gardez ceux qui méritent leur place sur votre bureau.",
-    statAppsN: "14",
+    statAppsN: "17",
     statApps: "apps et plus",
     statTrialN: "7 jours",
     statTrial: "d'essai gratuit",

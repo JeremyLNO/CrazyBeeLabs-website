@@ -7,7 +7,7 @@ import { getShowcaseApp, type ShowcaseApp } from "@/lib/showcase";
 import { Hex } from "@/components/ui/Hex";
 
 /** Apps this commitment is actually about — kept to a short, honest list. */
-const HEALTH_APP_SLUGS = ["cycles"];
+const HEALTH_APP_SLUGS = ["cycles", "respire", "pillo"];
 
 /** Renders a paragraph, turning a ⟨…⟩-marked phrase into a link to /support. */
 function renderWithLink(p: string) {

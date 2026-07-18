@@ -217,6 +217,29 @@
         "Fonctionne discrètement depuis la barre de menus",
         "Natif macOS, cinq langues"
       ]
+    },
+    "respire": {
+      "tagline": "Arrêtez la cigarette, la vape ou la nicotine — un jour à la fois.",
+      "description": "Respire vous aide à arrêter la cigarette, la vape ou la nicotine avec un plan construit à partir de vos habitudes et de vos motivations. Suivez votre série, l'argent économisé et les étapes de récupération de votre santé, directement depuis l'écran d'accueil.",
+      "features": [
+        "Plan d'arrêt personnalisé à partir d'un onboarding guidé",
+        "Série, économies et étapes de récupération santé en direct",
+        "Construit autour de vos propres motivations et de votre date d'arrêt",
+        "Confidentiel par conception — les données restent sur votre appareil",
+        "Cinq langues"
+      ]
+    },
+    "pillo": {
+      "tagline": "Ne ratez plus jamais votre pilule.",
+      "description": "Pillo suit la prise de votre pilule contraceptive avec une plaquette claire, des rappels en douceur, et des conseils simples en cas d'oubli. Notez vos symptômes, gardez un œil sur votre stock, et consultez votre historique en un coup d'œil — tout est stocké en privé sur votre appareil.",
+      "features": [
+        "Vue plaquette avec prise notée en un geste",
+        "Rappels qui fonctionnent entièrement hors ligne",
+        "Conseils étape par étape en cas d'oubli",
+        "Suivi des symptômes et historique complet",
+        "Suivi du stock pour ne jamais tomber à court",
+        "Verrouillage Face ID / Touch ID, cinq langues"
+      ]
     }
   },
   "globalFaq": [
@@ -832,7 +855,7 @@
       "sections": [
         {
           "h": "Champ d'application",
-          "p": "Cette page constitue la politique de confidentialité et les conditions d'utilisation de toutes les applications Crazy Bee Labs : Shotbox, Macnap Blocker, Energy Manager, FastRename, SpaceOnMyDisk, Sunshine, Never Miss a Meeting, TopDeck, SpacesPilot, Deskmate et WallSpaces (macOS), ainsi que QualiScan, Cycles, MenuIsland et DualCam OxO (iPhone). Une seule page couvre l'ensemble de la famille afin de rester à jour à mesure que de nouvelles applications sont publiées. Le responsable du traitement des données est Crazy Bee Labs, joignable à data@crazybeelabs.com."
+          "p": "Cette page constitue la politique de confidentialité et les conditions d'utilisation de toutes les applications Crazy Bee Labs : Shotbox, Macnap Blocker, Energy Manager, FastRename, SpaceOnMyDisk, Sunshine, Never Miss a Meeting, TopDeck, SpacesPilot, Deskmate et WallSpaces (macOS), ainsi que QualiScan, Cycles, MenuIsland, DualCam OxO, Respire et Pillo (iPhone). Une seule page couvre l'ensemble de la famille afin de rester à jour à mesure que de nouvelles applications sont publiées. Le responsable du traitement des données est Crazy Bee Labs, joignable à data@crazybeelabs.com."
         },
         {
           "h": "Confidentialité par conception",
