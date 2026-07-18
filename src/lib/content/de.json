@@ -43,7 +43,8 @@
       "features": [
         "Bildschirm- und Systemruhezustand auf Wunsch verhindern",
         "Zeitgesteuerte Dauer oder Wachhalten, bis Sie stoppen",
-        "Zeitplanung und ein globales Tastenkürzel (⌃⌥⌘A)",
+        "Tägliche Zeitplanung und ein globales Tastenkürzel (⌃⌥⌘A)",
+        "Auch geplantes Aufwecken aus dem Ruhezustand",
         "Benachrichtigungen, wenn eine Sitzung endet",
         "Leichtgewichtige Menüleisten-App"
       ]
@@ -52,11 +53,12 @@
       "tagline": "Verstehen und schützen Sie Ihren Akku.",
       "description": "Energy Manager gibt Ihnen einen klaren Überblick über die Akkugesundheit Ihres Macs und darüber, was ihn entlädt. Ein einziger Battery Score, Live-Ladedetails und die Apps, die am meisten Energie verbrauchen — alles aus der Menüleiste, aus echten Systemdaten.",
       "features": [
-        "Battery Score auf einen Blick",
-        "Live-Details zu Ladung und Stromverbrauch",
-        "Die energiehungrigsten Apps sehen",
-        "Beratende Ladegrenze",
-        "Echte IOKit-Daten, kein Rätselraten"
+        "Battery Score auf einen Blick, aus echten IOKit-Daten",
+        "Live-Ladung, Stromverbrauch und die energiehungrigsten Apps",
+        "Beratende Ladegrenze und Ladezeit-Prognosen",
+        "Automatisierungen: Night Mode, Erinnerung zum Ausstecken, Reiseladung und mehr",
+        "Konfigurierbare Benachrichtigungen und ein Dashboard mit 7-Tage-Verlauf",
+        "Fünf Sprachen"
       ]
     },
     "fastrename": {
@@ -64,9 +66,9 @@
       "description": "FastRename benennt Hunderte Dateien in Sekunden um. Erstellen Sie einmal eine Regel — Suchen & Ersetzen, Nummerierung, Groß-/Kleinschreibung, Datumsangaben — sehen Sie jede Änderung live in der Vorschau und wenden Sie dann alles in einem einzigen Durchgang an.",
       "features": [
         "Stapelumbenennung mit Live-Vorschau",
-        "Suchen & Ersetzen und fortlaufende Nummerierung",
-        "Groß-/Kleinschreibung und Datumsformatierung",
-        "Zerstörungsfrei, leicht zu prüfen vor dem Anwenden",
+        "Suchen & Ersetzen (mit Regex) und fortlaufende Nummerierung",
+        "Formatierung von Groß-/Kleinschreibung, Leerzeichen und Datum",
+        "Konflikterkennung und Rückgängigmachen mit einem Klick",
         "Nativ für macOS, fünf Sprachen"
       ]
     },
@@ -76,9 +78,10 @@
       "features": [
         "Schneller paralleler Festplatten-Scan",
         "Visuelle Größenaufschlüsselung nach Ordner",
-        "Die größten Dateien schnell finden",
-        "Objekte sicher in den Papierkorb verschieben",
-        "Befehlszeilenmodus (--scan)"
+        "Intelligente Suche und Schnellfilter (Videos, große Dateien, Downloads …)",
+        "Objekte sicher in den Papierkorb verschieben, mit Systemordner-Schutz",
+        "Befehlszeilenmodus (--scan)",
+        "Fünf Sprachen"
       ]
     },
     "sunshine": {
@@ -111,6 +114,7 @@
         "Ein Garten, der wächst, während Sie sich fokussieren",
         "Voreinstellungen, Statistiken, Serien und eine Heatmap",
         "Automatische Pause bei Sperren, Ruhezustand oder Inaktivität",
+        "iCloud-Synchronisation von Einstellungen, Garten und laufendem Timer",
         "Globale Tastenkürzel, fünf Sprachen"
       ]
     },
@@ -129,11 +133,12 @@
       "tagline": "Ein Taschenscanner, der Ihre Dokumente liest.",
       "description": "QualiScan verwandelt Ihr iPhone in einen Taschenscanner, der Ihre Dokumente tatsächlich liest. Erfassen Sie eine Seite, erhalten Sie einen scharfen, gleichmäßig ausgeleuchteten Scan und exportieren Sie ein durchsuchbares PDF dank OCR direkt auf dem Gerät.",
       "features": [
-        "Dokumentenscan mit Kantenerkennung",
-        "Beleuchtungsnormalisierung für saubere Scans",
+        "Mehrseitiger Scan mit Kantenerkennung",
+        "Darstellung als Original, Farbe, Grau oder S/W",
         "OCR auf dem Gerät für durchsuchbaren Text",
-        "Export als durchsuchbares PDF",
-        "Markierung mit PencilKit, fünf Sprachen"
+        "Export als durchsuchbares PDF, mit optionalem Wasserzeichen",
+        "Perspektivischer Zuschnitt, Drehung und Markierung mit PencilKit",
+        "Ordner und Volltextsuche, fünf Sprachen"
       ]
     },
     "cycles": {
@@ -142,7 +147,7 @@
       "features": [
         "Countdown bis zu Ihrer Periode und Ihrem Eisprung",
         "Mehrere Profile",
-        "Erinnerungen am Vortag und Home-Bildschirm-Widgets",
+        "Erinnerungen am Vortag und Widgets für Home-Bildschirm und Sperrbildschirm",
         "Face-ID-Sperre und private iCloud-Synchronisation",
         "Fünf Sprachen"
       ]
@@ -154,7 +159,7 @@
         "Apps aus der Dynamic Island starten",
         "Raster Ihrer Favoriten per langem Drücken",
         "Bis zu 8 Apps plus benutzerdefinierte Kürzel einrichten",
-        "Aufgebaut auf Live Activities",
+        "Auch als Widgets für Home-Bildschirm und Sperrbildschirm",
         "Fünf Sprachen"
       ]
     },

@@ -43,7 +43,8 @@
       "features": [
         "Empêchez la mise en veille de l'écran et du système à la demande",
         "Durées programmées ou maintien éveillé jusqu'à ce que vous l'arrêtiez",
-        "Planification et raccourci global (⌃⌥⌘A)",
+        "Planification quotidienne et raccourci global (⌃⌥⌘A)",
+        "Réveil programmé depuis la veille, aussi",
         "Notifications à la fin d'une session",
         "App légère dans la barre de menus"
       ]
@@ -52,11 +53,12 @@
       "tagline": "Comprenez et protégez votre batterie.",
       "description": "Energy Manager vous offre une lecture claire de l'état de santé de la batterie de votre Mac et de ce qui la vide. Un Score de batterie unique, les détails de charge en direct et les apps qui consomment le plus d'énergie — le tout depuis la barre de menus, à partir de données système réelles.",
       "features": [
-        "Score de batterie en un coup d'œil",
-        "Détails de charge et de consommation en direct",
-        "Repérez les apps les plus énergivores",
-        "Limite de charge consultative",
-        "Données IOKit réelles, sans approximation"
+        "Score de batterie en un coup d'œil, à partir de données IOKit réelles",
+        "Charge, consommation en direct et apps les plus énergivores",
+        "Limite de charge consultative et prévisions de temps de charge",
+        "Automatisations : Night Mode, rappel de débranchement, charge voyage et plus",
+        "Notifications configurables et tableau de bord avec historique sur 7 jours",
+        "Cinq langues"
       ]
     },
     "fastrename": {
@@ -64,9 +66,9 @@
       "description": "FastRename renomme des centaines de fichiers en quelques secondes. Construisez une règle une fois — rechercher et remplacer, numérotation, casse, dates — prévisualisez chaque changement en direct, puis appliquez le tout en une seule passe.",
       "features": [
         "Renommage en lot avec aperçu en direct",
-        "Rechercher et remplacer, et numérotation séquentielle",
-        "Mise en forme de la casse et des dates",
-        "Non destructif, facile à vérifier avant d'appliquer",
+        "Rechercher/remplacer (avec regex) et numérotation séquentielle",
+        "Mise en forme de la casse, des espaces et des dates",
+        "Détection des conflits et annulation en un clic",
         "macOS natif, cinq langues"
       ]
     },
@@ -76,9 +78,10 @@
       "features": [
         "Analyse de disque rapide et parallèle",
         "Répartition visuelle de la taille par dossier",
-        "Trouvez rapidement les fichiers les plus volumineux",
-        "Déplacez les éléments vers la corbeille en toute sécurité",
-        "Mode ligne de commande (--scan)"
+        "Recherche intelligente et filtres rapides (vidéos, gros fichiers, téléchargements…)",
+        "Déplacez les éléments vers la corbeille en toute sécurité, avec protection des dossiers système",
+        "Mode ligne de commande (--scan)",
+        "Cinq langues"
       ]
     },
     "sunshine": {
@@ -111,6 +114,7 @@
         "Un jardin qui pousse au fil de votre concentration",
         "Préréglages, statistiques, séries et carte de chaleur",
         "Pause automatique en cas de verrouillage, de veille ou d'inactivité",
+        "Synchronisation iCloud des réglages, du jardin et du minuteur en cours",
         "Raccourcis globaux, cinq langues"
       ]
     },
@@ -129,11 +133,12 @@
       "tagline": "Un scanner de poche qui lit vos documents.",
       "description": "QualiScan transforme votre iPhone en un scanner de poche qui lit vraiment vos documents. Capturez une page, obtenez un scan net et uniformément éclairé, et exportez un PDF recherchable grâce à l'OCR sur l'appareil.",
       "features": [
-        "Numérisation de documents avec détection des bords",
-        "Normalisation de l'éclairage pour des scans propres",
+        "Numérisation multi-pages avec détection des bords",
+        "Rendu Original, Couleur, Gris ou N&B",
         "OCR sur l'appareil pour du texte recherchable",
-        "Export en PDF recherchable",
-        "Annotation avec PencilKit, cinq langues"
+        "Export en PDF recherchable, avec filigrane en option",
+        "Recadrage en perspective, rotation et annotation PencilKit",
+        "Dossiers et recherche plein texte, cinq langues"
       ]
     },
     "cycles": {
@@ -142,7 +147,7 @@
       "features": [
         "Compte à rebours jusqu'à vos règles et votre ovulation",
         "Profils multiples",
-        "Rappels la veille et widgets sur l'écran d'accueil",
+        "Rappels la veille et widgets sur l'écran d'accueil et l'écran verrouillé",
         "Verrouillage Face ID et synchronisation iCloud privée",
         "Cinq langues"
       ]
@@ -154,7 +159,7 @@
         "Lancez des apps depuis la Dynamic Island",
         "Grille de vos favoris par appui long",
         "Configurez jusqu'à 8 apps plus des raccourcis personnalisés",
-        "Basé sur les Live Activities",
+        "Aussi disponible en widgets écran d'accueil et écran verrouillé",
         "Cinq langues"
       ]
     },
