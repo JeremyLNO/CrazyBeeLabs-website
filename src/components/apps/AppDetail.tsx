@@ -58,7 +58,7 @@ export function AppDetail({ app }: { app: DetailApp }) {
     description: copy?.description ?? app.tagline,
     image: `https://www.crazybeelabs.com${app.icon}`,
     url: `https://www.crazybeelabs.com/apps/${app.slug}`,
-    ...(!isIos && app.plans.length
+    ...(app.plans.length
       ? {
           offers: app.plans
             .map((p) => {
@@ -177,8 +177,8 @@ export function AppDetail({ app }: { app: DetailApp }) {
           </>
         ) : null}
 
-        {/* Plans (macOS apps only) */}
-        {!isIos && (
+        {/* Plans (any app sold + licensed here, mac or iOS) */}
+        {app.plans.length > 0 && (
           <>
             <h2 className="mt-l" style={{ marginBottom: 4 }}>
               {t("detail.choosePlan")}

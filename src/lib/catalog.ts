@@ -1,14 +1,18 @@
 /**
  * In-code product catalogue.
  *
- * The paid macOS apps and their 4 plans. This is the single source of truth
+ * The paid apps and their 4 plans. This is the single source of truth
  * for what can be sold; the database only stores *who bought what*.
+ * Almost all of these are macOS apps sold + licensed here; Record Seconds
+ * is the first iOS app licensed the same way (see `platform`) instead of
+ * being free on the App Store.
  *
  * To go live: create the matching prices in Paddle and paste each
  * `pri_…` id into `paddlePriceId`. While a price id is empty the plan's
  * checkout button stays disabled.
  *
- * iOS apps (QualiScan, Cycles) are sold on the App Store and are NOT here.
+ * Free iOS apps (QualiScan, Cycles, Pillo, Respire, MenuIsland, DualCam OxO)
+ * are sold on the App Store and are NOT here — see showcase.ts.
  * Browser games are free and are NOT here.
  */
 
@@ -28,12 +32,13 @@ export interface CatalogApp {
   slug: string;
   name: string;
   tagline: string;
-  platform: "mac";
-  /** Bundle id used by the macOS app when it validates a license. */
+  /** "ios" apps are licensed the same way but have no direct download — see showcase.ts for their App Store link / comingSoon flag. */
+  platform: "mac" | "ios";
+  /** Bundle id used by the app when it validates a license. */
   bundleId: string;
   /** Icon served from /public/apps/<slug>.png */
   icon: string;
-  /** Direct download of the notarized build. Absent/null until the file is published. */
+  /** Direct download of the notarized build. macOS only; absent/null until the file is published. */
   downloadUrl?: string | null;
   /** Screenshot image URLs shown on the detail page (horizontal scroller). */
   screenshots?: string[];
@@ -155,6 +160,15 @@ export const CATALOG: CatalogApp[] = [
     bundleId: "company.lno.wallspaces",
     icon: "/apps/wallspaces.png",
     plans: plans("€1.99 / mo", "€4.99 / 3 mo", "€14.99 / yr", "€29.99"),
+  },
+  {
+    slug: "record-seconds",
+    name: "Record Seconds",
+    tagline: "Turn a few seconds a day into a movie.",
+    platform: "ios",
+    bundleId: "company.lno.recordseconds",
+    icon: "/apps/record-seconds.png",
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
   },
 ];
 

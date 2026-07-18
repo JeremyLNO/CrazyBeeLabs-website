@@ -4,10 +4,11 @@ import { IPHONE_APPS, getShowcaseApp } from "@/lib/showcase";
 import { AppDetail, type DetailApp } from "@/components/apps/AppDetail";
 
 export function generateStaticParams() {
-  return [
-    ...CATALOG.map((a) => ({ slug: a.slug })),
-    ...IPHONE_APPS.map((a) => ({ slug: a.slug })),
-  ];
+  const slugs = new Set([
+    ...CATALOG.map((a) => a.slug),
+    ...IPHONE_APPS.map((a) => a.slug),
+  ]);
+  return [...slugs].map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -27,27 +28,43 @@ export default async function AppDetailPage({
 }) {
   const { slug } = await params;
 
-  // macOS app — licensed here (plans + gated download).
-  const mac = getApp(slug);
-  if (mac) {
-    const detail: DetailApp = {
-      kind: "mac",
-      slug: mac.slug,
-      name: mac.name,
-      tagline: mac.tagline,
-      icon: mac.icon,
-      downloadUrl: mac.downloadUrl ?? null,
-      screenshots: mac.screenshots ?? [],
-      plans: mac.plans.map((p) => ({
-        interval: p.interval,
-        priceLabel: p.priceLabel,
-        recommended: p.recommended,
-      })),
-    };
+  // App licensed here (plans + AddToCart). macOS gets a gated direct download;
+  // a licensed iOS app (e.g. Record Seconds) links out to the App Store instead.
+  const licensed = getApp(slug);
+  if (licensed) {
+    const showcase = getShowcaseApp(slug);
+    const plans = licensed.plans.map((p) => ({
+      interval: p.interval,
+      priceLabel: p.priceLabel,
+      recommended: p.recommended,
+    }));
+    const detail: DetailApp =
+      licensed.platform === "ios"
+        ? {
+            kind: "ios",
+            slug: licensed.slug,
+            name: licensed.name,
+            tagline: licensed.tagline,
+            icon: licensed.icon,
+            appStoreUrl: showcase?.appStoreUrl,
+            comingSoon: showcase?.comingSoon,
+            screenshots: licensed.screenshots ?? [],
+            plans,
+          }
+        : {
+            kind: "mac",
+            slug: licensed.slug,
+            name: licensed.name,
+            tagline: licensed.tagline,
+            icon: licensed.icon,
+            downloadUrl: licensed.downloadUrl ?? null,
+            screenshots: licensed.screenshots ?? [],
+            plans,
+          };
     return <AppDetail app={detail} />;
   }
 
-  // iPhone app — on-site page whose only App Store link is the download button.
+  // Free iPhone app — on-site page whose only App Store link is the download button.
   const ios = getShowcaseApp(slug);
   if (ios && ios.device === "iphone") {
     const detail: DetailApp = {
