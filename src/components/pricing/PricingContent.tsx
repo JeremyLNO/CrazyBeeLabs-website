@@ -32,7 +32,34 @@ export function PricingContent() {
           <p className="lead">{t("pricingPage.lead")}</p>
         </div>
 
-        <div className="table-wrap mt-l">
+        {freeApps.length > 0 && (
+          <>
+            <h2 className="mt-l">{t("pricingPage.freeAppsTitle")}</h2>
+            <div className="table-wrap mt-m">
+              <table className="admin-table">
+                <thead>
+                  <tr>
+                    <th>{t("pricingPage.colApp")}</th>
+                    <th>{t("pricingPage.colPrice")}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {freeApps.map((app) => (
+                    <tr key={app.slug}>
+                      <td>
+                        <Link href={app.href}>{app.name}</Link>
+                      </td>
+                      <td>{t("pricingPage.freeOnAppStore")}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+
+        <h2 className="mt-l">{t("pricingPage.paidAppsTitle")}</h2>
+        <div className="table-wrap mt-m">
           <table className="admin-table">
             <thead>
               <tr>
@@ -69,32 +96,6 @@ export function PricingContent() {
         </div>
 
         <p className="form-note mt-m">{t("pricingPage.note")}</p>
-
-        {freeApps.length > 0 && (
-          <>
-            <h2 className="mt-l">{t("pricingPage.freeAppsTitle")}</h2>
-            <div className="table-wrap mt-m">
-              <table className="admin-table">
-                <thead>
-                  <tr>
-                    <th>{t("pricingPage.colApp")}</th>
-                    <th>{t("pricingPage.colPrice")}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {freeApps.map((app) => (
-                    <tr key={app.slug}>
-                      <td>
-                        <Link href={app.href}>{app.name}</Link>
-                      </td>
-                      <td>{t("pricingPage.freeOnAppStore")}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </>
-        )}
       </div>
     </section>
   );

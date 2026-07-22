@@ -3,16 +3,17 @@
  *
  * The paid apps and their 4 plans. This is the single source of truth
  * for what can be sold; the database only stores *who bought what*.
- * Almost all of these are macOS apps sold + licensed here; Record Seconds
- * is the first iOS app licensed the same way (see `platform`) instead of
- * being free on the App Store.
+ * Mostly macOS apps sold + licensed here; some iOS apps (Record Seconds,
+ * QualiScan, MenuIsland, DualCam OxO) use the same 7-day-trial-then-plan
+ * model even though the actual purchase happens through the App Store
+ * (see `platform`).
  *
  * To go live: create the matching prices in Paddle and paste each
  * `pri_…` id into `paddlePriceId`. While a price id is empty the plan's
  * checkout button stays disabled.
  *
- * Free iOS apps (QualiScan, Cycles, Pillo, Respire, MenuIsland, DualCam OxO)
- * are sold on the App Store and are NOT here — see showcase.ts.
+ * Free iOS apps (Cycles, Pillo, Respire) are sold on the App Store with
+ * no trial/paid tier and are NOT here — see showcase.ts.
  * Browser games are free and are NOT here.
  */
 
@@ -177,6 +178,33 @@ export const CATALOG: CatalogApp[] = [
     platform: "ios",
     bundleId: "company.lno.recordseconds",
     icon: "/apps/record-seconds.png",
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
+  },
+  {
+    slug: "qualiscan",
+    name: "QualiScan",
+    tagline: "A pocket scanner that reads your docs.",
+    platform: "ios",
+    bundleId: "company.lno.qualiscan",
+    icon: "/apps/qualiscan.png",
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
+  },
+  {
+    slug: "menu-island",
+    name: "MenuIsland",
+    tagline: "Launch your apps from the Dynamic Island.",
+    platform: "ios",
+    bundleId: "company.lno.menuisland",
+    icon: "/apps/menu-island.png",
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
+  },
+  {
+    slug: "dualcam-oxo",
+    name: "DualCam OxO",
+    tagline: "Film with two lenses at once.",
+    platform: "ios",
+    bundleId: "company.lno.dualcamoxo",
+    icon: "/apps/dualcam-oxo.png",
     plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
   },
 ];

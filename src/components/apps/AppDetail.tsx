@@ -108,6 +108,19 @@ export function AppDetail({ app }: { app: DetailApp }) {
               <span className="trial-badge">{t("categories.comingSoon")}</span>
               <p>{t("detail.comingSoonLead", { app: app.name })}</p>
             </>
+          ) : isIos && app.plans.length > 0 ? (
+            <>
+              <span className="trial-badge">{t("detail.freeBadge")}</span>
+              <p>{t("detail.trialLeadAppStore", { app: app.name, days: t("detail.days7") })}</p>
+              <a
+                className="btn btn-primary"
+                href={app.appStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {t("detail.downloadAppStore", { app: app.name })}
+              </a>
+            </>
           ) : isIos ? (
             <>
               <span className="trial-badge">{t("detail.freeBadge")}</span>
