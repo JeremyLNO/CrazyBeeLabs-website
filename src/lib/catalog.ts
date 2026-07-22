@@ -69,7 +69,7 @@ export const CATALOG: CatalogApp[] = [
     platform: "mac",
     bundleId: "company.lno.shotbox",
     icon: "/apps/shotbox.png",
-    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
   },
   {
     slug: "macnap-blocker",
@@ -87,7 +87,7 @@ export const CATALOG: CatalogApp[] = [
     platform: "mac",
     bundleId: "company.lno.energymanager",
     icon: "/apps/energy-manager.png",
-    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
   },
   {
     slug: "fastrename",
@@ -96,7 +96,7 @@ export const CATALOG: CatalogApp[] = [
     platform: "mac",
     bundleId: "company.lno.bulkrenamer",
     icon: "/apps/fastrename.png",
-    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
   },
   {
     slug: "spaceonmydisk",
@@ -105,7 +105,7 @@ export const CATALOG: CatalogApp[] = [
     platform: "mac",
     bundleId: "company.lno.spaceonmydisk",
     icon: "/apps/spaceonmydisk.png",
-    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
   },
   {
     slug: "sunshine",
@@ -132,7 +132,7 @@ export const CATALOG: CatalogApp[] = [
     platform: "mac",
     bundleId: "company.lno.optiworktime",
     icon: "/apps/opti-worktime.png",
-    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
   },
   {
     slug: "spacespilot",
@@ -141,7 +141,7 @@ export const CATALOG: CatalogApp[] = [
     platform: "mac",
     bundleId: "company.lno.spacespilot",
     icon: "/apps/spacespilot.png",
-    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
   },
   {
     slug: "cornercraft",
@@ -150,7 +150,7 @@ export const CATALOG: CatalogApp[] = [
     platform: "mac",
     bundleId: "company.lno.cornercraft",
     icon: "/apps/cornercraft.png",
-    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
   },
   {
     slug: "deskmate",
@@ -159,7 +159,7 @@ export const CATALOG: CatalogApp[] = [
     platform: "mac",
     bundleId: "company.lno.deskmate",
     icon: "/apps/deskmate.png",
-    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
   },
   {
     slug: "wallspaces",
@@ -177,7 +177,7 @@ export const CATALOG: CatalogApp[] = [
     platform: "ios",
     bundleId: "company.lno.recordseconds",
     icon: "/apps/record-seconds.png",
-    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
   },
 ];
 
