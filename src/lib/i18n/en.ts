@@ -223,7 +223,7 @@ const en = {
   home2: {
     title: "Small apps that ⟨earn⟩ their place.",
     lead: "Sharp Mac & iPhone tools, made with the rigor of a hive and the energy of a lab. Try them free, keep what earns a spot on your desk.",
-    statAppsN: "17",
+    statAppsN: "18",
     statApps: "apps & counting",
     statTrialN: "7-day",
     statTrial: "free trial",

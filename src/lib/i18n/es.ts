@@ -221,7 +221,7 @@ const es: Dict = {
   home2: {
     title: "Apps pequeñas que se ⟨ganan⟩ su lugar.",
     lead: "Herramientas ágiles para Mac e iPhone, hechas con el rigor de una colmena y la energía de un laboratorio. Pruébalas gratis y quédate con las que se ganen un sitio en tu escritorio.",
-    statAppsN: "17",
+    statAppsN: "18",
     statApps: "apps y subiendo",
     statTrialN: "7 días",
     statTrial: "de prueba gratis",

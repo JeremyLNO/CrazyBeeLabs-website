@@ -144,6 +144,15 @@ export const CATALOG: CatalogApp[] = [
     plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
   },
   {
+    slug: "cornercraft",
+    name: "CornerCraft",
+    tagline: "Your screen corners, put to work.",
+    platform: "mac",
+    bundleId: "company.lno.cornercraft",
+    icon: "/apps/cornercraft.png",
+    plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€49.99"),
+  },
+  {
     slug: "deskmate",
     name: "Deskmate",
     tagline: "A desktop companion you can talk to.",

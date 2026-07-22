@@ -18,6 +18,7 @@ export const APP_GRADIENTS: Record<string, [string, string]> = {
   respire: ["#99F6E4", "#0D9488"],
   pillo: ["#A5B4FC", "#5B52D9"],
   "record-seconds": ["#FCD34D", "#D97706"],
+  cornercraft: ["#FBBF24", "#B45309"],
 };
 
 export function appGradientCss(slug: string): string {

@@ -151,6 +151,17 @@
         "macOS natif, cinq langues"
       ]
     },
+    "cornercraft": {
+      "tagline": "Vos coins d'écran mis au travail.",
+      "description": "CornerCraft transforme les coins de l'écran de votre Mac en raccourcis et en un panneau de widgets compact. Déclenchez Mission Control, Launchpad ou la mise en veille depuis un coin, et révélez un panneau réorganisable pour le lancement rapide, le contrôle Spotify, des actions et une horloge — là où votre curseur va déjà.",
+      "features": [
+        "Coins actifs pour Mission Control, Launchpad, veille et plus",
+        "Panneau de coin réorganisable : lancement rapide, Spotify, actions, horloge",
+        "Vaste bibliothèque d'actions, dont Disposition Scène et Ne pas déranger",
+        "Apparence personnalisable",
+        "Cinq langues"
+      ]
+    },
     "qualiscan": {
       "tagline": "Un scanner de poche qui lit vos documents.",
       "description": "QualiScan transforme votre iPhone en un scanner de poche qui lit vraiment vos documents. Capturez une page, obtenez un scan net et uniformément éclairé, et exportez un PDF recherchable grâce à l'OCR sur l'appareil.",
@@ -866,7 +877,7 @@
       "sections": [
         {
           "h": "Champ d'application",
-          "p": "Cette page constitue la politique de confidentialité et les conditions d'utilisation de toutes les applications Crazy Bee Labs : Shotbox, Macnap Blocker, Energy Manager, FastRename, SpaceOnMyDisk, Sunshine, Never Miss a Meeting, TopDeck, SpacesPilot, Deskmate et WallSpaces (macOS), ainsi que QualiScan, Cycles, MenuIsland, DualCam OxO, Respire, Pillo et Record Seconds (iPhone). Une seule page couvre l'ensemble de la famille afin de rester à jour à mesure que de nouvelles applications sont publiées. Le responsable du traitement des données est Crazy Bee Labs, joignable à data@crazybeelabs.com."
+          "p": "Cette page constitue la politique de confidentialité et les conditions d'utilisation de toutes les applications Crazy Bee Labs : Shotbox, Macnap Blocker, Energy Manager, FastRename, SpaceOnMyDisk, Sunshine, Never Miss a Meeting, TopDeck, SpacesPilot, CornerCraft, Deskmate et WallSpaces (macOS), ainsi que QualiScan, Cycles, MenuIsland, DualCam OxO, Respire, Pillo et Record Seconds (iPhone). Une seule page couvre l'ensemble de la famille afin de rester à jour à mesure que de nouvelles applications sont publiées. Le responsable du traitement des données est Crazy Bee Labs, joignable à data@crazybeelabs.com."
         },
         {
           "h": "Confidentialité par conception",
