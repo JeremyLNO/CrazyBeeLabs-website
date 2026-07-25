@@ -62,45 +62,91 @@ export function HomeContent() {
   return (
     <div className="home2">
       {/* Hero */}
-      <section className="home2-wrap home2-hero">
-        <div className="home2-reveal">
-          <span className="home2-eyebrow">{t("home.kicker")}</span>
-          <h1 className="home2-h1 home2-h1-rotate">
-            {t("home.titleBefore")} <RotatingWord /> {t("home.titleAfter")}
-          </h1>
-          <p className="home2-sub">{t("home2.lead")}</p>
-          <div className="home2-cta-row">
-            <Link className="home2-cta" href="/apps">
-              {t("home.browseApps")}
-            </Link>
+      <section className="home2-wrap" style={{ position: "relative" }}>
+        <div className="home2-hex-bg" aria-hidden="true" />
+        <div className="home2-hero" style={{ position: "relative", zIndex: 1 }}>
+          <div className="home2-reveal">
+            <span className="home2-eyebrow">{t("home.kicker")}</span>
+            <h1 className="home2-h1 home2-h1-rotate">
+              {t("home.titleBefore")} <RotatingWord /> {t("home.titleAfter")}
+            </h1>
+            <p className="home2-sub">{t("home2.lead")}</p>
+            <div className="home2-cta-row">
+              <Link className="home2-cta" href="/apps">
+                {t("home.browseApps")}
+              </Link>
+              <Link className="home2-cta-secondary" href="/studio">
+                {t("home2.seeHowWeBuild")}
+              </Link>
+            </div>
+            <div className="home2-stats">
+              <span>
+                <b>{t("home2.statAppsN")}</b> {t("home2.statApps")}
+              </span>
+              <span>
+                <b>{t("home2.statTrialN")}</b> {t("home2.statTrial")}
+              </span>
+            </div>
           </div>
-          <div className="home2-stats">
-            <span>
-              <b>{t("home2.statAppsN")}</b> {t("home2.statApps")}
-            </span>
-            <span>
-              <b>{t("home2.statTrialN")}</b> {t("home2.statTrial")}
-            </span>
+
+          {/* Floating app-icon cluster */}
+          <div className="home2-cluster" aria-hidden="true">
+            {work.slice(0, 9).map((app, i) => (
+              <Link
+                key={app.slug}
+                href={app.href}
+                className="home2-tile"
+                style={{
+                  left: HERO_POS[i][0],
+                  top: HERO_POS[i][1],
+                  animationDuration: `${4 + i * 0.4}s`,
+                  animationDelay: `${i * -0.5}s`,
+                }}
+              >
+                <AppIcon app={app} size={74} />
+              </Link>
+            ))}
           </div>
         </div>
 
-        {/* Floating app-icon cluster */}
-        <div className="home2-cluster" aria-hidden="true">
-          {work.slice(0, 9).map((app, i) => (
-            <Link
-              key={app.slug}
-              href={app.href}
-              className="home2-tile"
-              style={{
-                left: HERO_POS[i][0],
-                top: HERO_POS[i][1],
-                animationDuration: `${4 + i * 0.4}s`,
-                animationDelay: `${i * -0.5}s`,
-              }}
-            >
-              <AppIcon app={app} size={74} />
-            </Link>
-          ))}
+        {/* Trust bar — honest, no fabricated stats */}
+        <div className="home2-trust" style={{ position: "relative", zIndex: 1 }}>
+          <div className="home2-trust-item">
+            <span className="home2-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="14" rx="2" /><path d="M8 21h8M12 18v3" /></svg>
+            </span>
+            <div>
+              <div className="home2-trust-title">{t("home2.trust1Title")}</div>
+              <div className="home2-trust-body">{t("home2.trust1Body")}</div>
+            </div>
+          </div>
+          <div className="home2-trust-item">
+            <span className="home2-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
+            </span>
+            <div>
+              <div className="home2-trust-title">{t("home2.trust2Title")}</div>
+              <div className="home2-trust-body">{t("home2.trust2Body")}</div>
+            </div>
+          </div>
+          <div className="home2-trust-item">
+            <span className="home2-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20 7 9 18l-5-5" /></svg>
+            </span>
+            <div>
+              <div className="home2-trust-title">{t("home2.trust3Title")}</div>
+              <div className="home2-trust-body">{t("home2.trust3Body")}</div>
+            </div>
+          </div>
+          <div className="home2-trust-item">
+            <span className="home2-trust-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5c2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21Z" /></svg>
+            </span>
+            <div>
+              <div className="home2-trust-title">{t("home2.trust4Title")}</div>
+              <div className="home2-trust-body">{t("home2.trust4Body")}</div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -166,6 +212,37 @@ export function HomeContent() {
           {personal.map((app, i) => (
             <CollectionCard key={app.slug} app={app} lang={lang} index={i} />
           ))}
+        </div>
+      </section>
+
+      {/* Why Crazy Bee Labs */}
+      <section className="home2-wrap home2-section">
+        <div className="home2-head">
+          <h2>{t("home.why.title")}</h2>
+          <span className="home2-head-sub">{t("home.why.kicker")}</span>
+        </div>
+        <div className="feat-grid feat-grid-3">
+          <div className="feat-card">
+            <span className="feat-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="14" rx="2" /><path d="M8 21h8M12 18v3" /></svg>
+            </span>
+            <div className="feat-title">{t("home.why.c1t")}</div>
+            <div className="feat-body">{t("home.why.c1b")}</div>
+          </div>
+          <div className="feat-card">
+            <span className="feat-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
+            </span>
+            <div className="feat-title">{t("home.why.c2t")}</div>
+            <div className="feat-body">{t("home.why.c2b")}</div>
+          </div>
+          <div className="feat-card">
+            <span className="feat-icon" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5c2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21Z" /></svg>
+            </span>
+            <div className="feat-title">{t("home.why.c3t")}</div>
+            <div className="feat-body">{t("home.why.c3b")}</div>
+          </div>
         </div>
       </section>
 
