@@ -18,6 +18,12 @@ const VALUE_ICONS = [
   <path key="ha" d="m11 15-3-3 1.4-1.4L11 12.2l4.6-4.6L17 9l-6 6Z" />,
 ];
 const VALUE_COLORS = ["", "pink", "green", "violet"];
+const FOOT_CHIPS = [
+  [<path key="a" d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5c2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21Z" />],
+  [<path key="a" d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z" />],
+  [<path key="a" d="M5 11h14v9H5z" />, <path key="b" d="M8 11V7a4 4 0 0 1 8 0v4" />],
+  [<path key="a" d="M12 3l7.79 4.5v9L12 21l-7.79-4.5v-9z" />],
+];
 
 /** Renders a paragraph, turning a ⟨…⟩-marked phrase into a link to /support. */
 function renderWithLink(p: string) {
@@ -117,6 +123,8 @@ export function CommitmentContent() {
                 </svg>
               </div>
             </div>
+            <span className="app-chip a"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><circle cx="12" cy="12" r="8" /><path d="M12 4v8l6 3" /></svg></span>
+            <span className="app-chip b"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M9 5v14l11-7z" /></svg></span>
             <div className="hero-widget hero-widget-1">
               <div className="hero-widget-head">Cycles</div>
               <div className="hero-widget-value">Day 14</div>
@@ -127,7 +135,7 @@ export function CommitmentContent() {
                 <span className="hero-widget-dot" /> Session active
               </div>
             </div>
-            <span className="hero-bee hero-bee-1">🐝</span>
+            <span className="hero-bee" style={{ right: "6%", top: "6%" }}>🐝</span>
           </div>
         </div>
 
@@ -142,6 +150,15 @@ export function CommitmentContent() {
               </span>
               <div className="principle-title">{sec.h}</div>
               <p className="principle-body">{renderWithLink(sec.p)}</p>
+              <div className="principle-foot" aria-hidden="true">
+                {FOOT_CHIPS[i].map((path, j) => (
+                  <span className={`principle-chip ${VALUE_COLORS[(i + j) % 4] || "honey"}`} key={j}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                      {path}
+                    </svg>
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>

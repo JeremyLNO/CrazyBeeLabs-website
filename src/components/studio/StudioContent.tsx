@@ -32,6 +32,25 @@ const VALUE_ICONS = [
   <path key="b" d="M12 8c2 0 3.5 1.6 3.5 4S14 16 12 16s-3.5-1.6-3.5-4S10 8 12 8Zm0-5v3m0 12v2m-7-9h2m10 0h2" />,
 ];
 const VALUE_COLORS = ["", "violet", "green", "pink"];
+const FOOT_CHIPS = [
+  [
+    <path key="a" d="M4 4h16v14H4z" />,
+    <path key="b" d="M8 3h8v3H8zM7 6h10l-1 15H8z" />,
+    <path key="c" d="M12 2c3 3 4 6 4 9a4 4 0 1 1-8 0c0-3 1-6 4-9Z" />,
+  ],
+  [
+    <circle key="a" cx="12" cy="12" r="3" />,
+    <path key="b" d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4z" />,
+  ],
+  [
+    <path key="a" d="M5 11h14v9H5z" />,
+    <circle key="b" cx="8" cy="12" r="4" />,
+  ],
+  [
+    <path key="a" d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5c2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21Z" />,
+    <path key="b" d="M12 3l7.79 4.5v9L12 21l-7.79-4.5v-9z" />,
+  ],
+];
 
 export function StudioContent() {
   const { t, lang } = useT();
@@ -80,11 +99,27 @@ export function StudioContent() {
           </div>
           <div className="editorial-hero-visual" aria-hidden="true">
             <div className="editorial-hero-visual-inner">
-              <div className="editorial-hero-glyph">
-                <Hex size={92} />
+              <div className="desk-scene">
+                <div className="desk-plane">
+                  <div className="desk-monitor">
+                    <div className="screen">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="#f5a623" strokeWidth="1.6"><rect x="3" y="4" width="18" height="14" rx="2" /><path d="M8 21h8M12 18v3" /></svg>
+                    </div>
+                    <div className="stand" />
+                  </div>
+                  <div className="desk-mug" />
+                  <div className="desk-plant">
+                    <span className="leaf" style={{ left: "20%", transform: "rotate(-18deg)" }} />
+                    <span className="leaf" style={{ left: "45%", height: 44 }} />
+                    <span className="leaf" style={{ left: "66%", transform: "rotate(16deg)" }} />
+                    <div className="pot" />
+                  </div>
+                  <div className="desk-top" />
+                </div>
               </div>
             </div>
             <div className="hero-note">{t("studioPage.quote")}</div>
+            <span className="hero-bee" style={{ top: "12%", right: "10%" }}>🐝</span>
             <span className="hero-bee hero-bee-1">🐝</span>
           </div>
         </div>
@@ -107,6 +142,15 @@ export function StudioContent() {
               </span>
               <div className="principle-title">{sec.h}</div>
               <p className="principle-body">{renderWithLink(sec.p)}</p>
+              <div className="principle-foot" aria-hidden="true">
+                {FOOT_CHIPS[i].map((path, j) => (
+                  <span className={`principle-chip ${VALUE_COLORS[(i + j) % 4] || "honey"}`} key={j}>
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+                      {path}
+                    </svg>
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
