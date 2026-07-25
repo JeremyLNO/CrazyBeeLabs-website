@@ -217,6 +217,15 @@ const de: Dict = {
   },
   studioPage: {
     kicker: "Das Studio",
+    trust1Title: "Unabhängig",
+    trust1Body: "Selbstfinanziert, werbefrei",
+    trust2Title: "Datenschutz zuerst",
+    trust2Body: "Ihre Daten bleiben Ihre",
+    trust3Title: "Mit Sorgfalt gemacht",
+    trust3Body: "Von echten Menschen",
+    quote: "Kleines Studio. Großer Fokus.",
+    principlesTitle: "Unsere Prinzipien",
+    principlesSub: "Wie wir denken, bauen und fokussiert bleiben.",
   },
   pricingPage: {
     kicker: "Preise",
@@ -237,6 +246,8 @@ const de: Dict = {
   commitmentPage: {
     kicker: "Unser Versprechen",
     healthAppsTitle: "Unsere Gesundheits-Apps",
+    ctaTitle: "Wir bauen diese Tools für Sie.",
+    ctaBody: "Fragen, Feedback oder eine Idee für eine neue Gesundheits-App?",
   },
   home2: {
     title: "Kleine Apps, die sich ihren Platz ⟨verdienen⟩.",

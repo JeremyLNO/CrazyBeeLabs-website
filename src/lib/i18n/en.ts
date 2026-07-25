@@ -219,6 +219,15 @@ const en = {
   },
   studioPage: {
     kicker: "The Studio",
+    trust1Title: "Independent",
+    trust1Body: "Self-funded & ad-free",
+    trust2Title: "Privacy first",
+    trust2Body: "Your data stays yours",
+    trust3Title: "Made with care",
+    trust3Body: "By real humans",
+    quote: "Small studio. Big focus.",
+    principlesTitle: "Our principles",
+    principlesSub: "How we think, build, and stay focused.",
   },
   pricingPage: {
     kicker: "Pricing",
@@ -239,6 +248,8 @@ const en = {
   commitmentPage: {
     kicker: "Our commitment",
     healthAppsTitle: "Our health apps",
+    ctaTitle: "We build these tools for you.",
+    ctaBody: "Questions, feedback, or an idea for a new health app?",
   },
   home2: {
     title: "Small apps that ⟨earn⟩ their place.",
