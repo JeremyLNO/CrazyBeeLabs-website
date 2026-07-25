@@ -77,7 +77,7 @@ export function CommitmentContent() {
   );
   return (
     <section className="section">
-      <div className="wrap wrap-narrow">
+      <div className="wrap">
         <div className="editorial-hero">
           <div>
             <span className="kicker">

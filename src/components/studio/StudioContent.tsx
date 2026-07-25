@@ -59,7 +59,7 @@ export function StudioContent() {
   const closer = s.sections[4];
   return (
     <section className="section">
-      <div className="wrap wrap-narrow">
+      <div className="wrap">
         <div className="editorial-hero">
           <div>
             <span className="kicker">
