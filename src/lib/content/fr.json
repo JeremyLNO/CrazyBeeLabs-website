@@ -176,7 +176,7 @@
     },
     "cycles": {
       "tagline": "Votre cycle, suivi sereinement.",
-      "description": "Cycles suit vos règles et votre ovulation, sereinement. Un affichage clair présente les jours qui vous séparent de vos prochaines règles ou de votre fenêtre de fertilité, avec plusieurs profils, des rappels en douceur et des données privées synchronisées via iCloud.",
+      "description": "Period tracker made easy suit vos règles et votre ovulation, sereinement. Un affichage clair présente les jours qui vous séparent de vos prochaines règles ou de votre fenêtre de fertilité, avec plusieurs profils, des rappels en douceur et des données privées synchronisées via iCloud.",
       "features": [
         "Compte à rebours jusqu'à vos règles et votre ovulation",
         "Profils multiples",
@@ -231,7 +231,7 @@
     },
     "respire": {
       "tagline": "Arrêtez la cigarette, la vape ou la nicotine — un jour à la fois.",
-      "description": "Respire vous aide à arrêter la cigarette, la vape ou la nicotine avec un plan construit à partir de vos habitudes et de vos motivations. Suivez votre série, l'argent économisé et les étapes de récupération de votre santé, directement depuis l'écran d'accueil.",
+      "description": "Quit smoking made easy vous aide à arrêter la cigarette, la vape ou la nicotine avec un plan construit à partir de vos habitudes et de vos motivations. Suivez votre série, l'argent économisé et les étapes de récupération de votre santé, directement depuis l'écran d'accueil.",
       "features": [
         "Plan d'arrêt personnalisé à partir d'un onboarding guidé",
         "Série, économies et étapes de récupération santé en direct",
@@ -242,7 +242,7 @@
     },
     "pillo": {
       "tagline": "Ne ratez plus jamais votre pilule.",
-      "description": "Pillo suit la prise de votre pilule contraceptive avec une plaquette claire, des rappels en douceur, et des conseils simples en cas d'oubli. Notez vos symptômes, gardez un œil sur votre stock, et consultez votre historique en un coup d'œil — tout est stocké en privé sur votre appareil.",
+      "description": "Pillo tracker suit la prise de votre pilule contraceptive avec une plaquette claire, des rappels en douceur, et des conseils simples en cas d'oubli. Notez vos symptômes, gardez un œil sur votre stock, et consultez votre historique en un coup d'œil — tout est stocké en privé sur votre appareil.",
       "features": [
         "Vue plaquette avec prise notée en un geste",
         "Rappels qui fonctionnent entièrement hors ligne",
@@ -254,7 +254,7 @@
     },
     "record-seconds": {
       "tagline": "Transformez quelques secondes par jour en film.",
-      "description": "Record Seconds transforme quelques secondes filmées chaque jour en un film que vous aurez vraiment envie de revoir. Capturez un clip en un geste, ajoutez-le à un projet, et laissez les transitions et cartons de titre faire de votre année quelque chose qui mérite d'être gardé.",
+      "description": "Video One Sec transforme quelques secondes filmées chaque jour en un film que vous aurez vraiment envie de revoir. Capturez un clip en un geste, ajoutez-le à un projet, et laissez les transitions et cartons de titre faire de votre année quelque chose qui mérite d'être gardé.",
       "features": [
         "Capture quotidienne d'un clip en un geste",
         "Projets qui compilent vos clips automatiquement",
@@ -569,32 +569,32 @@
     ],
     "cycles": [
       {
-        "q": "Qu'est-ce que Cycles ?",
-        "a": "Cycles est une app iPhone privée pour suivre vos règles et votre ovulation, avec un compte à rebours clair jusqu'à vos prochaines règles ou votre fenêtre de fertilité."
+        "q": "Qu'est-ce que Period tracker made easy ?",
+        "a": "Period tracker made easy est une app iPhone privée pour suivre vos règles et votre ovulation, avec un compte à rebours clair jusqu'à vos prochaines règles ou votre fenêtre de fertilité."
       },
       {
         "q": "Est-elle sur l'App Store ?",
-        "a": "Oui, Cycles est disponible sur l'App Store d'Apple et gratuite à télécharger."
+        "a": "Oui, Period tracker made easy est disponible sur l'App Store d'Apple et gratuite à télécharger."
       },
       {
         "q": "Mes données de santé sont-elles privées ?",
-        "a": "Absolument. Cycles place la confidentialité avant tout : vos données restent sur votre appareil et se synchronisent uniquement via votre propre iCloud privé, jamais vers nous."
+        "a": "Absolument. Period tracker made easy place la confidentialité avant tout : vos données restent sur votre appareil et se synchronisent uniquement via votre propre iCloud privé, jamais vers nous."
       },
       {
         "q": "Se synchronise-t-elle entre mes appareils ?",
-        "a": "Oui, Cycles utilise votre iCloud privé pour que vos données restent synchronisées entre vos appareils Apple en toute sécurité."
+        "a": "Oui, Period tracker made easy utilise votre iCloud privé pour que vos données restent synchronisées entre vos appareils Apple en toute sécurité."
       },
       {
         "q": "Puis-je suivre plus d'une personne ?",
-        "a": "Oui, Cycles prend en charge plusieurs profils, vous pouvez donc suivre plus d'une personne dans la même app."
+        "a": "Oui, Period tracker made easy prend en charge plusieurs profils, vous pouvez donc suivre plus d'une personne dans la même app."
       },
       {
         "q": "Me préviendra-t-elle avant mes règles ?",
-        "a": "Oui, Cycles peut vous envoyer des notifications la veille de vos règles ou de votre ovulation prévues, pour ne jamais être prise au dépourvu."
+        "a": "Oui, Period tracker made easy peut vous envoyer des notifications la veille de vos règles ou de votre ovulation prévues, pour ne jamais être prise au dépourvu."
       },
       {
         "q": "Puis-je protéger l'app avec Face ID ?",
-        "a": "Oui, vous pouvez verrouiller Cycles avec Face ID pour garder vos données encore plus privées."
+        "a": "Oui, vous pouvez verrouiller Period tracker made easy avec Face ID pour garder vos données encore plus privées."
       }
     ],
     "menu-island": [

@@ -176,7 +176,7 @@
     },
     "cycles": {
       "tagline": "Ihr Zyklus, ruhig verfolgt.",
-      "description": "Cycles verfolgt Ihre Periode und Ihren Eisprung, ganz ruhig. Eine klare Übersicht zeigt die Tage bis zu Ihrer nächsten Periode oder Ihrem fruchtbaren Fenster, mit mehreren Profilen, sanften Erinnerungen und privaten Daten, synchronisiert über iCloud.",
+      "description": "Period tracker made easy verfolgt Ihre Periode und Ihren Eisprung, ganz ruhig. Eine klare Übersicht zeigt die Tage bis zu Ihrer nächsten Periode oder Ihrem fruchtbaren Fenster, mit mehreren Profilen, sanften Erinnerungen und privaten Daten, synchronisiert über iCloud.",
       "features": [
         "Countdown bis zu Ihrer Periode und Ihrem Eisprung",
         "Mehrere Profile",
@@ -231,7 +231,7 @@
     },
     "respire": {
       "tagline": "Rauchen, Vapen oder Nikotin aufgeben — einen Tag nach dem anderen.",
-      "description": "Respire hilft Ihnen, das Rauchen, Vapen oder Nikotin aufzugeben — mit einem Plan, der auf Ihren eigenen Gewohnheiten und Beweggründen basiert. Sehen Sie Ihre Serie, das gesparte Geld und Ihre gesundheitlichen Meilensteine direkt auf dem Startbildschirm.",
+      "description": "Quit smoking made easy hilft Ihnen, das Rauchen, Vapen oder Nikotin aufzugeben — mit einem Plan, der auf Ihren eigenen Gewohnheiten und Beweggründen basiert. Sehen Sie Ihre Serie, das gesparte Geld und Ihre gesundheitlichen Meilensteine direkt auf dem Startbildschirm.",
       "features": [
         "Individueller Ausstiegsplan aus einem geführten Onboarding",
         "Serie, Ersparnisse und Gesundheits-Meilensteine live im Blick",
@@ -242,7 +242,7 @@
     },
     "pillo": {
       "tagline": "Verpassen Sie nie wieder Ihre Pille.",
-      "description": "Pillo verfolgt die Einnahme Ihrer Antibabypille mit einer übersichtlichen Blisterpackungs-Ansicht, sanften Erinnerungen und einfacher Hilfe, falls Sie eine Dosis vergessen. Erfassen Sie Symptome, behalten Sie Ihren Vorrat im Blick und sehen Sie Ihren Verlauf auf einen Blick — alles privat auf Ihrem Gerät gespeichert.",
+      "description": "Pillo tracker verfolgt die Einnahme Ihrer Antibabypille mit einer übersichtlichen Blisterpackungs-Ansicht, sanften Erinnerungen und einfacher Hilfe, falls Sie eine Dosis vergessen. Erfassen Sie Symptome, behalten Sie Ihren Vorrat im Blick und sehen Sie Ihren Verlauf auf einen Blick — alles privat auf Ihrem Gerät gespeichert.",
       "features": [
         "Blisterpackungs-Ansicht mit Einnahme in einem Tipp",
         "Erinnerungen, die vollständig offline funktionieren",
@@ -254,7 +254,7 @@
     },
     "record-seconds": {
       "tagline": "Machen Sie aus ein paar Sekunden am Tag einen Film.",
-      "description": "Record Seconds macht aus ein paar Sekunden Video pro Tag einen Film, den Sie sich wirklich noch einmal ansehen. Ein Antippen genügt für den Clip, ab ins Projekt damit, und Übergänge sowie Titelkarten machen aus Ihrem Jahr etwas Bewahrenswertes.",
+      "description": "Video One Sec macht aus ein paar Sekunden Video pro Tag einen Film, den Sie sich wirklich noch einmal ansehen. Ein Antippen genügt für den Clip, ab ins Projekt damit, und Übergänge sowie Titelkarten machen aus Ihrem Jahr etwas Bewahrenswertes.",
       "features": [
         "Tägliche Clip-Aufnahme mit einem Antippen",
         "Projekte, die Ihre Clips automatisch zusammenstellen",
@@ -569,32 +569,32 @@
     ],
     "cycles": [
       {
-        "q": "Was ist Cycles?",
-        "a": "Cycles ist eine private iPhone-App zum Verfolgen Ihrer Periode und Ihres Eisprungs, mit einem klaren Countdown bis zu Ihrer nächsten Periode oder Ihrem fruchtbaren Fenster."
+        "q": "Was ist Period tracker made easy?",
+        "a": "Period tracker made easy ist eine private iPhone-App zum Verfolgen Ihrer Periode und Ihres Eisprungs, mit einem klaren Countdown bis zu Ihrer nächsten Periode oder Ihrem fruchtbaren Fenster."
       },
       {
         "q": "Ist es im App Store?",
-        "a": "Ja, Cycles ist im Apple App Store verfügbar und kostenlos zum Herunterladen."
+        "a": "Ja, Period tracker made easy ist im Apple App Store verfügbar und kostenlos zum Herunterladen."
       },
       {
         "q": "Sind meine Gesundheitsdaten privat?",
-        "a": "Absolut. Cycles setzt auf Privatsphäre zuerst: Ihre Daten bleiben auf Ihrem Gerät und synchronisieren sich nur über Ihre eigene private iCloud, niemals zu uns."
+        "a": "Absolut. Period tracker made easy setzt auf Privatsphäre zuerst: Ihre Daten bleiben auf Ihrem Gerät und synchronisieren sich nur über Ihre eigene private iCloud, niemals zu uns."
       },
       {
         "q": "Synchronisiert es über meine Geräte hinweg?",
-        "a": "Ja, Cycles nutzt Ihre private iCloud, sodass Ihre Daten über Ihre Apple-Geräte hinweg sicher synchron bleiben."
+        "a": "Ja, Period tracker made easy nutzt Ihre private iCloud, sodass Ihre Daten über Ihre Apple-Geräte hinweg sicher synchron bleiben."
       },
       {
         "q": "Kann ich mehr als eine Person verfolgen?",
-        "a": "Ja, Cycles unterstützt mehrere Profile, sodass Sie mehr als eine Person in derselben App verfolgen können."
+        "a": "Ja, Period tracker made easy unterstützt mehrere Profile, sodass Sie mehr als eine Person in derselben App verfolgen können."
       },
       {
         "q": "Erinnert es mich vor meiner Periode?",
-        "a": "Ja, Cycles kann Ihnen am Tag vor Ihrer vorhergesagten Periode oder Ihrem Eisprung Benachrichtigungen senden, sodass Sie nie überrascht werden."
+        "a": "Ja, Period tracker made easy kann Ihnen am Tag vor Ihrer vorhergesagten Periode oder Ihrem Eisprung Benachrichtigungen senden, sodass Sie nie überrascht werden."
       },
       {
         "q": "Kann ich die App mit Face ID schützen?",
-        "a": "Ja, Sie können Cycles mit Face ID sperren, um Ihre Daten besonders privat zu halten."
+        "a": "Ja, Sie können Period tracker made easy mit Face ID sperren, um Ihre Daten besonders privat zu halten."
       }
     ],
     "menu-island": [

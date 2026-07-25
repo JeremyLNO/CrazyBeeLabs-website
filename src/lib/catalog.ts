@@ -173,7 +173,7 @@ export const CATALOG: CatalogApp[] = [
   },
   {
     slug: "record-seconds",
-    name: "Record Seconds",
+    name: "Video One Sec",
     tagline: "Turn a few seconds a day into a movie.",
     platform: "ios",
     bundleId: "company.lno.recordseconds",
