@@ -76,6 +76,8 @@ const en = {
     onAppStore: "On the App Store",
     free: "Free",
     openApp: "View details",
+    searchPlaceholder: "Search apps…",
+    featured: "Featured",
     downloadSoon: "Thanks! Your download will be ready very soon — we've saved your spot.",
   },
   detail: {

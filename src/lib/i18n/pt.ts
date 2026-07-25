@@ -74,6 +74,8 @@ const pt: Dict = {
     onAppStore: "Na App Store",
     free: "Grátis",
     openApp: "Ver detalhes",
+    searchPlaceholder: "Pesquisar apps…",
+    featured: "Em destaque",
     downloadSoon: "Obrigado! A tua transferência estará pronta muito em breve — guardámos o teu lugar.",
   },
   detail: {

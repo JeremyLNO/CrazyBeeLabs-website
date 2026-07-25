@@ -7,6 +7,7 @@ import { useT } from "@/lib/i18n/LanguageProvider";
 import { getAppCopy, getAppFaq } from "@/lib/content";
 import { FaqList } from "@/components/faq/FaqList";
 import type { PlanInterval } from "@/lib/catalog";
+import { appGradientCss } from "@/lib/appGradients";
 
 export interface DetailPlan {
   interval: PlanInterval;
@@ -90,8 +91,8 @@ export function AppDetail({ app }: { app: DetailApp }) {
           <span>{app.name}</span>
         </div>
 
-        <div className="app-hero-head">
-          <span className="app-icon big">
+        <div className="app-hero-head app-hero-head-banner" style={{ "--app-grad": appGradientCss(app.slug) } as React.CSSProperties}>
+          <span className="app-icon big has-img">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={app.icon} alt="" />
           </span>
@@ -182,11 +183,14 @@ export function AppDetail({ app }: { app: DetailApp }) {
         {copy?.features?.length ? (
           <>
             <h2 className="mt-l">{t("detail.features")}</h2>
-            <ul className="feature-list mt-m">
+            <div className="feat-grid mt-m">
               {copy.features.map((f, i) => (
-                <li key={i}>{f}</li>
+                <div className="feat-card feat-card-compact" key={i}>
+                  <span className="feat-check" aria-hidden="true">✓</span>
+                  <p className="feat-body">{f}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </>
         ) : null}
 

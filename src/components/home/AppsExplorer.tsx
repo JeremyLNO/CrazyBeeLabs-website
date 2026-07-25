@@ -17,18 +17,46 @@ import { DownloadButton } from "@/components/apps/DownloadButton";
 const CATS: (Category | "all")[] = ["all", ...CATEGORY_ORDER];
 const DEVS: (Device | "all")[] = ["all", "mac", "iphone"];
 
+/** One app put in the spotlight above the grid — kept fixed, not random, so the page is stable across visits. */
+const FEATURED_SLUG = "shotbox";
+
 export function AppsExplorer() {
-  const { t } = useT();
+  const { t, lang } = useT();
   const [cat, setCat] = useState<Category | "all">("all");
   const [dev, setDev] = useState<Device | "all">("all");
+  const [query, setQuery] = useState("");
 
-  const apps = SHOWCASE.filter(
-    (a) => (cat === "all" || a.category === cat) && (dev === "all" || a.device === dev),
-  );
+  const q = query.trim().toLowerCase();
+  const apps = SHOWCASE.filter((a) => {
+    if (cat !== "all" && a.category !== cat) return false;
+    if (dev !== "all" && a.device !== dev) return false;
+    if (!q) return true;
+    const tagline = getAppCopy(lang, a.slug)?.tagline ?? a.tagline;
+    return a.name.toLowerCase().includes(q) || tagline.toLowerCase().includes(q);
+  });
+
+  const featured = !q && cat === "all" && dev === "all"
+    ? SHOWCASE.find((a) => a.slug === FEATURED_SLUG)
+    : null;
 
   return (
     <div>
+      {featured && <FeaturedApp app={featured} />}
+
       <div className="filters">
+        <div className="app-search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder={t("apps.searchPlaceholder")}
+            aria-label={t("apps.searchPlaceholder")}
+          />
+        </div>
         <div className="filter-row" role="group" aria-label="Category">
           {CATS.map((c) => (
             <button
@@ -62,6 +90,25 @@ export function AppsExplorer() {
       </div>
       {apps.length === 0 && <p className="muted mt-m">{t("apps.noMatch")}</p>}
     </div>
+  );
+}
+
+function FeaturedApp({ app }: { app: ShowcaseApp }) {
+  const { t, lang } = useT();
+  const tagline = getAppCopy(lang, app.slug)?.tagline ?? app.tagline;
+  return (
+    <Link href={app.href} className="featured-app mb-m">
+      <span className="app-icon big has-img">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={app.icon} alt="" />
+      </span>
+      <div>
+        <span className="kicker">{t("apps.featured")}</span>
+        <div className="featured-app-name">{app.name}</div>
+        <p className="muted mt-s">{tagline}</p>
+      </div>
+      <span className="btn btn-primary btn-sm featured-app-cta">{t("apps.openApp")}</span>
+    </Link>
   );
 }
 

@@ -47,21 +47,33 @@ export function CommitmentContent() {
   return (
     <section className="section">
       <div className="wrap wrap-narrow">
-        <div className="page-head">
-          <span className="kicker">
-            <Hex /> {t("commitmentPage.kicker")}
-          </span>
-          <h1>{c.title}</h1>
-          <p className="lead">{c.lead}</p>
+        <div className="editorial-hero">
+          <div>
+            <span className="kicker">
+              <Hex /> {t("commitmentPage.kicker")}
+            </span>
+            <h1 className="mt-s">{c.title}</h1>
+            <p className="lead mt-s">{c.lead}</p>
+          </div>
+          <div className="editorial-hero-visual" aria-hidden="true">
+            <div className="editorial-hero-glyph">
+              <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#B7791F" strokeWidth="1.6">
+                <path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 3 5 6.5 5c2 0 3.5 1.5 5.5 4 2-2.5 3.5-4 5.5-4C21 5 23.5 8.5 21.5 12.5 19 16.65 12 21 12 21Z" />
+              </svg>
+            </div>
+          </div>
         </div>
-        <div className="studio-sections">
+
+        <div className="principle-grid mt-l">
           {c.sections.map((sec, i) => (
-            <div className="studio-section" key={i}>
-              <h2>{sec.h}</h2>
-              <p className="muted">{renderWithLink(sec.p)}</p>
+            <div className="principle-card" key={i}>
+              <span className="principle-num">{String(i + 1).padStart(2, "0")}</span>
+              <div className="principle-title">{sec.h}</div>
+              <p className="principle-body">{renderWithLink(sec.p)}</p>
             </div>
           ))}
         </div>
+
         {healthApps.length > 0 && (
           <div className="mt-l">
             <h2>{t("commitmentPage.healthAppsTitle")}</h2>

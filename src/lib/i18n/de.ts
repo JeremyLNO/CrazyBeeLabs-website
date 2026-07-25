@@ -74,6 +74,8 @@ const de: Dict = {
     onAppStore: "Im App Store",
     free: "Kostenlos",
     openApp: "Details ansehen",
+    searchPlaceholder: "Apps durchsuchen…",
+    featured: "Empfohlen",
     downloadSoon: "Danke! Dein Download ist gleich bereit — wir haben deinen Platz reserviert.",
   },
   detail: {

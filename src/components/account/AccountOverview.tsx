@@ -22,44 +22,48 @@ export function AccountOverview({
   downloads: MyDownloadRow[];
 }) {
   const { t } = useT();
+  const firstName = name || email.split("@")[0];
   return (
     <>
-      <div className="page-head">
-        <span className="kicker">{t("account.kicker")}</span>
-        <h1>{t("account.title")}</h1>
-      </div>
+      <span className="kicker">{t("account.kicker")}</span>
+      <h1 className="dash-welcome">{t("nav.greeting", { name: firstName })}</h1>
 
-      <div className="card row-between">
+      <div className="dash-status-card mt-m">
+        <span className="dash-status-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M4 4h16v16H4z" opacity="0" />
+            <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        </span>
         <div>
-          <div className="muted" style={{ fontSize: 13 }}>
-            {t("account.email")}
-          </div>
-          <div>{email}</div>
+          <div className="dash-status-title">{t("account.email")}</div>
+          <div className="dash-status-value">{email}</div>
         </div>
-        {verified ? (
-          <span className="badge badge-active">{t("account.verified")}</span>
-        ) : (
-          <span className="badge badge-past_due">{t("account.unverified")}</span>
-        )}
+        <span className={`badge ${verified ? "badge-active" : "badge-past_due"}`} style={{ marginLeft: "auto" }}>
+          {verified ? t("account.verified") : t("account.unverified")}
+        </span>
       </div>
 
-      <div className="mt-m">
+      <div className="dash-cards">
         <ProfileForm
           initialName={name}
           initialLastName={lastName}
           initialBirthDate={birthDate}
         />
+
+        <div className="dash-card">
+          <div className="dash-card-head">
+            <h2>{t("account.exportTitle")}</h2>
+          </div>
+          <p className="muted">{t("account.exportHint")}</p>
+          <a className="btn btn-secondary btn-sm mt-s" href="/api/account/export">
+            {t("account.exportButton")}
+          </a>
+        </div>
       </div>
 
       <MyDownloads rows={downloads} />
-
-      <div className="card mt-m">
-        <h3>{t("account.exportTitle")}</h3>
-        <p className="muted mt-s">{t("account.exportHint")}</p>
-        <a className="btn btn-secondary btn-sm mt-s" href="/api/account/export">
-          {t("account.exportButton")}
-        </a>
-      </div>
 
       <DangerZone />
 
