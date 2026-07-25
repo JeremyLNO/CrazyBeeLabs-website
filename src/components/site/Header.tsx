@@ -62,6 +62,7 @@ export function Header() {
 
           <Link href="/studio">{t("footer.studio")}</Link>
           <Link href="/commitment">{t("footer.commitment")}</Link>
+          <Link href="/support">{t("nav.support")}</Link>
         </nav>
 
         <div className="header-actions">
