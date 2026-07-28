@@ -218,9 +218,9 @@
         "Privado por diseño: nada sale de tu Mac"
       ]
     },
-    "wallspaces": {
+    "1space1wallpaper": {
       "tagline": "Un fondo de pantalla distinto para cada Space.",
-      "description": "WallSpaces asigna su propio fondo de pantalla a cada uno de tus Spaces de macOS. Cambia de Space y el escritorio cambia contigo — una pista discreta de en qué escritorio estás, sin cambiarlo nunca a mano.",
+      "description": "1space1wallpaper asigna su propio fondo de pantalla a cada uno de tus Spaces de macOS. Cambia de Space y el escritorio cambia contigo — una pista discreta de en qué escritorio estás, sin cambiarlo nunca a mano.",
       "features": [
         "Asigna un fondo de pantalla único a cada Space",
         "Cambia automáticamente al cambiar de Space",
@@ -679,18 +679,18 @@
         "a": "Sí, Deskmate es gratis durante 7 días y luego está disponible con una licencia mensual, trimestral, anual o de por vida."
       }
     ],
-    "wallspaces": [
+    "1space1wallpaper": [
       {
-        "q": "¿Qué es WallSpaces?",
-        "a": "WallSpaces te permite poner un fondo de pantalla distinto para cada Space de macOS, de modo que el escritorio cambia automáticamente al pasar de uno a otro."
+        "q": "¿Qué es 1space1wallpaper?",
+        "a": "1space1wallpaper te permite poner un fondo de pantalla distinto para cada Space de macOS, de modo que el escritorio cambia automáticamente al pasar de uno a otro."
       },
       {
         "q": "¿Tengo que cambiarlo yo mismo?",
-        "a": "No — una vez asignados los fondos, WallSpaces detecta los cambios de Space y aplica el correcto automáticamente. Para ello necesita seguir ejecutándose en segundo plano."
+        "a": "No — una vez asignados los fondos, 1space1wallpaper detecta los cambios de Space y aplica el correcto automáticamente. Para ello necesita seguir ejecutándose en segundo plano."
       },
       {
         "q": "¿Funciona con varias pantallas?",
-        "a": "Sí, WallSpaces controla los fondos tanto por pantalla como por Space."
+        "a": "Sí, 1space1wallpaper controla los fondos tanto por pantalla como por Space."
       },
       {
         "q": "¿Ralentizará mi Mac?",
@@ -698,7 +698,7 @@
       },
       {
         "q": "¿Puedo probarlo gratis?",
-        "a": "Sí, WallSpaces es gratis durante 7 días y luego está disponible con una licencia mensual, trimestral, anual o de por vida."
+        "a": "Sí, 1space1wallpaper es gratis durante 7 días y luego está disponible con una licencia mensual, trimestral, anual o de por vida."
       }
     ]
   },
@@ -877,7 +877,7 @@
       "sections": [
         {
           "h": "Ámbito de aplicación",
-          "p": "Esta página constituye la Política de privacidad y las Condiciones de uso de todas las aplicaciones de Crazy Bee Labs: Shotbox, Macnap Blocker, Energy Manager, FastRename, SpaceOnMyDisk, Sunshine, Never Miss a Meeting, TopDeck, SpacesPilot, CornerCraft, Deskmate y WallSpaces (macOS), así como QualiScan, Cycles, MenuIsland, DualCam OxO, Respire, Pillo y Record Seconds (iPhone). Una sola página cubre toda la familia de aplicaciones para que se mantenga actualizada a medida que se lanzan nuevas apps. El responsable del tratamiento de datos es Crazy Bee Labs, contactable en data@crazybeelabs.com."
+          "p": "Esta página constituye la Política de privacidad y las Condiciones de uso de todas las aplicaciones de Crazy Bee Labs: Shotbox, Macnap Blocker, Energy Manager, FastRename, SpaceOnMyDisk, Sunshine, Never Miss a Meeting, TopDeck, SpacesPilot, CornerCraft, Deskmate y 1space1wallpaper (macOS), así como QualiScan, Cycles, MenuIsland, DualCam OxO, Respire, Pillo y Record Seconds (iPhone). Una sola página cubre toda la familia de aplicaciones para que se mantenga actualizada a medida que se lanzan nuevas apps. El responsable del tratamiento de datos es Crazy Bee Labs, contactable en data@crazybeelabs.com."
         },
         {
           "h": "Privacidad desde el diseño",

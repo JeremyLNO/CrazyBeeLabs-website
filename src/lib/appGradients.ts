@@ -14,7 +14,7 @@ export const APP_GRADIENTS: Record<string, [string, string]> = {
   cycles: ["#5EEAD4", "#14B8A6"],
   "menu-island": ["#C4B5FD", "#8B5CF6"],
   "dualcam-oxo": ["#93C5FD", "#2563EB"],
-  wallspaces: ["#F0ABFC", "#C026D3"],
+  "1space1wallpaper": ["#F0ABFC", "#C026D3"],
   respire: ["#99F6E4", "#0D9488"],
   pillo: ["#A5B4FC", "#5B52D9"],
   "record-seconds": ["#FCD34D", "#D97706"],

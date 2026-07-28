@@ -55,7 +55,7 @@ export const SHOWCASE: ShowcaseApp[] = [
   { slug: "deskmate", name: "Deskmate", tagline: "A desktop companion you can talk to.", category: "personal", device: "mac", icon: "/apps/deskmate.png", href: "/apps/deskmate" },
   { slug: "menu-island", name: "MenuIsland", tagline: "Launch your apps from the Dynamic Island.", category: "personal", device: "iphone", icon: "/apps/menu-island.png", href: "/apps/menu-island", appStoreUrl: APP_STORE },
   { slug: "dualcam-oxo", name: "DualCam OxO", tagline: "Film with two lenses at once.", category: "personal", device: "iphone", icon: "/apps/dualcam-oxo.png", href: "/apps/dualcam-oxo", appStoreUrl: APP_STORE },
-  { slug: "wallspaces", name: "WallSpaces", tagline: "A different wallpaper for every Space.", category: "personal", device: "mac", icon: "/apps/wallspaces.png", href: "/apps/wallspaces" },
+  { slug: "1space1wallpaper", name: "1space1wallpaper", tagline: "A different wallpaper for every Space.", category: "personal", device: "mac", icon: "/apps/1space1wallpaper.png", href: "/apps/1space1wallpaper" },
   { slug: "record-seconds", name: "Video One Sec", tagline: "Turn a few seconds a day into a movie.", category: "personal", device: "iphone", icon: "/apps/record-seconds.png", href: "/apps/record-seconds", appStoreUrl: APP_STORE, comingSoon: true },
 
   // ── Games ── (coming back soon)

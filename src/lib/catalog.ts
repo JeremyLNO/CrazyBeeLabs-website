@@ -163,12 +163,15 @@ export const CATALOG: CatalogApp[] = [
     plans: plans("€2.99 / mo", "€7.99 / 3 mo", "€24.99 / yr", "€39.99"),
   },
   {
-    slug: "wallspaces",
-    name: "WallSpaces",
+    slug: "1space1wallpaper",
+    name: "1space1wallpaper",
     tagline: "A different wallpaper for every Space.",
     platform: "mac",
+    // Was renamed from "WallSpaces"; the bundle id must keep its original value — it is
+    // what the shipped app sends to /api/licenses/validate, and it namespaces existing
+    // licenses. Changing it would invalidate every license already issued.
     bundleId: "company.lno.wallspaces",
-    icon: "/apps/wallspaces.png",
+    icon: "/apps/1space1wallpaper.png",
     plans: plans("€1.99 / mo", "€4.99 / 3 mo", "€14.99 / yr", "€29.99"),
   },
   {
