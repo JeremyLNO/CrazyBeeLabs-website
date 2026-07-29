@@ -20,7 +20,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const { email, password } = parsed.data;
 
         const user = await getUserByEmail(email);
-        if (!user) return null;
+        // No password set (Apple-only account) — credentials sign-in doesn't apply.
+        if (!user?.passwordHash) return null;
 
         const ok = await verifyPassword(password, user.passwordHash);
         if (!ok) return null;

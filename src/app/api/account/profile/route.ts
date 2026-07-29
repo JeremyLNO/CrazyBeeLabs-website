@@ -1,13 +1,13 @@
 import { NextResponse } from "next/server";
-import { auth } from "@/lib/auth";
+import { getSessionUserId } from "@/lib/mobile-auth";
 import { profileSchema } from "@/lib/validators";
 import { updateUserProfile } from "@/lib/users";
 
 export const runtime = "nodejs";
 
 export async function PATCH(req: Request) {
-  const session = await auth();
-  if (!session?.user?.id) {
+  const userId = await getSessionUserId(req);
+  if (!userId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
 
@@ -27,7 +27,7 @@ export async function PATCH(req: Request) {
   }
 
   try {
-    const user = await updateUserProfile(session.user.id, parsed.data);
+    const user = await updateUserProfile(userId, parsed.data);
     return NextResponse.json({
       ok: true,
       name: user.name,

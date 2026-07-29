@@ -20,3 +20,19 @@ export function isPaddleConfigured(): boolean {
 export function isLicenseGateConfigured(): boolean {
   return Boolean(process.env.LICENSEGATE_API_KEY);
 }
+
+/** Bundle ids allowed to sign in via native "Sign in with Apple" (checked against the identity token's `aud`). */
+export const appleAllowedAudiences = (process.env.APPLE_BUNDLE_IDS || "company.lno.dualcamoxo")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+/** Google OAuth client ids allowed to sign in via native Google Sign-In (checked against the id token's `aud`). */
+export const googleAllowedAudiences = (process.env.GOOGLE_CLIENT_IDS || "")
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
+
+export function isGoogleConfigured(): boolean {
+  return googleAllowedAudiences.length > 0;
+}

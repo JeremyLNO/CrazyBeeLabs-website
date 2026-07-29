@@ -164,6 +164,9 @@ export function AuthFlow({
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            <a className="link-btn form-note" href={`/forgot-password?email=${encodeURIComponent(email)}`}>
+              {t("auth.forgotLink")}
+            </a>
           </div>
           <button className="btn btn-primary btn-block" disabled={loading}>
             {loading ? "…" : t("auth.login")}

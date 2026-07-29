@@ -1,18 +1,17 @@
 import { NextResponse } from "next/server";
 import { eq, desc } from "drizzle-orm";
-import { auth } from "@/lib/auth";
+import { getSessionUserId } from "@/lib/mobile-auth";
 import { db, downloads, invoices, licenses, subscriptions } from "@/lib/db";
 import { getUserById } from "@/lib/users";
 
 export const runtime = "nodejs";
 
 /** Lets a signed-in user download a JSON export of everything we hold about them. */
-export async function GET() {
-  const session = await auth();
-  if (!session?.user?.id) {
+export async function GET(req: Request) {
+  const userId = await getSessionUserId(req);
+  if (!userId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
-  const userId = session.user.id;
 
   const user = await getUserById(userId);
   if (!user) {

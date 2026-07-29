@@ -1,19 +1,24 @@
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
-import { auth } from "@/lib/auth";
+import { getSessionUserId } from "@/lib/mobile-auth";
 import { db, users } from "@/lib/db";
 
 export const runtime = "nodejs";
 
 /**
- * Self-service account deletion. Requires an explicit confirmation string so a
- * stray or repeated request can't silently delete the account. Deleting the
- * user row cascades to their downloads, licenses, subscriptions, invoices and
- * email tokens (all FKs are ON DELETE CASCADE).
+ * Self-service account deletion — called from the website (cookie session) or
+ * a native app (bearer token). Requires an explicit confirmation string so a
+ * stray or repeated request can't silently delete the account.
+ *
+ * Deleting the user row cascades to their downloads, licenses, subscriptions
+ * and email tokens (real deletion — none of that is legally required once the
+ * account is gone). Invoices are detached instead of deleted: French
+ * accounting law requires keeping transaction records for ~10 years, so the
+ * `invoices` FK is `ON DELETE SET NULL`, not cascade.
  */
 export async function DELETE(req: Request) {
-  const session = await auth();
-  if (!session?.user?.id) {
+  const userId = await getSessionUserId(req);
+  if (!userId) {
     return NextResponse.json({ error: "Not signed in." }, { status: 401 });
   }
 
@@ -30,7 +35,7 @@ export async function DELETE(req: Request) {
   }
 
   try {
-    await db.delete(users).where(eq(users.id, session.user.id));
+    await db.delete(users).where(eq(users.id, userId));
     return NextResponse.json({ ok: true });
   } catch (e) {
     console.error("[account] delete failed", e);
