@@ -49,7 +49,7 @@ export function PricingContent() {
                       <td>
                         <Link href={app.href}>{app.name}</Link>
                       </td>
-                      <td>{t("pricingPage.freeOnAppStore")}</td>
+                      <td>{app.comingSoon ? t("pricingPage.comingSoonNote") : t("pricingPage.freeOnAppStore")}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -72,7 +72,7 @@ export function PricingContent() {
             <tbody>
               {CATALOG.map((app) => {
                 const showcase = getShowcaseApp(app.slug);
-                const comingSoon = app.platform === "ios" && showcase?.comingSoon;
+                const comingSoon = showcase?.comingSoon;
                 return (
                   <tr key={app.slug}>
                     <td>

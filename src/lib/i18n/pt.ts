@@ -93,6 +93,7 @@ const pt: Dict = {
     downloadAppStore: "Transferir {app} na App Store",
     availableAppStore: "Uma app para iPhone — transferência grátis na App Store.",
     comingSoonLead: "{app} chega em breve à App Store.",
+    comingSoonLeadGeneric: "{app} chega em breve.",
     choosePlan: "Escolha um plano",
     checkoutNote: "Os preços apresentados são indicativos; o valor exato e os seus impostos locais são confirmados no pagamento. As apps de iOS são vendidas separadamente na App Store.",
     checkoutNoteLicensed: "Os preços apresentados são indicativos; o valor exato e os seus impostos locais são confirmados no pagamento.",

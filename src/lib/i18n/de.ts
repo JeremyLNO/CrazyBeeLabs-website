@@ -93,6 +93,7 @@ const de: Dict = {
     downloadAppStore: "{app} im App Store laden",
     availableAppStore: "Eine iPhone-App — kostenlos im App Store.",
     comingSoonLead: "{app} kommt bald in den App Store.",
+    comingSoonLeadGeneric: "{app} kommt bald.",
     choosePlan: "Tarif wählen",
     checkoutNote: "Die angezeigten Preise sind Richtwerte; der genaue Betrag und deine lokalen Steuern werden an der Kasse bestätigt. iOS-Apps werden separat im App Store verkauft.",
     checkoutNoteLicensed: "Die angezeigten Preise sind Richtwerte; der genaue Betrag und deine lokalen Steuern werden an der Kasse bestätigt.",

@@ -104,10 +104,10 @@ export function AppDetail({ app }: { app: DetailApp }) {
 
         {/* Banner + download (App Store link for iPhone, gated trial for macOS) */}
         <div className="trial-banner mt-m">
-          {isIos && app.comingSoon ? (
+          {app.comingSoon ? (
             <>
               <span className="trial-badge">{t("categories.comingSoon")}</span>
-              <p>{t("detail.comingSoonLead", { app: app.name })}</p>
+              <p>{t(isIos ? "detail.comingSoonLead" : "detail.comingSoonLeadGeneric", { app: app.name })}</p>
               <span className="btn btn-secondary" aria-disabled="true" style={{ opacity: 0.5, pointerEvents: "none" }}>
                 {t("apps.comingSoonButton")}
               </span>

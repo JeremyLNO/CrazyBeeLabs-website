@@ -118,7 +118,7 @@ function AppCard({ app }: { app: ShowcaseApp }) {
   const catalog = isMac ? getApp(app.slug) : undefined;
   const tagline = getAppCopy(lang, app.slug)?.tagline ?? app.tagline;
   // Prices are shown on each app's detail page, not on the cards.
-  const priceMain = isMac ? null : t("apps.onAppStore");
+  const priceMain = isMac || app.comingSoon ? null : t("apps.onAppStore");
   const priceNote = app.comingSoon
     ? t("categories.comingSoon")
     : isMac

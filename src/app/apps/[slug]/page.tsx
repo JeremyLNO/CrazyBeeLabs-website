@@ -58,6 +58,7 @@ export default async function AppDetailPage({
             tagline: licensed.tagline,
             icon: licensed.icon,
             downloadUrl: licensed.downloadUrl ?? null,
+            comingSoon: showcase?.comingSoon,
             screenshots: licensed.screenshots ?? [],
             plans,
           };
