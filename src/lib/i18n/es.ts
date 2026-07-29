@@ -74,6 +74,7 @@ const es: Dict = {
     onAppStore: "En la App Store",
     free: "Gratis",
     openApp: "Ver detalles",
+    comingSoonButton: "Próximamente…",
     searchPlaceholder: "Buscar apps…",
     featured: "Destacada",
     downloadSoon: "¡Gracias! Tu descarga estará lista muy pronto: te hemos guardado el sitio.",

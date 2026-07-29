@@ -59,7 +59,7 @@ export function AppDetail({ app }: { app: DetailApp }) {
     description: copy?.description ?? app.tagline,
     image: `https://www.crazybeelabs.com${app.icon}`,
     url: `https://www.crazybeelabs.com/apps/${app.slug}`,
-    ...(app.plans.length
+    ...(app.plans.length && !app.comingSoon
       ? {
           offers: app.plans
             .map((p) => {
@@ -108,6 +108,9 @@ export function AppDetail({ app }: { app: DetailApp }) {
             <>
               <span className="trial-badge">{t("categories.comingSoon")}</span>
               <p>{t("detail.comingSoonLead", { app: app.name })}</p>
+              <span className="btn btn-secondary" aria-disabled="true" style={{ opacity: 0.5, pointerEvents: "none" }}>
+                {t("apps.comingSoonButton")}
+              </span>
             </>
           ) : isIos && app.plans.length > 0 ? (
             <>
@@ -194,8 +197,8 @@ export function AppDetail({ app }: { app: DetailApp }) {
           </>
         ) : null}
 
-        {/* Plans (any app sold + licensed here, mac or iOS) */}
-        {app.plans.length > 0 && (
+        {/* Plans (any app sold + licensed here, mac or iOS — not yet for apps still coming soon) */}
+        {app.plans.length > 0 && !app.comingSoon && (
           <>
             <h2 className="mt-l" style={{ marginBottom: 4 }}>
               {t("detail.choosePlan")}

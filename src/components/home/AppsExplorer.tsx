@@ -158,8 +158,8 @@ function AppCard({ app }: { app: ShowcaseApp }) {
             {t("apps.openApp")}
           </Link>
           {app.comingSoon ? (
-            <span className="btn btn-accent btn-sm" aria-disabled="true" style={{ opacity: 0.5, pointerEvents: "none" }}>
-              {t("categories.comingSoon")}
+            <span className="btn btn-secondary btn-sm" aria-disabled="true" style={{ opacity: 0.5, pointerEvents: "none" }}>
+              {t("apps.comingSoonButton")}
             </span>
           ) : isMac ? (
             <DownloadButton appSlug={app.slug} appName={app.name} downloadUrl={catalog?.downloadUrl} />
