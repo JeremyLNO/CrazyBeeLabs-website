@@ -76,7 +76,6 @@ const en = {
     onAppStore: "On the App Store",
     free: "Free",
     openApp: "View details",
-    comingSoonButton: "Coming soon…",
     searchPlaceholder: "Search apps…",
     featured: "Featured",
     downloadSoon: "Thanks! Your download will be ready very soon — we've saved your spot.",
@@ -317,6 +316,19 @@ const en = {
     emptyTitle: "Your cart is empty",
     emptyBody: "Pick a plan for any macOS app to get started.",
     browse: "Browse apps",
+  },
+  waitlist: {
+    cta: "Join the waitlist",
+    title: "Get notified when {app} ships",
+    lead: "Leave your email and we'll let you know the moment it's out — no spam, just one message.",
+    firstName: "First name",
+    email: "Email",
+    submit: "Join the waitlist",
+    sending: "Joining…",
+    successTitle: "You're on the list 🐝",
+    successBody: "We'll email you the moment {app} is out.",
+    errorEmail: "Please enter a valid email address.",
+    errorGeneric: "Could not join the waitlist. Please try again.",
   },
 };
 

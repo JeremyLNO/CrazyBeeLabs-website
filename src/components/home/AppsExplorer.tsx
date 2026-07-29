@@ -13,6 +13,7 @@ import { getApp } from "@/lib/catalog";
 import { getAppCopy } from "@/lib/content";
 import { useT } from "@/lib/i18n/LanguageProvider";
 import { DownloadButton } from "@/components/apps/DownloadButton";
+import { WaitlistButton } from "@/components/apps/WaitlistButton";
 
 const CATS: (Category | "all")[] = ["all", ...CATEGORY_ORDER];
 const DEVS: (Device | "all")[] = ["all", "mac", "iphone"];
@@ -158,9 +159,7 @@ function AppCard({ app }: { app: ShowcaseApp }) {
             {t("apps.openApp")}
           </Link>
           {app.comingSoon ? (
-            <span className="btn btn-secondary btn-sm" aria-disabled="true" style={{ opacity: 0.5, pointerEvents: "none" }}>
-              {t("apps.comingSoonButton")}
-            </span>
+            <WaitlistButton appSlug={app.slug} appName={app.name} className="btn btn-secondary btn-sm" />
           ) : isMac ? (
             <DownloadButton appSlug={app.slug} appName={app.name} downloadUrl={catalog?.downloadUrl} />
           ) : (

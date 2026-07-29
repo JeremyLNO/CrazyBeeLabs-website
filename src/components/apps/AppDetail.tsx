@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { AddToCartButton } from "@/components/cart/AddToCartButton";
 import { DownloadButton } from "@/components/apps/DownloadButton";
+import { WaitlistButton } from "@/components/apps/WaitlistButton";
 import { useT } from "@/lib/i18n/LanguageProvider";
 import { getAppCopy, getAppFaq } from "@/lib/content";
 import { FaqList } from "@/components/faq/FaqList";
@@ -108,9 +109,7 @@ export function AppDetail({ app }: { app: DetailApp }) {
             <>
               <span className="trial-badge">{t("categories.comingSoon")}</span>
               <p>{t(isIos ? "detail.comingSoonLead" : "detail.comingSoonLeadGeneric", { app: app.name })}</p>
-              <span className="btn btn-secondary" aria-disabled="true" style={{ opacity: 0.5, pointerEvents: "none" }}>
-                {t("apps.comingSoonButton")}
-              </span>
+              <WaitlistButton appSlug={app.slug} appName={app.name} className="btn btn-primary" />
             </>
           ) : isIos && app.plans.length > 0 ? (
             <>

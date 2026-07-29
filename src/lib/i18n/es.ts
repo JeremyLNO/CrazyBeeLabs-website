@@ -74,7 +74,6 @@ const es: Dict = {
     onAppStore: "En la App Store",
     free: "Gratis",
     openApp: "Ver detalles",
-    comingSoonButton: "Próximamente…",
     searchPlaceholder: "Buscar apps…",
     featured: "Destacada",
     downloadSoon: "¡Gracias! Tu descarga estará lista muy pronto: te hemos guardado el sitio.",
@@ -315,6 +314,19 @@ const es: Dict = {
     emptyTitle: "Tu carrito está vacío",
     emptyBody: "Elige un plan para cualquier app de macOS para empezar.",
     browse: "Explorar apps",
+  },
+  waitlist: {
+    cta: "Unirme a la lista de espera",
+    title: "Te avisamos cuando {app} esté disponible",
+    lead: "Déjanos tu email y te avisaremos en cuanto esté listo — sin spam, solo un mensaje.",
+    firstName: "Nombre",
+    email: "Email",
+    submit: "Unirme a la lista de espera",
+    sending: "Enviando…",
+    successTitle: "Ya estás en la lista 🐝",
+    successBody: "Te escribiremos en cuanto {app} esté disponible.",
+    errorEmail: "Introduce una dirección de email válida.",
+    errorGeneric: "No se pudo completar la inscripción. Inténtalo de nuevo.",
   },
 };
 

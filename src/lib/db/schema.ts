@@ -41,7 +41,12 @@ export const users = pgTable(
   {
     id: uuid("id").defaultRandom().primaryKey(),
     email: text("email").notNull(),
-    passwordHash: text("password_hash").notNull(),
+    // Null for accounts created via Sign in with Apple that never set a password.
+    passwordHash: text("password_hash"),
+    // Apple's stable per-app user identifier ("sub" claim). Null for email/password accounts.
+    appleUserId: text("apple_user_id"),
+    // Google's stable per-user identifier ("sub" claim). Null unless linked via native Google Sign-In.
+    googleUserId: text("google_user_id"),
     name: text("name"),
     lastName: text("last_name"),
     birthDate: date("birth_date"),
@@ -53,7 +58,11 @@ export const users = pgTable(
       .defaultNow()
       .notNull(),
   },
-  (t) => [uniqueIndex("users_email_unique").on(t.email)],
+  (t) => [
+    uniqueIndex("users_email_unique").on(t.email),
+    uniqueIndex("users_apple_user_id_unique").on(t.appleUserId),
+    uniqueIndex("users_google_user_id_unique").on(t.googleUserId),
+  ],
 );
 
 /* ──────────────────── email / reset tokens ──────────────────── */
@@ -145,14 +154,17 @@ export const licenses = pgTable(
   ],
 );
 
-/* ───────────────────────── invoices ───────────────────────── */
+/* ───────────────────────── invoices ─────────────────────────
+   Accounting records must outlive account deletion (French Code de
+   commerce Art. L123-22: ~10-year retention). Deleting a user detaches
+   their invoices (userId → null) instead of deleting the rows — the
+   amounts/currency/dates/Paddle transaction id are kept, the link to
+   the person is not. */
 export const invoices = pgTable(
   "invoices",
   {
     id: uuid("id").defaultRandom().primaryKey(),
-    userId: uuid("user_id")
-      .notNull()
-      .references(() => users.id, { onDelete: "cascade" }),
+    userId: uuid("user_id").references(() => users.id, { onDelete: "set null" }),
     subscriptionId: uuid("subscription_id").references(() => subscriptions.id, {
       onDelete: "set null",
     }),
@@ -207,6 +219,24 @@ export const newsletterSubscribers = pgTable(
   (t) => [uniqueIndex("newsletter_email_unique").on(t.email)],
 );
 
+/* ───────────────────── app waitlist signups ─────────────────────
+   "Notify me" opt-in on a not-yet-published app's page (email + first
+   name), one row per email+app so someone can join more than one
+   app's waitlist. Emailed once when that app's comingSoon flag flips. */
+export const waitlistSignups = pgTable(
+  "waitlist_signups",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    email: text("email").notNull(),
+    firstName: text("first_name"),
+    appSlug: text("app_slug").notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (t) => [uniqueIndex("waitlist_email_app_unique").on(t.email, t.appSlug)],
+);
+
 /* ───────────────────────── page views ─────────────────────────
    First-party, anonymous pageview counter (no cookies, no IP stored).
    Feeds the admin analytics funnel: visits → downloads → orders. */
@@ -234,4 +264,5 @@ export type Invoice = typeof invoices.$inferSelect;
 export type EmailToken = typeof emailTokens.$inferSelect;
 export type Download = typeof downloads.$inferSelect;
 export type NewsletterSubscriber = typeof newsletterSubscribers.$inferSelect;
+export type WaitlistSignup = typeof waitlistSignups.$inferSelect;
 export type PageView = typeof pageViews.$inferSelect;
