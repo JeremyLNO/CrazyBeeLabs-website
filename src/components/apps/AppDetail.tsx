@@ -108,7 +108,7 @@ export function AppDetail({ app }: { app: DetailApp }) {
           {app.comingSoon ? (
             <>
               <span className="trial-badge">{t("categories.comingSoon")}</span>
-              <p>{t(isIos ? "detail.comingSoonLead" : "detail.comingSoonLeadGeneric", { app: app.name })}</p>
+              <p>{t("detail.comingSoonWaitlistLead")}</p>
               <WaitlistButton appSlug={app.slug} appName={app.name} className="btn btn-primary" />
             </>
           ) : isIos && app.plans.length > 0 ? (
