@@ -36,6 +36,30 @@ const STATEMENTS: string[] = [
      "created_at" timestamptz DEFAULT now() NOT NULL)`,
   `CREATE INDEX IF NOT EXISTS "page_views_created_idx" ON "page_views" ("created_at")`,
   `CREATE INDEX IF NOT EXISTS "page_views_path_idx" ON "page_views" ("path")`,
+
+  // ── Sign in with Apple / Google (drizzle/0001, 0005) ──
+  // Apple- or Google-only accounts never set a password.
+  `ALTER TABLE "users" ALTER COLUMN "password_hash" DROP NOT NULL`,
+  `ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "apple_user_id" text`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS "users_apple_user_id_unique" ON "users" ("apple_user_id")`,
+  `ALTER TABLE "users" ADD COLUMN IF NOT EXISTS "google_user_id" text`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS "users_google_user_id_unique" ON "users" ("google_user_id")`,
+
+  // Invoices must outlive account deletion (French Code de commerce Art.
+  // L123-22: ~10-year retention). Detach instead of cascading.
+  `ALTER TABLE "invoices" ALTER COLUMN "user_id" DROP NOT NULL`,
+  `ALTER TABLE "invoices" DROP CONSTRAINT IF EXISTS "invoices_user_id_fkey"`,
+  `ALTER TABLE "invoices" ADD CONSTRAINT "invoices_user_id_fkey"
+     FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE SET NULL`,
+
+  // ── App waitlist (drizzle/0006) ──
+  `CREATE TABLE IF NOT EXISTS "waitlist_signups" (
+     "id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+     "email" text NOT NULL,
+     "first_name" text,
+     "app_slug" text NOT NULL,
+     "created_at" timestamptz DEFAULT now() NOT NULL)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS "waitlist_email_app_unique" ON "waitlist_signups" ("email", "app_slug")`,
 ];
 
 export async function POST() {

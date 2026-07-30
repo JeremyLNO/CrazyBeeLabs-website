@@ -700,6 +700,82 @@
         "q": "¿Puedo probarlo gratis?",
         "a": "Sí, 1space1wallpaper es gratis durante 7 días y luego está disponible con una licencia mensual, trimestral, anual o de por vida."
       }
+    ],
+    "cornercraft": [
+      {
+        "q": "¿Qué es CornerCraft?",
+        "a": "CornerCraft convierte las esquinas de la pantalla de tu Mac en atajos y en un panel de widgets compacto, justo donde ya va tu cursor."
+      },
+      {
+        "q": "¿Qué puedo activar desde una esquina?",
+        "a": "Mission Control, Launchpad, Reposo y más, con una amplia biblioteca de acciones que incluye Stage Manager y No molestar."
+      },
+      {
+        "q": "¿Qué hay en el panel de esquina?",
+        "a": "Un panel reordenable con inicio rápido, controles de Spotify, acciones y reloj. Tú eliges el orden y la apariencia."
+      },
+      {
+        "q": "¿Puedo probarlo gratis?",
+        "a": "Sí — CornerCraft es gratis durante 7 días. Después puedes conservarlo con un plan mensual, trimestral o anual, o pagar una vez por una licencia de por vida."
+      }
+    ],
+    "pillo": [
+      {
+        "q": "¿Qué es Pillo tracker?",
+        "a": "Pillo tracker sigue la toma de tu píldora anticonceptiva con una vista de blíster clara, recordatorios discretos y una guía sencilla si olvidas una dosis."
+      },
+      {
+        "q": "¿Qué pasa si olvido una dosis?",
+        "a": "Pillo tracker te guía paso a paso en esa situación, para que sepas exactamente qué hacer."
+      },
+      {
+        "q": "¿Los recordatorios funcionan sin conexión?",
+        "a": "Sí. Los recordatorios funcionan totalmente sin conexión — sin internet y sin cuenta."
+      },
+      {
+        "q": "¿Mis datos de salud son privados?",
+        "a": "Sí. Tus datos se quedan en tu dispositivo y puedes bloquear la app con Face ID o Touch ID."
+      },
+      {
+        "q": "¿Cuánto cuesta?",
+        "a": "Es gratis. El acceso a herramientas de salud no debería depender de tu capacidad de pago: nuestras apps de salud son gratuitas, no freemium."
+      }
+    ],
+    "respire": [
+      {
+        "q": "¿Qué es Quit smoking made easy?",
+        "a": "Te ayuda a dejar de fumar, vapear o la nicotina con un plan construido a partir de tus hábitos, tus motivaciones y tu fecha de abandono."
+      },
+      {
+        "q": "¿Qué registra?",
+        "a": "Tu racha en curso, el dinero que ahorras y los hitos de recuperación de tu salud."
+      },
+      {
+        "q": "¿Mis datos son privados?",
+        "a": "Sí — la privacidad está integrada desde el diseño. Tus datos se quedan en tu dispositivo."
+      },
+      {
+        "q": "¿Cuánto cuesta?",
+        "a": "Es gratis. El acceso a herramientas de salud no debería depender de tu capacidad de pago: nuestras apps de salud son gratuitas, no freemium."
+      }
+    ],
+    "record-seconds": [
+      {
+        "q": "¿Qué es Video One Sec?",
+        "a": "Video One Sec convierte unos segundos al día en una película que sí verás — graba un clip, añádelo a un proyecto y deja que la película se construya sola."
+      },
+      {
+        "q": "¿Cómo funcionan los proyectos?",
+        "a": "Un proyecto compila tus clips diarios automáticamente: tu año se monta solo sobre la marcha."
+      },
+      {
+        "q": "¿Necesito saber editar?",
+        "a": "No. Las transiciones y los rótulos se aplican por ti, y puedes recortar y reordenar los clips antes de exportar."
+      },
+      {
+        "q": "¿Puedo probarlo gratis?",
+        "a": "Sí — es gratis durante 7 días. Después puedes conservarlo con un plan mensual, trimestral o anual, o pagar una vez por una licencia de por vida."
+      }
     ]
   },
   "legal": {

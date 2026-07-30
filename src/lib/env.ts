@@ -17,6 +17,16 @@ export function isPaddleConfigured(): boolean {
   return Boolean(process.env.PADDLE_API_KEY);
 }
 
+/**
+ * Without this secret the Paddle webhook returns 200 and *discards* the event
+ * (see api/webhooks/paddle). That's the right behaviour pre-launch, but once
+ * real checkouts exist it would silently drop purchases — so the admin
+ * dashboard surfaces it rather than letting it fail quietly.
+ */
+export function isPaddleWebhookConfigured(): boolean {
+  return Boolean(process.env.PADDLE_WEBHOOK_SECRET);
+}
+
 export function isLicenseGateConfigured(): boolean {
   return Boolean(process.env.LICENSEGATE_API_KEY);
 }

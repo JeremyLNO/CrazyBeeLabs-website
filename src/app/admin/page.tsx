@@ -4,6 +4,7 @@ import { appName, PLAN_LABELS } from "@/lib/catalog";
 import { formatMoney, formatDate } from "@/lib/format";
 import { Hex } from "@/components/ui/Hex";
 import { PERIODS, isPeriod, type Period } from "@/lib/adminPeriod";
+import { isPaddleWebhookConfigured } from "@/lib/env";
 
 export const metadata = { title: "Admin · Sales" };
 
@@ -37,6 +38,15 @@ export default async function AdminDashboard({
         </span>
         <h1>Sales dashboard</h1>
       </div>
+
+      {!isPaddleWebhookConfigured() && (
+        <div className="alert alert-error">
+          <strong>PADDLE_WEBHOOK_SECRET is not set.</strong> The webhook accepts
+          requests but discards every event, so purchases would not create
+          licenses or invoices. Set it in the Vercel project before taking real
+          payments.
+        </div>
+      )}
 
       <div className="filter-row mt-s">
         {PERIODS.map((p) => (
