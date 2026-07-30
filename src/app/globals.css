@@ -158,6 +158,8 @@ main { flex: 1 0 auto; width: 100%; }
 .alert { padding: 12px 15px; border-radius: var(--radius-md); font-size: 14px; margin-bottom: 16px; }
 .alert-error { background: var(--color-danger-soft); color: #a3282a; border: 1px solid #f3c0c1; }
 .alert-success { background: var(--color-success-soft); color: #137a55; border: 1px solid #b6e6d4; }
+/* Warning ≠ error: something to do before launch, not something broken now. */
+.alert-warn { background: #FBF0D6; color: #8a5a00; border: 1px solid #f0d9a0; }
 
 /* ---------- auth pages ---------- */
 .auth-wrap { display: flex; justify-content: center; padding: clamp(32px, 7vw, 72px) var(--pad-x); }

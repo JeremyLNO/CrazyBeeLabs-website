@@ -40,11 +40,12 @@ export default async function AdminDashboard({
       </div>
 
       {!isPaddleWebhookConfigured() && (
-        <div className="alert alert-error">
-          <strong>PADDLE_WEBHOOK_SECRET is not set.</strong> The webhook accepts
-          requests but discards every event, so purchases would not create
-          licenses or invoices. Set it in the Vercel project before taking real
-          payments.
+        <div className="alert alert-warn">
+          <strong>Before you start selling:</strong> set{" "}
+          <code>PADDLE_WEBHOOK_SECRET</code> in the Vercel project. Until it&apos;s
+          set, the Paddle webhook ignores incoming events — which is fine while
+          nothing is on sale, but would mean a real purchase never creates a
+          license or an invoice. Nothing is broken right now.
         </div>
       )}
 
