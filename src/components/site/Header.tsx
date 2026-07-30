@@ -81,9 +81,11 @@ export function Header() {
               >
                 {t("nav.login")}
               </button>
+              {/* Hidden on small screens: it opens the exact same unified flow as
+                  "Log in", whose first step already routes new users to signup. */}
               <button
                 type="button"
-                className="btn btn-primary btn-sm"
+                className="btn btn-primary btn-sm header-cta-signup"
                 onClick={() => openAuth()}
               >
                 {t("nav.createAccount")}

@@ -120,6 +120,12 @@ main { flex: 1 0 auto; width: 100%; }
 @media (max-width: 640px) {
   .header-nav { display: none; }
   .header-user { display: none; }
+  /* A wordmark + language + cart + two auth buttons cannot fit at 375px.
+     "Create account" opens the same unified flow as "Log in", so dropping it
+     here costs no capability and keeps the logo from being squeezed out. */
+  .header-cta-signup { display: none; }
+  .brand img.brand-wordmark { height: 22px; }
+  .header-actions { gap: 8px; }
 }
 
 /* ---------- footer ---------- */
