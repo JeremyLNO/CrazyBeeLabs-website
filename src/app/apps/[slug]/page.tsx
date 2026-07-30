@@ -29,7 +29,7 @@ export default async function AppDetailPage({
   const { slug } = await params;
 
   // App licensed here (plans + AddToCart). macOS gets a gated direct download;
-  // a licensed iOS app (e.g. Record Seconds) links out to the App Store instead.
+  // a licensed iOS app (e.g. Video One Sec) links out to the App Store instead.
   const licensed = getApp(slug);
   if (licensed) {
     const showcase = getShowcaseApp(slug);

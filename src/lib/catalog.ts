@@ -3,7 +3,7 @@
  *
  * The paid apps and their 4 plans. This is the single source of truth
  * for what can be sold; the database only stores *who bought what*.
- * Mostly macOS apps sold + licensed here; some iOS apps (Record Seconds,
+ * Mostly macOS apps sold + licensed here; some iOS apps (Video One Sec,
  * QualiScan, MenuIsland, DualCam OxO) use the same 7-day-trial-then-plan
  * model even though the actual purchase happens through the App Store
  * (see `platform`).
@@ -12,7 +12,8 @@
  * `pri_…` id into `paddlePriceId`. While a price id is empty the plan's
  * checkout button stays disabled.
  *
- * Free iOS apps (Cycles, Pillo, Respire) are sold on the App Store with
+ * Free iOS apps (Period tracker made easy, Pillo tracker, Quit smoking
+ * made easy) are sold on the App Store with
  * no trial/paid tier and are NOT here — see showcase.ts.
  * Browser games are free and are NOT here.
  */
