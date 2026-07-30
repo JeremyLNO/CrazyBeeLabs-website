@@ -252,7 +252,6 @@ const de: Dict = {
   home2: {
     title: "Kleine Apps, die sich ihren Platz ⟨verdienen⟩.",
     lead: "Scharfe Mac- und iPhone-Tools, gebaut mit der Sorgfalt eines Bienenstocks und der Energie eines Labors. Teste sie kostenlos und behalte, was sich seinen Platz auf deinem Schreibtisch verdient.",
-    statAppsN: "18",
     statApps: "Apps und mehr",
     statTrialN: "7 Tage",
     statTrial: "gratis testen",

@@ -81,7 +81,8 @@ export function HomeContent() {
             </div>
             <div className="home2-stats">
               <span>
-                <b>{t("home2.statAppsN")}</b> {t("home2.statApps")}
+                {/* Derived, not hardcoded — a literal drifts every time an app ships. */}
+                <b>{SHOWCASE.length}</b> {t("home2.statApps")}
               </span>
               <span>
                 <b>{t("home2.statTrialN")}</b> {t("home2.statTrial")}

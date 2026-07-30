@@ -252,7 +252,6 @@ const pt: Dict = {
   home2: {
     title: "Apps pequenas que ⟨merecem⟩ o seu lugar.",
     lead: "Ferramentas ágeis para Mac e iPhone, feitas com o rigor de uma colmeia e a energia de um laboratório. Experimente-as grátis e fique com as que merecem um lugar na sua secretária.",
-    statAppsN: "18",
     statApps: "apps e a contar",
     statTrialN: "7 dias",
     statTrial: "de teste grátis",
