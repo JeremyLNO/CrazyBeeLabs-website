@@ -22,8 +22,10 @@ import {
   pageViews,
   subscriptions,
   users,
+  waitlistSignups,
 } from "@/lib/db";
 import { CATALOG } from "@/lib/catalog";
+import { SHOWCASE, getShowcaseApp, type Device } from "@/lib/showcase";
 import { periodRange, type Period } from "@/lib/adminPeriod";
 
 const TRUE = sql`true`;
@@ -243,6 +245,79 @@ export async function getNewsletterSubscribers(limit = 500): Promise<SubscriberR
     return rows.map((r) => ({ ...r, hasAccount: Boolean(r.accountId) }));
   } catch (e) {
     console.error("[admin] getNewsletterSubscribers failed (table not migrated?)", e);
+    return [];
+  }
+}
+
+/* ───────────────────────── waitlist ───────────────────────── */
+
+export interface WaitlistAppRow {
+  appSlug: string;
+  appName: string;
+  device: Device;
+  signups: number;
+}
+
+export interface WaitlistSignupRow {
+  id: string;
+  email: string;
+  firstName: string | null;
+  appSlug: string;
+  createdAt: Date;
+}
+
+/**
+ * Signup counts per unreleased app. Every app still flagged `comingSoon` is
+ * listed (zero included) so the table shows what's *not* getting traction too;
+ * a slug that has signups but is no longer coming soon still shows up, so
+ * shipping an app never silently hides its list.
+ */
+export async function getWaitlistStats(): Promise<WaitlistAppRow[]> {
+  let counts = new Map<string, number>();
+  try {
+    const rows = await db
+      .select({ appSlug: waitlistSignups.appSlug, n: count() })
+      .from(waitlistSignups)
+      .groupBy(waitlistSignups.appSlug);
+    counts = new Map(rows.map((r) => [r.appSlug, r.n]));
+  } catch (e) {
+    console.error("[admin] waitlist aggregate failed (table not migrated?)", e);
+  }
+
+  const slugs = new Set<string>([
+    ...SHOWCASE.filter((a) => a.comingSoon).map((a) => a.slug),
+    ...counts.keys(),
+  ]);
+
+  return [...slugs]
+    .map((slug) => {
+      const app = getShowcaseApp(slug);
+      return {
+        appSlug: slug,
+        appName: app?.name ?? slug,
+        device: app?.device ?? "mac",
+        signups: counts.get(slug) ?? 0,
+      };
+    })
+    .sort((a, b) => b.signups - a.signups || a.appName.localeCompare(b.appName));
+}
+
+/** Individual waitlist signups, newest first. Returns [] if the table isn't migrated yet. */
+export async function getWaitlistSignups(limit = 500): Promise<WaitlistSignupRow[]> {
+  try {
+    return await db
+      .select({
+        id: waitlistSignups.id,
+        email: waitlistSignups.email,
+        firstName: waitlistSignups.firstName,
+        appSlug: waitlistSignups.appSlug,
+        createdAt: waitlistSignups.createdAt,
+      })
+      .from(waitlistSignups)
+      .orderBy(desc(waitlistSignups.createdAt))
+      .limit(limit);
+  } catch (e) {
+    console.error("[admin] getWaitlistSignups failed (table not migrated?)", e);
     return [];
   }
 }
