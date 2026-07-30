@@ -124,8 +124,12 @@ main { flex: 1 0 auto; width: 100%; }
      "Create account" opens the same unified flow as "Log in", so dropping it
      here costs no capability and keeps the logo from being squeezed out. */
   .header-cta-signup { display: none; }
-  .brand img.brand-wordmark { height: 22px; }
-  .header-actions { gap: 8px; }
+  .brand img.brand-wordmark { height: 20px; }
+  .header-actions { gap: 6px; }
+  /* Globe icon alone still reads as "language"; the code is the first thing
+     to give when the row is tight. */
+  .lang-code { display: none; }
+  .lang-trigger { padding: 0 6px; }
 }
 
 /* ---------- footer ---------- */
