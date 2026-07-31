@@ -240,6 +240,19 @@
         "Fünf Sprachen"
       ]
     },
+    "fasting": {
+      "tagline": "Intervallfasten, ganz einfach.",
+      "description": "Fasting made easy verfolgt Ihr Intervallfasten ohne Ballast. Wählen Sie einen Plan — 16:8, 18:6, 20:4, OMAD oder eigene Zeiten — und ein ruhiger Ring führt Sie durch jede Stoffwechselphase. Starten oder beenden Sie das Fasten, wann immer der Alltag dazwischenkommt, und behalten Sie alles vom Startbildschirm, Sperrbildschirm oder CarPlay im Blick.",
+      "features": [
+        "Jeder Plan: 16:8, 18:6, 20:4, OMAD oder eigene Zeiten",
+        "Stoffwechselphasen, von der Verdauung bis Ketose und Autophagie",
+        "Fasten jederzeit starten oder unterbrechen — mit einem Tipp",
+        "Widgets, Live Activity und Dynamic Island",
+        "Wasser-Tracker mit interaktivem Widget und Erinnerungen",
+        "Verlauf und Serien — privat by Design, Daten bleiben auf Ihrem Gerät",
+        "Fünf Sprachen"
+      ]
+    },
     "pillo": {
       "tagline": "Verpassen Sie nie wieder Ihre Pille.",
       "description": "Pillo tracker verfolgt die Einnahme Ihrer Antibabypille mit einer übersichtlichen Blisterpackungs-Ansicht, sanften Erinnerungen und einfacher Hilfe, falls Sie eine Dosis vergessen. Erfassen Sie Symptome, behalten Sie Ihren Vorrat im Blick und sehen Sie Ihren Verlauf auf einen Blick — alles privat auf Ihrem Gerät gespeichert.",
@@ -753,6 +766,32 @@
       {
         "q": "Sind meine Daten privat?",
         "a": "Ja — Datenschutz ist von Grund auf eingebaut. Deine Daten bleiben auf deinem Gerät."
+      },
+      {
+        "q": "Was kostet die App?",
+        "a": "Sie ist kostenlos. Der Zugang zu Gesundheits-Tools sollte nicht vom Geldbeutel abhängen — unsere Gesundheits-Apps sind kostenlos, nicht Freemium."
+      }
+    ],
+    "fasting": [
+      {
+        "q": "Was ist Fasting made easy?",
+        "a": "Ein ruhiger Intervallfasten-Tracker fürs iPhone. Sie wählen einen Plan, und die App führt Sie durch jedes Fastenfenster und jede Stoffwechselphase."
+      },
+      {
+        "q": "Welche Fastenpläne werden unterstützt?",
+        "a": "16:8, 18:6, 20:4 und OMAD von Haus aus — oder eigene Start- und Endzeiten."
+      },
+      {
+        "q": "Kann ich außerhalb des Plans starten oder stoppen?",
+        "a": "Ja. Ein Tipp auf den Ring startet sofort ein Fasten oder beendet das laufende — Ihr Verlauf hält fest, was wirklich passiert ist."
+      },
+      {
+        "q": "Funktioniert das vom Startbildschirm aus?",
+        "a": "Ja — Widgets, eine Live Activity auf dem Sperrbildschirm und in der Dynamic Island sowie CarPlay."
+      },
+      {
+        "q": "Sind meine Daten privat?",
+        "a": "Ja — privat by Design. Ihre Daten bleiben auf Ihrem Gerät."
       },
       {
         "q": "Was kostet die App?",

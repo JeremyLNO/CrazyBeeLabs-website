@@ -240,6 +240,19 @@
         "Cinq langues"
       ]
     },
+    "fasting": {
+      "tagline": "Le jeûne intermittent, en toute simplicité.",
+      "description": "Fasting made easy suit votre jeûne intermittent sans le superflu. Choisissez un planning — 16:8, 18:6, 20:4, OMAD ou vos propres horaires — et un anneau tout en douceur vous guide à travers chaque étape métabolique. Démarrez ou arrêtez un jeûne dès que la vraie vie s'en mêle, et gardez tout en vue depuis l'écran d'accueil, l'écran verrouillé ou CarPlay.",
+      "features": [
+        "Tous les plannings : 16:8, 18:6, 20:4, OMAD ou horaires personnalisés",
+        "Étapes métaboliques, de la digestion à la cétose et l'autophagie",
+        "Démarrez ou interrompez un jeûne à tout moment, en un geste",
+        "Widgets écran d'accueil, Live Activity et Dynamic Island",
+        "Suivi de l'eau avec widget interactif et rappels",
+        "Historique et séries — confidentiel par conception, les données restent sur votre appareil",
+        "Cinq langues"
+      ]
+    },
     "pillo": {
       "tagline": "Ne ratez plus jamais votre pilule.",
       "description": "Pillo tracker suit la prise de votre pilule contraceptive avec une plaquette claire, des rappels en douceur, et des conseils simples en cas d'oubli. Notez vos symptômes, gardez un œil sur votre stock, et consultez votre historique en un coup d'œil — tout est stocké en privé sur votre appareil.",
@@ -753,6 +766,32 @@
       {
         "q": "Mes données sont-elles privées ?",
         "a": "Oui — la confidentialité est intégrée dès la conception. Vos données restent sur votre appareil."
+      },
+      {
+        "q": "Combien ça coûte ?",
+        "a": "C'est gratuit. L'accès aux outils de santé ne devrait pas dépendre de vos moyens : nos apps santé sont gratuites, pas freemium."
+      }
+    ],
+    "fasting": [
+      {
+        "q": "Qu'est-ce que Fasting made easy ?",
+        "a": "Un suivi de jeûne intermittent tout en douceur pour iPhone. Vous choisissez un planning et l'app vous guide à travers chaque fenêtre de jeûne et chaque étape métabolique."
+      },
+      {
+        "q": "Quels plannings de jeûne sont proposés ?",
+        "a": "16:8, 18:6, 20:4 et OMAD d'origine, ou vos propres heures de début et de fin."
+      },
+      {
+        "q": "Puis-je démarrer ou arrêter un jeûne hors planning ?",
+        "a": "Oui. Un appui sur l'anneau démarre un jeûne immédiatement, ou arrête celui en cours — votre historique enregistre ce qui s'est réellement passé."
+      },
+      {
+        "q": "Est-ce que ça fonctionne depuis l'écran d'accueil ?",
+        "a": "Oui — widgets d'écran d'accueil, Live Activity sur l'écran verrouillé et dans la Dynamic Island, ainsi que CarPlay."
+      },
+      {
+        "q": "Mes données sont-elles privées ?",
+        "a": "Oui — confidentiel par conception. Vos données restent sur votre appareil."
       },
       {
         "q": "Combien ça coûte ?",

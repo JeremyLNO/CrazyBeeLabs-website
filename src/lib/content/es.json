@@ -240,6 +240,19 @@
         "Cinco idiomas"
       ]
     },
+    "fasting": {
+      "tagline": "Ayuno intermitente, sin complicaciones.",
+      "description": "Fasting made easy sigue tu ayuno intermitente sin ruido. Elige un horario — 16:8, 18:6, 20:4, OMAD o el tuyo propio — y un anillo tranquilo te acompaña por cada etapa metabólica. Empieza o detén un ayuno cuando la vida real se interponga, y contrólalo todo desde la pantalla de inicio, la pantalla de bloqueo o CarPlay.",
+      "features": [
+        "Cualquier horario: 16:8, 18:6, 20:4, OMAD u horas personalizadas",
+        "Etapas metabólicas, de la digestión a la cetosis y la autofagia",
+        "Empieza o interrumpe un ayuno cuando quieras, con un toque",
+        "Widgets en la pantalla de inicio, Live Activity e Isla Dinámica",
+        "Control del agua con widget interactivo y recordatorios",
+        "Historial y rachas — privado por diseño, los datos se quedan en tu dispositivo",
+        "Cinco idiomas"
+      ]
+    },
     "pillo": {
       "tagline": "No vuelvas a olvidar tu píldora.",
       "description": "Pillo tracker registra la toma de tu píldora anticonceptiva con una vista clara del blíster, recordatorios suaves y consejos sencillos si olvidas una dosis. Anota síntomas, controla tu stock y consulta tu historial de un vistazo — todo guardado de forma privada en tu dispositivo.",
@@ -753,6 +766,32 @@
       {
         "q": "¿Mis datos son privados?",
         "a": "Sí — la privacidad está integrada desde el diseño. Tus datos se quedan en tu dispositivo."
+      },
+      {
+        "q": "¿Cuánto cuesta?",
+        "a": "Es gratis. El acceso a herramientas de salud no debería depender de tu capacidad de pago: nuestras apps de salud son gratuitas, no freemium."
+      }
+    ],
+    "fasting": [
+      {
+        "q": "¿Qué es Fasting made easy?",
+        "a": "Un seguimiento tranquilo del ayuno intermitente para iPhone. Eliges un horario y la app te guía por cada ventana de ayuno y cada etapa metabólica."
+      },
+      {
+        "q": "¿Qué horarios de ayuno admite?",
+        "a": "16:8, 18:6, 20:4 y OMAD de serie, o tus propias horas de inicio y fin."
+      },
+      {
+        "q": "¿Puedo empezar o parar un ayuno fuera del horario?",
+        "a": "Sí. Un toque en el anillo empieza un ayuno al instante, o termina el actual — tu historial registra lo que realmente pasó."
+      },
+      {
+        "q": "¿Funciona desde la pantalla de inicio?",
+        "a": "Sí — widgets en la pantalla de inicio, Live Activity en la pantalla de bloqueo y en la Isla Dinámica, además de CarPlay."
+      },
+      {
+        "q": "¿Mis datos son privados?",
+        "a": "Sí — privado por diseño. Tus datos se quedan en tu dispositivo."
       },
       {
         "q": "¿Cuánto cuesta?",
