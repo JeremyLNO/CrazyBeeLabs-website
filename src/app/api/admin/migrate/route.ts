@@ -60,6 +60,10 @@ const STATEMENTS: string[] = [
      "app_slug" text NOT NULL,
      "created_at" timestamptz DEFAULT now() NOT NULL)`,
   `CREATE UNIQUE INDEX IF NOT EXISTS "waitlist_email_app_unique" ON "waitlist_signups" ("email", "app_slug")`,
+
+  // ── Language signal on pageviews (drizzle/0007) ──
+  `ALTER TABLE "page_views" ADD COLUMN IF NOT EXISTS "site_locale" text`,
+  `ALTER TABLE "page_views" ADD COLUMN IF NOT EXISTS "browser_locale" text`,
 ];
 
 export async function POST() {

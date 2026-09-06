@@ -26,6 +26,7 @@ import {
 } from "@/lib/db";
 import { CATALOG } from "@/lib/catalog";
 import { SHOWCASE, getShowcaseApp, type Device } from "@/lib/showcase";
+import { LOCALES } from "@/lib/i18n/config";
 import { periodRange, type Period } from "@/lib/adminPeriod";
 
 const TRUE = sql`true`;
@@ -246,6 +247,104 @@ export async function getNewsletterSubscribers(limit = 500): Promise<SubscriberR
   } catch (e) {
     console.error("[admin] getNewsletterSubscribers failed (table not migrated?)", e);
     return [];
+  }
+}
+
+/* ───────────────────────── languages ───────────────────────── */
+
+export interface LanguageRow {
+  /** Base language tag, e.g. "fr", "it". */
+  tag: string;
+  /** Human name ("Italian"), or the tag itself if the runtime can't name it. */
+  label: string;
+  views: number;
+  share: number;
+  /** True when the site already ships this language. */
+  supported: boolean;
+}
+
+export interface LanguageStats {
+  /** Pageviews by the locale we actually served. */
+  served: LanguageRow[];
+  /** Pageviews by the browser's preferred language, supported or not. */
+  browser: LanguageRow[];
+  /** Browser languages we don't offer, ranked — the translation shortlist. */
+  missing: LanguageRow[];
+  /** Pageviews carrying a language signal (older rows predate it). */
+  withSignal: number;
+  /** Total pageviews in the period, including pre-signal rows. */
+  totalViews: number;
+}
+
+/** "it" -> "Italian". Falls back to the raw tag if Intl can't name it. */
+function languageLabel(tag: string): string {
+  try {
+    const name = new Intl.DisplayNames(["en"], { type: "language" }).of(tag);
+    return name && name !== tag ? name : tag;
+  } catch {
+    return tag;
+  }
+}
+
+function toRows(
+  counts: { tag: string | null; n: number }[],
+  denominator: number,
+): LanguageRow[] {
+  return counts
+    .filter((c): c is { tag: string; n: number } => Boolean(c.tag))
+    .map((c) => ({
+      tag: c.tag,
+      label: languageLabel(c.tag),
+      views: c.n,
+      share: denominator > 0 ? c.n / denominator : 0,
+      supported: (LOCALES as readonly string[]).includes(c.tag),
+    }))
+    .sort((a, b) => b.views - a.views || a.label.localeCompare(b.label));
+}
+
+/**
+ * Language breakdown from the anonymous pageview beacon.
+ *
+ * Counted in pageviews, not people — there's no visitor id to dedupe on, by
+ * design. Someone browsing ten pages counts ten times, so read these as
+ * relative weight rather than a headcount.
+ */
+export async function getLanguageStats(period: Period = "all"): Promise<LanguageStats> {
+  const { start, end } = periodRange(period, new Date());
+  const where = rangeWhere(pageViews.createdAt, start, end);
+
+  try {
+    const [totals, servedRows, browserRows] = await Promise.all([
+      db.select({ n: count() }).from(pageViews).where(where),
+      db
+        .select({ tag: pageViews.siteLocale, n: count() })
+        .from(pageViews)
+        .where(where)
+        .groupBy(pageViews.siteLocale),
+      db
+        .select({ tag: pageViews.browserLocale, n: count() })
+        .from(pageViews)
+        .where(where)
+        .groupBy(pageViews.browserLocale),
+    ]);
+
+    const totalViews = totals[0]?.n ?? 0;
+    const withSignal = browserRows
+      .filter((r) => r.tag)
+      .reduce((sum, r) => sum + r.n, 0);
+
+    const served = toRows(servedRows, withSignal);
+    const browser = toRows(browserRows, withSignal);
+    return {
+      served,
+      browser,
+      missing: browser.filter((r) => !r.supported),
+      withSignal,
+      totalViews,
+    };
+  } catch (e) {
+    console.error("[admin] getLanguageStats failed (columns not migrated?)", e);
+    return { served: [], browser: [], missing: [], withSignal: 0, totalViews: 0 };
   }
 }
 

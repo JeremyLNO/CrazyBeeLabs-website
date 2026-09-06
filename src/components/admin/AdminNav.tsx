@@ -10,6 +10,7 @@ const ITEMS: [string, string][] = [
   ["/admin/licenses", "Licenses"],
   ["/admin/subscribers", "Subscribers"],
   ["/admin/waitlist", "Waitlist"],
+  ["/admin/languages", "Languages"],
   ["/admin/apps", "Apps"],
   ["/admin/downloads", "Downloads"],
   ["/admin/database", "Database"],

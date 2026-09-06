@@ -245,6 +245,12 @@ export const pageViews = pgTable(
   {
     id: uuid("id").defaultRandom().primaryKey(),
     path: text("path").notNull(),
+    /** Which of our locales the visitor was actually served (en/fr/de/es/pt). */
+    siteLocale: text("site_locale"),
+    /** Base tag of the browser's first preferred language ("it", "nl", …).
+        Region is deliberately dropped: it adds identifying entropy without
+        changing which language we'd need to translate. */
+    browserLocale: text("browser_locale"),
     createdAt: timestamp("created_at", { withTimezone: true })
       .defaultNow()
       .notNull(),
